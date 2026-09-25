@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COSMICX | Mars</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+background:#02030a;
+color:white;
+font-family:Arial,sans-serif;
+}
+
+.cx-page{
+min-height:100vh;
+padding:35px 20px 70px;
+background:
+radial-gradient(circle at 50% 15%,rgba(255,60,20,.18),transparent 32%),
+#02030a;
+}
+
+.cx-header{text-align:center;margin-bottom:35px}
+
+.cx-logo{
+font-size:38px;
+font-weight:900;
+letter-spacing:7px;
+text-shadow:0 0 12px #765cff,0 0 30px #5135ff;
+}
+
+.cx-title{margin-top:18px;font-size:44px}
+
+.cx-subtitle{margin-top:10px;color:#aaa}
+
+.cx-planet{
+width:235px;
+height:235px;
+margin:35px auto 45px;
+border-radius:50%;
+background:
+radial-gradient(circle at 35% 28%,#ffad83,#d85b35 38%,#8f2817 70%,#3b0d08);
+box-shadow:
+inset -38px -28px 45px rgba(0,0,0,.55),
+0 0 40px rgba(255,70,30,.3);
+}
+
+.cx-content{max-width:900px;margin:auto}
+
+.cx-section{
+margin-top:35px;
+padding:28px;
+border:1px solid rgba(255,90,50,.25);
+border-radius:20px;
+background:rgba(20,15,30,.7);
+}
+
+.cx-section h2{font-size:27px;margin-bottom:14px}
+
+.cx-section p{
+color:#aaa;
+line-height:1.8;
+font-size:15px;
+}
+
+.cx-list{
+margin-top:15px;
+padding-left:20px;
+color:#aaa;
+line-height:2;
+}
+
+.cx-facts{
+max-width:900px;
+margin:30px auto;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.cx-fact{
+padding:22px;
+text-align:center;
+border:1px solid rgba(255,90,50,.3);
+border-radius:18px;
+background:rgba(25,18,35,.7);
+transition:.3s;
+}
+
+.cx-fact:hover{
+transform:translateY(-6px);
+border-color:#ff7355;
+box-shadow:0 0 25px rgba(255,70,30,.25);
+}
+
+.cx-fact h3{margin-bottom:10px}
+
+.cx-fact p{color:#999;font-size:14px;line-height:1.5}
+
+.cx-button{
+display:block;
+width:fit-content;
+margin:45px auto 0;
+padding:12px 24px;
+border-radius:25px;
+border:1px solid #604cff;
+color:white;
+text-decoration:none;
+background:rgba(50,35,120,.5);
+transition:.3s;
+}
+
+.cx-button:hover{
+background:#654cff;
+box-shadow:0 0 25px #654cff;
+transform:translateY(-3px);
+}
+
+@media(max-width:600px){
+.cx-logo{font-size:28px}
+.cx-title{font-size:35px}
+.cx-planet{width:180px;height:180px}
+.cx-section{padding:22px}
+.cx-facts{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="cx-page">
+
+<header class="cx-header">
+<div class="cx-logo">COSMICX</div>
+<h1 class="cx-title">Mars</h1>
+<p class="cx-subtitle">The Red Planet</p>
+</header>
+
+<div class="cx-planet"></div>
+
+<section class="cx-content">
+
+<div class="cx-section">
+<h2>About Mars</h2>
+<p>
+Mars is the fourth planet from the Sun and is often called the
+Red Planet because iron minerals in its soil have oxidized,
+giving the surface its reddish appearance.
+</p>
+<p style="margin-top:15px">
+Mars is a cold, rocky world with mountains, valleys, volcanoes,
+impact craters and polar ice caps. It has been one of the most
+extensively explored planets beyond Earth.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Surface & Landscape</h2>
+<p>
+Mars has one of the largest volcanoes known in the Solar System,
+Olympus Mons. It also contains Valles Marineris, a gigantic
+canyon system stretching thousands of kilometres across the surface.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Atmosphere</h2>
+<p>
+Mars has a very thin atmosphere composed mostly of carbon dioxide.
+Because the atmosphere is so thin, the planet cannot retain heat
+as efficiently as Earth.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Water on Mars</h2>
+<p>
+Evidence shows that liquid water existed on ancient Mars.
+Today, water is mainly found as ice beneath the surface and
+around the polar regions.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Exploring Mars</h2>
+<p>
+Mars has been explored by orbiters, landers and rovers.
+Robotic missions have studied its rocks, atmosphere, climate
+and geological history while searching for clues about its past.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Interesting Facts</h2>
+<ul class="cx-list">
+<li>Mars is the fourth planet from the Sun.</li>
+<li>It has two small moons: Phobos and Deimos.</li>
+<li>Olympus Mons is the largest known volcano in the Solar System.</li>
+<li>Mars has polar ice caps.</li>
+<li>A Martian day is called a sol.</li>
+<li>Its reddish colour comes from iron-rich minerals.</li>
+</ul>
+</div>
+
+</section>
+
+<section class="cx-facts">
+
+<div class="cx-fact"><h3>🔴 Position</h3><p>4th planet from the Sun</p></div>
+<div class="cx-fact"><h3>🌙 Moons</h3><p>2 known moons</p></div>
+<div class="cx-fact"><h3>🌋 Volcano</h3><p>Olympus Mons</p></div>
+<div class="cx-fact"><h3>⏱️ Day</h3><p>About 24.6 hours</p></div>
+<div class="cx-fact"><h3>☀️ Year</h3><p>About 687 Earth days</p></div>
+<div class="cx-fact"><h3>🪨 Type</h3><p>Rocky terrestrial planet</p></div>
+
+</section>
+
+<a href="planets.html" class="cx-button">← Back to Planets</a>
+
+</div>
+
+</body>
+  </html>
