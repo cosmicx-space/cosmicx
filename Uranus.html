@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>COSMICX | Uranus</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#02030a;color:white;font-family:Arial,sans-serif}
+
+.cx-page{
+min-height:100vh;padding:35px 20px 70px;
+background:radial-gradient(circle at 50% 15%,rgba(70,210,230,.18),transparent 32%),#02030a;
+}
+
+.cx-header{text-align:center;margin-bottom:35px}
+
+.cx-logo{
+font-size:38px;font-weight:900;letter-spacing:7px;
+text-shadow:0 0 12px #765cff,0 0 30px #5135ff;
+}
+
+.cx-title{margin-top:18px;font-size:44px}
+.cx-subtitle{margin-top:10px;color:#aaa}
+
+.cx-planet{
+width:235px;height:235px;margin:35px auto 45px;
+border-radius:50%;
+background:radial-gradient(circle at 35% 28%,#d5ffff,#77dce8 45%,#3b9aa8 70%,#163f46);
+box-shadow:inset -38px -28px 45px rgba(0,0,0,.5),0 0 40px rgba(80,220,240,.28);
+}
+
+.cx-content{max-width:900px;margin:auto}
+
+.cx-section{
+margin-top:35px;padding:28px;
+border:1px solid rgba(80,210,230,.25);
+border-radius:20px;background:rgba(15,25,35,.7);
+}
+
+.cx-section h2{font-size:27px;margin-bottom:14px}
+.cx-section p{color:#aaa;line-height:1.8;font-size:15px}
+.cx-list{margin-top:15px;padding-left:20px;color:#aaa;line-height:2}
+
+.cx-facts{
+max-width:900px;margin:30px auto;
+display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+
+.cx-fact{
+padding:22px;text-align:center;
+border:1px solid rgba(80,210,230,.3);
+border-radius:18px;background:rgba(15,25,35,.7);
+transition:.3s;
+}
+
+.cx-fact:hover{
+transform:translateY(-6px);
+border-color:#76e4ef;
+box-shadow:0 0 25px rgba(70,210,230,.25);
+}
+
+.cx-fact h3{margin-bottom:10px}
+.cx-fact p{color:#999;font-size:14px}
+
+.cx-button{
+display:block;width:fit-content;margin:45px auto 0;
+padding:12px 24px;border-radius:25px;border:1px solid #604cff;
+color:white;text-decoration:none;background:rgba(50,35,120,.5);
+transition:.3s;
+}
+
+.cx-button:hover{background:#654cff;box-shadow:0 0 25px #654cff;transform:translateY(-3px)}
+
+@media(max-width:600px){
+.cx-logo{font-size:28px}
+.cx-title{font-size:35px}
+.cx-planet{width:180px;height:180px}
+.cx-section{padding:22px}
+.cx-facts{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="cx-page">
+
+<header class="cx-header">
+<div class="cx-logo">COSMICX</div>
+<h1 class="cx-title">Uranus</h1>
+<p class="cx-subtitle">The Tilted Ice Giant</p>
+</header>
+
+<div class="cx-planet"></div>
+
+<section class="cx-content">
+
+<div class="cx-section">
+<h2>About Uranus</h2>
+<p>
+Uranus is the seventh planet from the Sun and an ice giant.
+Its blue-green appearance comes mainly from methane in its
+upper atmosphere, which absorbs red light.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>A Planet on Its Side</h2>
+<p>
+Uranus has an extreme axial tilt of about 98 degrees. Because of
+this unusual orientation, the planet experiences very dramatic
+seasonal changes during its long journey around the Sun.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Atmosphere</h2>
+<p>
+The atmosphere of Uranus is primarily hydrogen and helium with
+methane present in smaller quantities. The upper atmosphere can
+experience powerful winds and complex cloud activity.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Rings & Moons</h2>
+<p>
+Uranus has a system of narrow, dark rings and a collection of
+known moons. Several of its moons have unusual shapes and
+interesting geological features.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Exploring Uranus</h2>
+<p>
+Voyager 2 is the only spacecraft to have made a close flyby of
+Uranus. The mission provided important information about the
+planet's atmosphere, rings and moons.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Interesting Facts</h2>
+<ul class="cx-list">
+<li>Uranus is the seventh planet from the Sun.</li>
+<li>It is an ice giant.</li>
+<li>Its axis is tilted about 98 degrees.</li>
+<li>Methane contributes to its blue-green colour.</li>
+<li>Uranus has a faint ring system.</li>
+<li>Its seasons can last many Earth years.</li>
+</ul>
+</div>
+
+</section>
+
+<section class="cx-facts">
+
+<div class="cx-fact"><h3>🔵 Position</h3><p>7th planet from the Sun</p></div>
+<div class="cx-fact"><h3>🧊 Type</h3><p>Ice giant</p></div>
+<div class="cx-fact"><h3>💍 Rings</h3><p>Faint ring system</p></div>
+<div class="cx-fact"><h3>🌙 Moons</h3><p>Many known moons</p></div>
+<div class="cx-fact"><h3>↪️ Tilt</h3><p>About 98 degrees</p></div>
+<div class="cx-fact"><h3>☀️ Year</h3><p>About 84 Earth years</p></div>
+
+</section>
+
+<a href="planets.html" class="cx-button">← Back to Planets</a>
+
+</div>
+</body>
+</html>
