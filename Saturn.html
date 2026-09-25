@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>COSMICX | Saturn</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#02030a;color:white;font-family:Arial,sans-serif}
+
+.cx-page{
+min-height:100vh;padding:35px 20px 70px;
+background:radial-gradient(circle at 50% 15%,rgba(220,180,100,.18),transparent 32%),#02030a;
+}
+
+.cx-header{text-align:center;margin-bottom:35px}
+
+.cx-logo{
+font-size:38px;font-weight:900;letter-spacing:7px;
+text-shadow:0 0 12px #765cff,0 0 30px #5135ff;
+}
+
+.cx-title{margin-top:18px;font-size:44px}
+.cx-subtitle{margin-top:10px;color:#aaa}
+
+.cx-saturn{
+position:relative;
+width:220px;height:220px;
+margin:70px auto 80px;
+border-radius:50%;
+background:radial-gradient(circle at 35% 28%,#ffe5a8,#c69d5c 60%,#6b4e28);
+box-shadow:inset -35px -25px 45px rgba(0,0,0,.55),0 0 40px rgba(220,180,100,.25);
+}
+
+.cx-saturn::before{
+content:"";
+position:absolute;
+width:350px;height:75px;
+border:12px solid rgba(215,185,130,.65);
+border-radius:50%;
+left:50%;top:50%;
+transform:translate(-50%,-50%) rotate(-12deg);
+box-shadow:0 0 0 7px rgba(120,90,50,.25);
+}
+
+.cx-content{max-width:900px;margin:auto}
+
+.cx-section{
+margin-top:35px;padding:28px;
+border:1px solid rgba(220,180,100,.25);
+border-radius:20px;background:rgba(25,20,30,.7);
+}
+
+.cx-section h2{font-size:27px;margin-bottom:14px}
+.cx-section p{color:#aaa;line-height:1.8;font-size:15px}
+.cx-list{margin-top:15px;padding-left:20px;color:#aaa;line-height:2}
+
+.cx-facts{
+max-width:900px;margin:30px auto;
+display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+
+.cx-fact{
+padding:22px;text-align:center;
+border:1px solid rgba(220,180,100,.3);
+border-radius:18px;background:rgba(25,20,30,.7);
+transition:.3s;
+}
+
+.cx-fact:hover{
+transform:translateY(-6px);
+border-color:#e2c17f;
+box-shadow:0 0 25px rgba(220,180,100,.25);
+}
+
+.cx-fact h3{margin-bottom:10px}
+.cx-fact p{color:#999;font-size:14px}
+
+.cx-button{
+display:block;width:fit-content;margin:45px auto 0;
+padding:12px 24px;border-radius:25px;border:1px solid #604cff;
+color:white;text-decoration:none;background:rgba(50,35,120,.5);
+transition:.3s;
+}
+
+.cx-button:hover{background:#654cff;box-shadow:0 0 25px #654cff;transform:translateY(-3px)}
+
+@media(max-width:600px){
+.cx-logo{font-size:28px}
+.cx-title{font-size:35px}
+.cx-saturn{width:170px;height:170px;margin-bottom:75px}
+.cx-saturn::before{width:280px;height:60px}
+.cx-section{padding:22px}
+.cx-facts{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="cx-page">
+
+<header class="cx-header">
+<div class="cx-logo">COSMICX</div>
+<h1 class="cx-title">Saturn</h1>
+<p class="cx-subtitle">The Ringed Giant</p>
+</header>
+
+<div class="cx-saturn"></div>
+
+<section class="cx-content">
+
+<div class="cx-section">
+<h2>About Saturn</h2>
+<p>
+Saturn is the sixth planet from the Sun and the second-largest
+planet in the Solar System. Like Jupiter, Saturn is a gas giant
+made primarily of hydrogen and helium.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>The Famous Rings</h2>
+<p>
+Saturn is best known for its spectacular ring system. The rings
+are made mostly of countless pieces of ice and rocky material.
+They range in size from tiny particles to much larger fragments.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Atmosphere</h2>
+<p>
+Saturn has strong winds and bands of clouds in its atmosphere.
+Its upper atmosphere contains hydrogen, helium and small amounts
+of other gases.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Moons</h2>
+<p>
+Saturn has a large collection of moons. Titan is its largest moon
+and has a thick atmosphere, while Enceladus is known for icy
+material and water-rich plumes.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Exploring Saturn</h2>
+<p>
+The Cassini-Huygens mission provided detailed observations of
+Saturn, its rings and its moons, greatly expanding scientific
+knowledge of the Saturn system.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Interesting Facts</h2>
+<ul class="cx-list">
+<li>Saturn is the sixth planet from the Sun.</li>
+<li>It is famous for its extensive ring system.</li>
+<li>Saturn is less dense than water.</li>
+<li>Titan is Saturn's largest moon.</li>
+<li>Saturn is a gas giant.</li>
+<li>Its atmosphere contains powerful winds and storms.</li>
+</ul>
+</div>
+
+</section>
+
+<section class="cx-facts">
+
+<div class="cx-fact"><h3>🪐 Position</h3><p>6th planet from the Sun</p></div>
+<div class="cx-fact"><h3>💍 Rings</h3><p>Extensive ring system</p></div>
+<div class="cx-fact"><h3>🌙 Moons</h3><p>Many known moons</p></div>
+<div class="cx-fact"><h3>🌌 Type</h3><p>Gas giant</p></div>
+<div class="cx-fact"><h3>⏱️ Day</h3><p>About 10.7 hours</p></div>
+<div class="cx-fact"><h3>☀️ Year</h3><p>About 29.5 Earth years</p></div>
+
+</section>
+
+<a href="planets.html" class="cx-button">← Back to Planets</a>
+
+</div>
+</body>
+</html>
