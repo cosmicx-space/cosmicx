@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>COSMICX | Black Holes</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#010106;
+  color:white;
+  font-family:Arial,sans-serif;
+}
+
+.cx-page{
+  min-height:100vh;
+  padding:35px 20px 70px;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(90,40,180,.22),transparent 32%),
+    #010106;
+}
+
+/* HEADER */
+
+.cx-header{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.cx-logo{
+  font-size:38px;
+  font-weight:900;
+  letter-spacing:7px;
+  text-shadow:
+    0 0 12px #765cff,
+    0 0 30px #5135ff;
+}
+
+.cx-title{
+  margin-top:18px;
+  font-size:44px;
+}
+
+.cx-subtitle{
+  margin-top:10px;
+  color:#aaa;
+}
+
+/* BLACK HOLE */
+
+.cx-blackhole{
+  position:relative;
+  width:280px;
+  height:280px;
+  margin:55px auto 80px;
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      #000 0%,
+      #000 25%,
+      #12051f 34%,
+      #6c22b8 45%,
+      #ff7b00 54%,
+      #8d32d4 64%,
+      transparent 70%
+    );
+
+  box-shadow:
+    0 0 25px #8b2be2,
+    0 0 60px rgba(130,40,220,.65),
+    0 0 110px rgba(255,80,0,.25);
+}
+
+/* ACCRETION RING */
+
+.cx-blackhole::before{
+  content:"";
+  position:absolute;
+  width:390px;
+  height:120px;
+  left:50%;
+  top:50%;
+
+  border:12px solid rgba(255,130,20,.65);
+  border-radius:50%;
+
+  transform:
+    translate(-50%,-50%)
+    rotate(-18deg);
+
+  box-shadow:
+    0 0 20px #ff7b00,
+    0 0 45px rgba(255,80,0,.5);
+}
+
+/* EVENT HORIZON */
+
+.cx-blackhole::after{
+  content:"";
+  position:absolute;
+
+  width:105px;
+  height:105px;
+
+  left:50%;
+  top:50%;
+
+  transform:translate(-50%,-50%);
+
+  border-radius:50%;
+
+  background:#000;
+
+  box-shadow:
+    0 0 20px #000,
+    0 0 40px rgba(0,0,0,.9);
+}
+
+/* CONTENT */
+
+.cx-content{
+  max-width:900px;
+  margin:auto;
+}
+
+.cx-section{
+  margin-top:35px;
+  padding:28px;
+
+  border:1px solid rgba(130,80,220,.28);
+  border-radius:20px;
+
+  background:rgba(15,10,30,.75);
+
+  transition:.3s;
+}
+
+.cx-section:hover{
+  border-color:#8155e8;
+  box-shadow:0 0 25px rgba(120,70,220,.2);
+}
+
+.cx-section h2{
+  font-size:27px;
+  margin-bottom:14px;
+}
+
+.cx-section p{
+  color:#aaa;
+  line-height:1.8;
+  font-size:15px;
+}
+
+.cx-list{
+  margin-top:15px;
+  padding-left:20px;
+  color:#aaa;
+  line-height:2;
+}
+
+/* FACTS */
+
+.cx-facts{
+  max-width:900px;
+  margin:35px auto;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.cx-fact{
+  padding:22px;
+
+  text-align:center;
+
+  border:1px solid rgba(130,80,220,.3);
+  border-radius:18px;
+
+  background:rgba(20,15,35,.7);
+
+  transition:.3s;
+}
+
+.cx-fact:hover{
+  transform:translateY(-6px);
+  border-color:#956cff;
+  box-shadow:0 0 25px rgba(120,70,220,.25);
+}
+
+.cx-fact h3{
+  margin-bottom:10px;
+}
+
+.cx-fact p{
+  color:#999;
+  font-size:14px;
+  line-height:1.5;
+}
+
+/* BUTTON */
+
+.cx-button{
+  display:block;
+  width:fit-content;
+
+  margin:45px auto 0;
+
+  padding:12px 24px;
+
+  border-radius:25px;
+
+  border:1px solid #604cff;
+
+  color:white;
+  text-decoration:none;
+
+  background:rgba(50,35,120,.5);
+
+  transition:.3s;
+}
+
+.cx-button:hover{
+  background:#654cff;
+  box-shadow:0 0 25px #654cff;
+  transform:translateY(-3px);
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .cx-logo{
+    font-size:28px;
+  }
+
+  .cx-title{
+    font-size:35px;
+  }
+
+  .cx-blackhole{
+    width:210px;
+    height:210px;
+    margin-bottom:65px;
+  }
+
+  .cx-blackhole::before{
+    width:290px;
+    height:90px;
+  }
+
+  .cx-section{
+    padding:22px;
+  }
+
+  .cx-facts{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cx-page">
+
+<header class="cx-header">
+
+  <div class="cx-logo">COSMICX</div>
+
+  <h1 class="cx-title">Black Holes</h1>
+
+  <p class="cx-subtitle">
+    Where Gravity Becomes Extreme
+  </p>
+
+</header>
+
+
+<!-- BLACK HOLE -->
+
+<div class="cx-blackhole"></div>
+
+
+<section class="cx-content">
+
+
+<div class="cx-section">
+
+<h2>What Is a Black Hole?</h2>
+
+<p>
+A black hole is a region of space where gravity is so strong
+that nothing, including light, can escape once it crosses a
+certain boundary.
+</p>
+
+<p style="margin-top:15px">
+Black holes can form when massive stars collapse under their
+own gravity. Scientists also study much larger black holes
+located at the centres of galaxies.
+</p>
+
+</div>
+
+
+<div class="cx-section">
+
+<h2>Event Horizon</h2>
+
+<p>
+The event horizon is the boundary surrounding a black hole.
+After an object crosses this boundary, it cannot return to the
+outside universe according to our current understanding of
+gravity.
+</p>
+
+</div>
+
+
+<div class="cx-section">
+
+<h2>Accretion Disk</h2>
+
+<p>
+Matter falling toward a black hole can form a rapidly rotating
+disk of extremely hot gas and dust called an accretion disk.
+This material can produce enormous amounts of radiation.
+</p>
+
+</div>
+
+
+<div class="cx-section">
+
+<h2>Types of Black Holes</h2>
+
+<ul class="cx-list">
+
+<li>Stellar-mass black holes — formed from massive stars.</li>
+
+<li>Intermediate-mass black holes — larger than stellar black holes.</li>
+
+<li>Supermassive black holes — found at the centres of many galaxies.</li>
+
+<li>Primordial black holes — hypothetical black holes that may have formed in the early universe.</li>
+
+</ul>
+
+</div>
+
+
+<div class="cx-section">
+
+<h2>How Do We Detect Them?</h2>
+
+<p>
+Black holes themselves do not emit visible light. Scientists can
+detect them by observing their effects on nearby matter, stars
+and light. Gravitational waves produced by merging black holes
+also provide important evidence.
+</p>
+
+</div>
+
+
+<div class="cx-section">
+
+<h2>Interesting Facts</h2>
+
+<ul class="cx-list">
+
+<li>Light cannot escape from inside the event horizon.</li>
+
+<li>Black holes can collide and merge.</li>
+
+<li>They can influence the motion of nearby stars.</li>
+
+<li>Some galaxies contain supermassive black holes at their centres.</li>
+
+<li>Black holes can produce powerful effects on surrounding matter.</li>
+
+<li>Scientists continue to study them using different types of observations.</li>
+
+</ul>
+
+</div>
+
+
+</section>
+
+
+<section class="cx-facts">
+
+<div class="cx-fact">
+<h3>🌑 Event Horizon</h3>
+<p>Boundary around a black hole</p>
+</div>
+
+<div class="cx-fact">
+<h3>🔥 Accretion Disk</h3>
+<p>Hot material orbiting the black hole</p>
+</div>
+
+<div class="cx-fact">
+<h3>🌌 Gravity</h3>
+<p>Extremely strong gravitational field</p>
+</div>
+
+<div class="cx-fact">
+<h3>⭐ Formation</h3>
+<p>Some form from collapsing massive stars</p>
+</div>
+
+<div class="cx-fact">
+<h3>〰️ Gravitational Waves</h3>
+<p>Produced by massive accelerating objects</p>
+</div>
+
+<div class="cx-fact">
+<h3>🌀 Galaxy Centres</h3>
+<p>Many galaxies host supermassive black holes</p>
+</div>
+
+</section>
+
+
+<a href="index.html" class="cx-button">
+← Back to COSMICX Home
+</a>
+
+
+</div>
+
+</body>
+  </html>
