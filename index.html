@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COSMICX | Explore the Universe</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #02030a;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.cx-home {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(70,40,160,.25), transparent 30%),
+    radial-gradient(circle at 20% 20%, rgba(0,100,255,.12), transparent 25%),
+    #02030a;
+}
+
+/* HEADER */
+.cx-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 35px 15px 10px;
+}
+
+.cx-logo {
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 8px;
+  color: #fff;
+  text-shadow:
+    0 0 10px #7c5cff,
+    0 0 25px #5c35ff,
+    0 0 50px #351cff;
+}
+
+.cx-tagline {
+  margin-top: 10px;
+  color: #aaa;
+  letter-spacing: 3px;
+  font-size: 13px;
+}
+
+/* NAV */
+.cx-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 25px auto;
+  padding: 0 15px;
+}
+
+.cx-button {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid rgba(130,100,255,.7);
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  background: rgba(30,20,70,.5);
+  transition: .3s;
+}
+
+.cx-button:hover {
+  background: #6c4cff;
+  box-shadow: 0 0 25px #6c4cff;
+  transform: translateY(-3px);
+}
+
+/* UNIVERSE */
+.cx-universe {
+  position: relative;
+  width: 650px;
+  height: 650px;
+  max-width: 95vw;
+  max-height: 95vw;
+  margin: 20px auto;
+}
+
+/* ORBITS */
+.cx-orbit {
+  position: absolute;
+  border: 1px solid rgba(130,130,180,.18);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cx-o1 { width: 18%; height: 18%; }
+.cx-o2 { width: 27%; height: 27%; }
+.cx-o3 { width: 36%; height: 36%; }
+.cx-o4 { width: 45%; height: 45%; }
+.cx-o5 { width: 57%; height: 57%; }
+.cx-o6 { width: 69%; height: 69%; }
+.cx-o7 { width: 81%; height: 81%; }
+.cx-o8 { width: 94%; height: 94%; }
+
+/* SUN */
+.cx-sun {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 95px;
+  height: 95px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 5%, #ffd83d 35%, #ff8c00 70%, #ff4500);
+  box-shadow:
+    0 0 25px #ffb300,
+    0 0 60px #ff8c00,
+    0 0 110px rgba(255,120,0,.6);
+}
+
+/* PLANETS */
+.cx-planet {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  transform-origin: 0 0;
+}
+
+.cx-p1 {
+  width: 9px;
+  height: 9px;
+  background: #aaa;
+  animation: cx-orbit1 5s linear infinite;
+}
+
+.cx-p2 {
+  width: 13px;
+  height: 13px;
+  background: #d49b62;
+  animation: cx-orbit2 8s linear infinite;
+}
+
+.cx-p3 {
+  width: 15px;
+  height: 15px;
+  background: #3295ff;
+  box-shadow: 0 0 8px #3295ff;
+  animation: cx-orbit3 11s linear infinite;
+}
+
+.cx-p4 {
+  width: 12px;
+  height: 12px;
+  background: #d85c3f;
+  animation: cx-orbit4 14s linear infinite;
+}
+
+.cx-p5 {
+  width: 28px;
+  height: 28px;
+  background: #d7ad78;
+  animation: cx-orbit5 20s linear infinite;
+}
+
+.cx-p6 {
+  width: 30px;
+  height: 30px;
+  background: #e4c982;
+  box-shadow: 0 0 8px #e4c982;
+  animation: cx-orbit6 25s linear infinite;
+}
+
+.cx-p7 {
+  width: 20px;
+  height: 20px;
+  background: #78d8e8;
+  animation: cx-orbit7 30s linear infinite;
+}
+
+.cx-p8 {
+  width: 19px;
+  height: 19px;
+  background: #4677ff;
+  animation: cx-orbit8 35s linear infinite;
+}
+
+/* ORBIT ANIMATIONS */
+@keyframes cx-orbit1 {
+  from { transform: rotate(0deg) translateX(58px); }
+  to { transform: rotate(360deg) translateX(58px); }
+}
+
+@keyframes cx-orbit2 {
+  from { transform: rotate(0deg) translateX(88px); }
+  to { transform: rotate(360deg) translateX(88px); }
+}
+
+@keyframes cx-orbit3 {
+  from { transform: rotate(0deg) translateX(117px); }
+  to { transform: rotate(360deg) translateX(117px); }
+}
+
+@keyframes cx-orbit4 {
+  from { transform: rotate(0deg) translateX(146px); }
+  to { transform: rotate(360deg) translateX(146px); }
+}
+
+@keyframes cx-orbit5 {
+  from { transform: rotate(0deg) translateX(185px); }
+  to { transform: rotate(360deg) translateX(185px); }
+}
+
+@keyframes cx-orbit6 {
+  from { transform: rotate(0deg) translateX(224px); }
+  to { transform: rotate(360deg) translateX(224px); }
+}
+
+@keyframes cx-orbit7 {
+  from { transform: rotate(0deg) translateX(263px); }
+  to { transform: rotate(360deg) translateX(263px); }
+}
+
+@keyframes cx-orbit8 {
+  from { transform: rotate(0deg) translateX(305px); }
+  to { transform: rotate(360deg) translateX(305px); }
+}
+
+/* INFO */
+.cx-info {
+  text-align: center;
+  padding: 20px 20px 60px;
+}
+
+.cx-info h2 {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.cx-info p {
+  max-width: 650px;
+  margin: auto;
+  color: #aaa;
+  line-height: 1.7;
+}
+
+/* MOBILE */
+@media(max-width:600px) {
+  .cx-logo {
+    font-size: 30px;
+    letter-spacing: 5px;
+  }
+
+  .cx-sun {
+    width: 65px;
+    height: 65px;
+  }
+
+  .cx-universe {
+    height: 500px;
+  }
+
+  .cx-o1 { width: 20%; height: 20%; }
+  .cx-o2 { width: 31%; height: 31%; }
+  .cx-o3 { width: 42%; height: 42%; }
+  .cx-o4 { width: 53%; height: 53%; }
+  .cx-o5 { width: 65%; height: 65%; }
+  .cx-o6 { width: 76%; height: 76%; }
+  .cx-o7 { width: 87%; height: 87%; }
+  .cx-o8 { width: 98%; height: 98%; }
+
+  .cx-nav {
+    gap: 8px;
+  }
+
+  .cx-button {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cx-home">
+
+  <header class="cx-header">
+    <div class="cx-logo">COSMICX</div>
+    <div class="cx-tagline">EXPLORE • DISCOVER • BEYOND</div>
+  </header>
+
+  <nav class="cx-nav">
+    <a href="planets.html" class="cx-button">🪐 Planets</a>
+    <a href="black-holes.html" class="cx-button">🕳️ Black Holes</a>
+    <a href="galaxies.html" class="cx-button">🌌 Galaxies</a>
+    <a href="missions.html" class="cx-button">🚀 Missions</a>
+    <a href="discoveries.html" class="cx-button">🔭 Discoveries</a>
+  </nav>
+
+  <section class="cx-universe">
+
+    <div class="cx-orbit cx-o1"></div>
+    <div class="cx-orbit cx-o2"></div>
+    <div class="cx-orbit cx-o3"></div>
+    <div class="cx-orbit cx-o4"></div>
+    <div class="cx-orbit cx-o5"></div>
+    <div class="cx-orbit cx-o6"></div>
+    <div class="cx-orbit cx-o7"></div>
+    <div class="cx-orbit cx-o8"></div>
+
+    <div class="cx-sun"></div>
+
+    <div class="cx-planet cx-p1"></div>
+    <div class="cx-planet cx-p2"></div>
+    <div class="cx-planet cx-p3"></div>
+    <div class="cx-planet cx-p4"></div>
+    <div class="cx-planet cx-p5"></div>
+    <div class="cx-planet cx-p6"></div>
+    <div class="cx-planet cx-p7"></div>
+    <div class="cx-planet cx-p8"></div>
+
+  </section>
+
+  <section class="cx-info">
+    <h2>Welcome to COSMICX</h2>
+    <p>
+      Explore the wonders of our universe — from planets and galaxies
+      to black holes, space missions and the discoveries that changed
+      our understanding of space.
+    </p>
+  </section>
+
+</div>
+
+</body>
+  </html>
