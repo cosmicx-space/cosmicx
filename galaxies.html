@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>COSMICX | Galaxies</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#010108;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+.cx-page{
+    min-height:100vh;
+    padding:35px 20px 70px;
+
+    background:
+    radial-gradient(circle at 50% 15%,rgba(90,50,200,.25),transparent 32%),
+    radial-gradient(circle at 20% 70%,rgba(30,80,200,.12),transparent 25%),
+    #010108;
+}
+
+/* HEADER */
+
+.cx-header{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.cx-logo{
+    font-size:38px;
+    font-weight:900;
+    letter-spacing:7px;
+
+    text-shadow:
+    0 0 12px #765cff,
+    0 0 30px #5135ff,
+    0 0 55px #351cff;
+}
+
+.cx-title{
+    margin-top:18px;
+    font-size:44px;
+}
+
+.cx-subtitle{
+    margin-top:10px;
+    color:#aaa;
+    font-size:15px;
+}
+
+
+/* GALAXY HERO */
+
+.cx-galaxy{
+    position:relative;
+
+    width:300px;
+    height:300px;
+
+    margin:50px auto 90px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        ellipse,
+        #ffffff 0%,
+        #b9a8ff 5%,
+        #765cff 12%,
+        #4228a8 25%,
+        #17103d 45%,
+        transparent 70%
+    );
+
+    box-shadow:
+    0 0 35px #604cff,
+    0 0 80px rgba(90,50,255,.6),
+    0 0 140px rgba(80,40,220,.25);
+}
+
+
+/* GALAXY SPIRAL */
+
+.cx-galaxy::before{
+    content:"";
+
+    position:absolute;
+
+    width:430px;
+    height:150px;
+
+    left:50%;
+    top:50%;
+
+    transform:
+    translate(-50%,-50%)
+    rotate(-25deg);
+
+    border:10px solid rgba(130,100,255,.55);
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 20px #765cff,
+    0 0 45px rgba(100,70,255,.5);
+}
+
+.cx-galaxy::after{
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+    height:110px;
+
+    left:50%;
+    top:50%;
+
+    transform:
+    translate(-50%,-50%)
+    rotate(25deg);
+
+    border:7px solid rgba(70,130,255,.4);
+
+    border-radius:50%;
+
+    box-shadow:
+    0 0 25px rgba(70,120,255,.5);
+}
+
+
+/* CONTENT */
+
+.cx-content{
+    max-width:950px;
+    margin:auto;
+}
+
+.cx-section{
+    margin-top:35px;
+
+    padding:28px;
+
+    border:1px solid rgba(120,90,255,.28);
+
+    border-radius:20px;
+
+    background:rgba(15,12,35,.75);
+
+    transition:.3s;
+}
+
+.cx-section:hover{
+    transform:translateY(-4px);
+
+    border-color:#8066ff;
+
+    box-shadow:
+    0 0 25px rgba(100,70,255,.2);
+}
+
+.cx-section h2{
+    font-size:27px;
+    margin-bottom:14px;
+}
+
+.cx-section p{
+    color:#aaa;
+
+    line-height:1.8;
+
+    font-size:15px;
+}
+
+.cx-list{
+    margin-top:15px;
+
+    padding-left:20px;
+
+    color:#aaa;
+
+    line-height:2;
+}
+
+
+/* GALAXY CARDS */
+
+.cx-galaxy-grid{
+
+    max-width:1100px;
+
+    margin:45px auto 0;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:22px;
+}
+
+.cx-card{
+
+    padding:28px 20px;
+
+    text-align:center;
+
+    border:1px solid
+    rgba(120,90,255,.3);
+
+    border-radius:20px;
+
+    background:
+    rgba(15,12,35,.75);
+
+    transition:.35s;
+}
+
+.cx-card:hover{
+
+    transform:
+    translateY(-8px);
+
+    border-color:#8066ff;
+
+    box-shadow:
+    0 0 30px
+    rgba(100,70,255,.3);
+}
+
+
+/* MINI GALAXIES */
+
+.cx-mini{
+
+    width:120px;
+    height:120px;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    position:relative;
+}
+
+
+/* MILKY WAY */
+
+.cx-milky{
+
+    background:
+    radial-gradient(
+        ellipse,
+        #ffffff 0%,
+        #d8cfff 7%,
+        #765cff 18%,
+        #30206e 40%,
+        #09051c 70%
+    );
+
+    box-shadow:
+    0 0 25px #604cff;
+}
+
+
+/* ANDROMEDA */
+
+.cx-andromeda{
+
+    background:
+    radial-gradient(
+        ellipse,
+        #fff5d5 0%,
+        #d6b58a 8%,
+        #9b704b 20%,
+        #3d281e 45%,
+        #0d0710 70%
+    );
+
+    box-shadow:
+    0 0 25px rgba(220,170,100,.45);
+}
+
+
+/* TRIANGULUM */
+
+.cx-triangulum{
+
+    background:
+    radial-gradient(
+        ellipse,
+        #ffffff 0%,
+        #9dd9ff 7%,
+        #478bd0 18%,
+        #17345f 45%,
+        #050914 70%
+    );
+
+    box-shadow:
+    0 0 25px rgba(60,140,255,.5);
+}
+
+
+.cx-card h2{
+
+    font-size:22px;
+
+    margin-bottom:10px;
+}
+
+.cx-card p{
+
+    color:#999;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+
+/* FACTS */
+
+.cx-facts{
+
+    max-width:950px;
+
+    margin:45px auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:18px;
+}
+
+.cx-fact{
+
+    padding:22px;
+
+    text-align:center;
+
+    border:1px solid
+    rgba(120,90,255,.3);
+
+    border-radius:18px;
+
+    background:
+    rgba(15,12,35,.7);
+
+    transition:.3s;
+}
+
+.cx-fact:hover{
+
+    transform:
+    translateY(-6px);
+
+    border-color:#956cff;
+
+    box-shadow:
+    0 0 25px
+    rgba(100,70,255,.25);
+}
+
+.cx-fact h3{
+
+    margin-bottom:10px;
+}
+
+.cx-fact p{
+
+    color:#999;
+
+    font-size:14px;
+
+    line-height:1.5;
+}
+
+
+/* BUTTON */
+
+.cx-button{
+
+    display:block;
+
+    width:fit-content;
+
+    margin:45px auto 0;
+
+    padding:12px 24px;
+
+    border-radius:25px;
+
+    border:1px solid #604cff;
+
+    color:white;
+
+    text-decoration:none;
+
+    background:
+    rgba(50,35,120,.5);
+
+    transition:.3s;
+}
+
+.cx-button:hover{
+
+    background:#654cff;
+
+    box-shadow:
+    0 0 25px #654cff;
+
+    transform:
+    translateY(-3px);
+}
+
+
+/* MOBILE */
+
+@media(max-width:850px){
+
+    .cx-galaxy-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .cx-logo{
+        font-size:28px;
+    }
+
+    .cx-title{
+        font-size:35px;
+    }
+
+    .cx-galaxy{
+
+        width:210px;
+        height:210px;
+
+        margin-bottom:70px;
+    }
+
+    .cx-galaxy::before{
+
+        width:300px;
+        height:100px;
+    }
+
+    .cx-galaxy::after{
+
+        width:280px;
+        height:80px;
+    }
+
+    .cx-section{
+        padding:22px;
+    }
+
+    .cx-galaxy-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .cx-facts{
+
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="cx-page">
+
+
+<!-- HEADER -->
+
+<header class="cx-header">
+
+    <div class="cx-logo">
+        COSMICX
+    </div>
+
+    <h1 class="cx-title">
+        Galaxies
+    </h1>
+
+    <p class="cx-subtitle">
+        Vast Cities of Stars Across the Universe
+    </p>
+
+</header>
+
+
+<!-- HERO GALAXY -->
+
+<div class="cx-galaxy"></div>
+
+
+<!-- INFORMATION -->
+
+<section class="cx-content">
+
+
+<div class="cx-section">
+
+<h2>What Is a Galaxy?</h2>
+
+<p>
+A galaxy is a massive system containing stars, planets, gas,
+dust and dark matter, all held together by gravity. Galaxies
+can contain millions, billions or even trillions of stars.
+</p>
+
+<p style="margin-top:15px">
+
+Our Solar System is located inside the Milky Way galaxy,
+which is one of the billions of galaxies in the observable
+universe.
+
+</p>
+
+</div>
+
+
+<div class="cx-section">
+
+<h2>Types of Galaxies</h2>
+
+<ul class="cx-list">
+
+<li>Spiral galaxies — have rotating arms extending from a central region.</li>
+
+<li>Elliptical galaxies — have a smoother and more rounded appearance.</li>
+
+<li>Irregular galaxies — do not have a clearly defined shape.</li>
+
+<li>Lenticular galaxies — have a disk-like structure but less prominent spiral arms.</li>
+
+</ul>
+
+</div>
+
+
+<div class="cx-section">
+
+<h2>Our Milky Way</h2>
+
+<p>
+
+The Milky Way is a large spiral galaxy containing our Solar
+System. It has a central region surrounded by a disk of stars,
+gas and dust, along with a much larger halo of dark matter.
+
+</p>
+
+</div>
+
+
+<div class="cx-section">
+
+<h2>Supermassive Black Holes</h2>
+
+<p>
+
+Many large galaxies contain a supermassive black hole at their
+centre. The Milky Way, for example, contains a supermassive
+black hole known as Sagittarius A*.
+
+</p>
+
+</div>
+
+
+</section>
+
+
+<!-- GALAXY TYPES -->
+
+<div class="cx-galaxy-grid">
+
+
+<div class="cx-card">
+
+<div class="cx-mini cx-milky"></div>
+
+<h2>Milky Way</h2>
+
+<p>
+Our home galaxy and a large spiral galaxy containing
+the Solar System.
+</p>
+
+</div>
+
+
+<div class="cx-card">
+
+<div class="cx-mini cx-andromeda"></div>
+
+<h2>Andromeda</h2>
+
+<p>
+A large spiral galaxy located relatively close to the
+Milky Way.
+</p>
+
+</div>
+
+
+<div class="cx-card">
+
+<div class="cx-mini cx-triangulum"></div>
+
+<h2>Triangulum</h2>
+
+<p>
+A spiral galaxy that belongs to the Local Group of galaxies.
+</p>
+
+</div>
+
+
+</div>
+
+
+<!-- FACTS -->
+
+<section class="cx-facts">
+
+
+<div class="cx-fact">
+
+<h3>🌌 Universe</h3>
+
+<p>
+Billions of galaxies exist in the observable universe.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>⭐ Stars</h3>
+
+<p>
+Galaxies can contain millions or billions of stars.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>🌀 Spiral</h3>
+
+<p>
+Spiral galaxies have rotating arms around their centres.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>🕳️ Black Holes</h3>
+
+<p>
+Many large galaxies contain central supermassive black holes.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>🌍 Our Home</h3>
+
+<p>
+The Solar System is located inside the Milky Way.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>✨ Gravity</h3>
+
+<p>
+Gravity holds the stars and other matter together.
+</p>
+
+</div>
+
+
+</section>
+
+
+<a href="index.html" class="cx-button">
+← Back to COSMICX Home
+</a>
+
+
+</div>
+
+</body>
+
+  </html>
