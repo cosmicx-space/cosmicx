@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>COSMICX | Space Missions</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#010108;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+.cx-page{
+    min-height:100vh;
+    padding:35px 20px 70px;
+
+    background:
+    radial-gradient(circle at 50% 15%,rgba(40,90,220,.22),transparent 32%),
+    radial-gradient(circle at 80% 70%,rgba(120,50,220,.12),transparent 25%),
+    #010108;
+}
+
+
+/* HEADER */
+
+.cx-header{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.cx-logo{
+    font-size:38px;
+    font-weight:900;
+    letter-spacing:7px;
+
+    text-shadow:
+    0 0 12px #765cff,
+    0 0 30px #5135ff,
+    0 0 55px #351cff;
+}
+
+.cx-title{
+    margin-top:18px;
+    font-size:44px;
+}
+
+.cx-subtitle{
+    margin-top:10px;
+    color:#aaa;
+}
+
+
+/* ROCKET */
+
+.cx-rocket{
+    width:150px;
+    height:210px;
+
+    margin:45px auto 75px;
+
+    position:relative;
+}
+
+
+/* ROCKET BODY */
+
+.cx-rocket-body{
+    position:absolute;
+
+    width:65px;
+    height:135px;
+
+    left:50%;
+    top:25px;
+
+    transform:translateX(-50%);
+
+    border-radius:50% 50% 30% 30%;
+
+    background:
+    linear-gradient(
+        90deg,
+        #777,
+        #eee,
+        #777
+    );
+
+    box-shadow:
+    0 0 25px rgba(180,200,255,.4);
+}
+
+
+/* ROCKET WINDOW */
+
+.cx-window{
+    position:absolute;
+
+    width:24px;
+    height:24px;
+
+    left:50%;
+    top:48px;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:#3295ff;
+
+    border:4px solid #333;
+
+    box-shadow:
+    0 0 15px #3295ff;
+}
+
+
+/* NOSE */
+
+.cx-nose{
+    position:absolute;
+
+    width:0;
+    height:0;
+
+    border-left:32px solid transparent;
+    border-right:32px solid transparent;
+    border-bottom:45px solid #ddd;
+
+    left:50%;
+    top:-15px;
+
+    transform:translateX(-50%);
+}
+
+
+/* FINS */
+
+.cx-fin-left{
+    position:absolute;
+
+    width:25px;
+    height:55px;
+
+    background:#b52b40;
+
+    left:20px;
+    top:105px;
+
+    transform:skewY(-25deg);
+}
+
+.cx-fin-right{
+    position:absolute;
+
+    width:25px;
+    height:55px;
+
+    background:#b52b40;
+
+    right:20px;
+    top:105px;
+
+    transform:skewY(25deg);
+}
+
+
+/* FIRE */
+
+.cx-fire{
+    position:absolute;
+
+    width:35px;
+    height:65px;
+
+    left:50%;
+    top:145px;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle at 50% 20%,
+        #fff,
+        #ffd000 35%,
+        #ff6a00 65%,
+        transparent 70%
+    );
+
+    filter:blur(2px);
+}
+
+
+/* CONTENT */
+
+.cx-content{
+    max-width:1000px;
+    margin:auto;
+}
+
+
+/* MISSION CARD */
+
+.cx-mission{
+    margin-top:25px;
+
+    padding:28px;
+
+    border:1px solid rgba(90,130,255,.3);
+
+    border-radius:20px;
+
+    background:
+    rgba(12,18,40,.75);
+
+    transition:.35s;
+}
+
+.cx-mission:hover{
+    transform:translateY(-6px);
+
+    border-color:#668cff;
+
+    box-shadow:
+    0 0 30px rgba(60,100,255,.25);
+}
+
+.cx-mission h2{
+    font-size:27px;
+    margin-bottom:10px;
+}
+
+.cx-mission p{
+    color:#aaa;
+
+    line-height:1.8;
+
+    font-size:15px;
+}
+
+.cx-mission-info{
+    margin-top:18px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.cx-tag{
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(100,130,255,.35);
+
+    color:#bbb;
+
+    font-size:13px;
+
+    background:rgba(40,50,100,.35);
+}
+
+
+/* TIMELINE */
+
+.cx-timeline{
+    max-width:900px;
+
+    margin:50px auto;
+}
+
+.cx-timeline h2{
+    text-align:center;
+
+    font-size:30px;
+
+    margin-bottom:30px;
+}
+
+.cx-event{
+
+    padding:22px;
+
+    margin-top:18px;
+
+    border-left:3px solid #6750ff;
+
+    border-radius:0 15px 15px 0;
+
+    background:
+    rgba(20,15,45,.65);
+}
+
+.cx-event h3{
+    margin-bottom:8px;
+}
+
+.cx-event p{
+    color:#999;
+
+    line-height:1.6;
+}
+
+
+/* FACTS */
+
+.cx-facts{
+    max-width:1000px;
+
+    margin:45px auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:18px;
+}
+
+.cx-fact{
+
+    padding:22px;
+
+    text-align:center;
+
+    border:1px solid
+    rgba(100,120,255,.3);
+
+    border-radius:18px;
+
+    background:
+    rgba(15,18,40,.7);
+
+    transition:.3s;
+}
+
+.cx-fact:hover{
+
+    transform:
+    translateY(-6px);
+
+    border-color:#7590ff;
+
+    box-shadow:
+    0 0 25px rgba(70,100,255,.25);
+}
+
+.cx-fact h3{
+    margin-bottom:10px;
+}
+
+.cx-fact p{
+    color:#999;
+
+    font-size:14px;
+
+    line-height:1.5;
+}
+
+
+/* BUTTON */
+
+.cx-button{
+
+    display:block;
+
+    width:fit-content;
+
+    margin:45px auto 0;
+
+    padding:12px 24px;
+
+    border-radius:25px;
+
+    border:1px solid #604cff;
+
+    color:white;
+
+    text-decoration:none;
+
+    background:
+    rgba(50,35,120,.5);
+
+    transition:.3s;
+}
+
+.cx-button:hover{
+
+    background:#654cff;
+
+    box-shadow:
+    0 0 25px #654cff;
+
+    transform:
+    translateY(-3px);
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .cx-logo{
+        font-size:28px;
+    }
+
+    .cx-title{
+        font-size:35px;
+    }
+
+    .cx-mission{
+        padding:22px;
+    }
+
+    .cx-facts{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="cx-page">
+
+
+<!-- HEADER -->
+
+<header class="cx-header">
+
+    <div class="cx-logo">
+        COSMICX
+    </div>
+
+    <h1 class="cx-title">
+        Space Missions
+    </h1>
+
+    <p class="cx-subtitle">
+        Humanity's Journey Beyond Earth
+    </p>
+
+</header>
+
+
+<!-- ROCKET -->
+
+<div class="cx-rocket">
+
+    <div class="cx-nose"></div>
+
+    <div class="cx-fin-left"></div>
+
+    <div class="cx-fin-right"></div>
+
+    <div class="cx-rocket-body"></div>
+
+    <div class="cx-window"></div>
+
+    <div class="cx-fire"></div>
+
+</div>
+
+
+<section class="cx-content">
+
+
+<!-- APOLLO -->
+
+<div class="cx-mission">
+
+<h2>🚀 Apollo 11</h2>
+
+<p>
+Apollo 11 was the first crewed mission to successfully land
+humans on the Moon. Astronauts Neil Armstrong and Buzz Aldrin
+walked on the lunar surface while Michael Collins remained
+in lunar orbit.
+</p>
+
+<div class="cx-mission-info">
+
+<span class="cx-tag">1969</span>
+<span class="cx-tag">Moon</span>
+<span class="cx-tag">NASA</span>
+<span class="cx-tag">First Lunar Landing</span>
+
+</div>
+
+</div>
+
+
+<!-- VOYAGER -->
+
+<div class="cx-mission">
+
+<h2>🛰️ Voyager Missions</h2>
+
+<p>
+Voyager 1 and Voyager 2 were launched to explore the outer
+Solar System. They provided detailed observations of the
+giant planets and their moons and later continued into
+interstellar space.
+</p>
+
+<div class="cx-mission-info">
+
+<span class="cx-tag">1977</span>
+<span class="cx-tag">Outer Solar System</span>
+<span class="cx-tag">Voyager 1</span>
+<span class="cx-tag">Voyager 2</span>
+
+</div>
+
+</div>
+
+
+<!-- HUBBLE -->
+
+<div class="cx-mission">
+
+<h2>🔭 Hubble Space Telescope</h2>
+
+<p>
+The Hubble Space Telescope has observed distant galaxies,
+nebulae, stars and other cosmic objects. Its observations
+have contributed greatly to our understanding of the universe.
+</p>
+
+<div class="cx-mission-info">
+
+<span class="cx-tag">1990</span>
+<span class="cx-tag">Earth Orbit</span>
+<span class="cx-tag">Space Telescope</span>
+
+</div>
+
+</div>
+
+
+<!-- MARS -->
+
+<div class="cx-mission">
+
+<h2>🔴 Mars Exploration</h2>
+
+<p>
+Robotic spacecraft and rovers have explored Mars to study
+its geology, atmosphere, climate and history. Missions such
+as Curiosity and Perseverance have investigated the planet's
+surface in detail.
+</p>
+
+<div class="cx-mission-info">
+
+<span class="cx-tag">Mars</span>
+<span class="cx-tag">Rovers</span>
+<span class="cx-tag">NASA</span>
+<span class="cx-tag">Planetary Science</span>
+
+</div>
+
+</div>
+
+
+<!-- JAMES WEBB -->
+
+<div class="cx-mission">
+
+<h2>🌌 James Webb Space Telescope</h2>
+
+<p>
+The James Webb Space Telescope observes the universe primarily
+in infrared wavelengths. It studies distant galaxies, stars,
+planet-forming systems and the atmospheres of some exoplanets.
+</p>
+
+<div class="cx-mission-info">
+
+<span class="cx-tag">2021</span>
+<span class="cx-tag">Infrared</span>
+<span class="cx-tag">Deep Space</span>
+<span class="cx-tag">Space Telescope</span>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+<!-- TIMELINE -->
+
+<section class="cx-timeline">
+
+<h2>Mission Timeline</h2>
+
+
+<div class="cx-event">
+
+<h3>🌕 1969 — Apollo 11</h3>
+
+<p>
+Humans successfully landed on the Moon for the first time.
+</p>
+
+</div>
+
+
+<div class="cx-event">
+
+<h3>🛰️ 1977 — Voyager</h3>
+
+<p>
+Voyager spacecraft began their journey through the outer
+Solar System.
+</p>
+
+</div>
+
+
+<div class="cx-event">
+
+<h3>🔭 1990 — Hubble</h3>
+
+<p>
+The Hubble Space Telescope began its scientific observations
+from Earth orbit.
+</p>
+
+</div>
+
+
+<div class="cx-event">
+
+<h3>🔴 2012 — Curiosity</h3>
+
+<p>
+The Curiosity rover successfully landed on Mars and began
+studying its environment.
+</p>
+
+</div>
+
+
+<div class="cx-event">
+
+<h3>🌌 2021 — James Webb</h3>
+
+<p>
+The James Webb Space Telescope launched to study the universe
+in infrared wavelengths.
+</p>
+
+</div>
+
+
+</section>
+
+
+<!-- FACTS -->
+
+<section class="cx-facts">
+
+
+<div class="cx-fact">
+
+<h3>🚀 Exploration</h3>
+
+<p>
+Space missions help scientists study worlds beyond Earth.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>🌕 Moon</h3>
+
+<p>
+Apollo 11 achieved the first crewed lunar landing.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>🔴 Mars</h3>
+
+<p>
+Robotic missions continue to investigate the Red Planet.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>🔭 Telescopes</h3>
+
+<p>
+Space telescopes observe objects across the universe.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>🛰️ Voyager</h3>
+
+<p>
+Voyager spacecraft explored the outer Solar System.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>🌌 Discovery</h3>
+
+<p>
+Missions continuously expand our knowledge of space.
+</p>
+
+</div>
+
+
+</section>
+
+
+<a href="index.html" class="cx-button">
+← Back to COSMICX Home
+</a>
+
+
+</div>
+
+</body>
+
+  </html>
