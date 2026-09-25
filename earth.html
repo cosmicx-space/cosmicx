@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COSMICX | Earth</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #02030a;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.cx-page {
+  min-height: 100vh;
+  padding: 35px 20px 70px;
+  background:
+    radial-gradient(circle at 50% 15%, rgba(20,110,255,.20), transparent 32%),
+    #02030a;
+}
+
+/* HEADER */
+
+.cx-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.cx-logo {
+  font-size: 38px;
+  font-weight: 900;
+  letter-spacing: 7px;
+  text-shadow:
+    0 0 12px #765cff,
+    0 0 30px #5135ff;
+}
+
+.cx-title {
+  margin-top: 18px;
+  font-size: 44px;
+}
+
+.cx-subtitle {
+  margin-top: 10px;
+  color: #aaa;
+  letter-spacing: 1px;
+}
+
+/* EARTH */
+
+.cx-earth {
+  position: relative;
+  width: 235px;
+  height: 235px;
+  margin: 35px auto 45px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 35% 28%,
+      #55d7ff 0%,
+      #258ed6 30%,
+      #1261a0 58%,
+      #06264c 100%
+    );
+
+  box-shadow:
+    inset -35px -25px 45px rgba(0,0,0,.55),
+    0 0 35px rgba(40,150,255,.35);
+}
+
+/* LAND */
+
+.cx-land {
+  position: absolute;
+  border-radius: 50%;
+  background: #3c9b55;
+  opacity: .9;
+}
+
+.cx-land1 {
+  width: 90px;
+  height: 65px;
+  top: 45px;
+  left: 35px;
+  transform: rotate(-20deg);
+}
+
+.cx-land2 {
+  width: 75px;
+  height: 110px;
+  top: 95px;
+  left: 120px;
+  transform: rotate(25deg);
+}
+
+.cx-land3 {
+  width: 45px;
+  height: 35px;
+  top: 30px;
+  left: 150px;
+}
+
+.cx-land4 {
+  width: 65px;
+  height: 40px;
+  top: 155px;
+  left: 45px;
+  transform: rotate(-25deg);
+}
+
+/* CLOUDS */
+
+.cx-cloud {
+  position: absolute;
+  height: 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.65);
+  filter: blur(2px);
+}
+
+.cx-cloud1 {
+  width: 70px;
+  top: 65px;
+  left: 95px;
+  transform: rotate(-15deg);
+}
+
+.cx-cloud2 {
+  width: 55px;
+  top: 135px;
+  left: 30px;
+  transform: rotate(12deg);
+}
+
+.cx-cloud3 {
+  width: 65px;
+  top: 175px;
+  left: 125px;
+  transform: rotate(-10deg);
+}
+
+/* CONTENT */
+
+.cx-content {
+  max-width: 900px;
+  margin: auto;
+}
+
+.cx-section {
+  margin-top: 35px;
+  padding: 28px;
+  border: 1px solid rgba(60,150,255,.25);
+  border-radius: 20px;
+  background: rgba(15,15,35,.65);
+  transition: .3s;
+}
+
+.cx-section:hover {
+  border-color: rgba(80,160,255,.55);
+  box-shadow: 0 0 25px rgba(40,100,255,.12);
+}
+
+.cx-section h2 {
+  font-size: 27px;
+  margin-bottom: 14px;
+}
+
+.cx-section p {
+  color: #aaa;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+/* FACTS */
+
+.cx-facts {
+  max-width: 900px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.cx-fact {
+  padding: 22px;
+  text-align: center;
+  border: 1px solid rgba(80,120,255,.3);
+  border-radius: 18px;
+  background: rgba(20,20,40,.7);
+  transition: .3s;
+}
+
+.cx-fact:hover {
+  transform: translateY(-6px);
+  border-color: #6688ff;
+  box-shadow: 0 0 25px rgba(60,100,255,.3);
+}
+
+.cx-fact h3 {
+  margin-bottom: 10px;
+}
+
+.cx-fact p {
+  color: #999;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* LIST */
+
+.cx-list {
+  margin-top: 18px;
+  padding-left: 20px;
+  color: #aaa;
+  line-height: 2;
+}
+
+/* BUTTON */
+
+.cx-button {
+  display: block;
+  width: fit-content;
+  margin: 45px auto 0;
+  padding: 12px 24px;
+  border-radius: 25px;
+  border: 1px solid #604cff;
+  color: white;
+  text-decoration: none;
+  background: rgba(50,35,120,.5);
+  transition: .3s;
+}
+
+.cx-button:hover {
+  background: #654cff;
+  box-shadow: 0 0 25px #654cff;
+  transform: translateY(-3px);
+}
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+  .cx-logo {
+    font-size: 28px;
+  }
+
+  .cx-title {
+    font-size: 35px;
+  }
+
+  .cx-earth {
+    width: 180px;
+    height: 180px;
+  }
+
+  .cx-land1 {
+    width: 70px;
+    height: 50px;
+    top: 35px;
+    left: 25px;
+  }
+
+  .cx-land2 {
+    width: 60px;
+    height: 85px;
+    top: 75px;
+    left: 92px;
+  }
+
+  .cx-land3 {
+    width: 35px;
+    height: 28px;
+    top: 25px;
+    left: 115px;
+  }
+
+  .cx-land4 {
+    width: 50px;
+    height: 32px;
+    top: 120px;
+    left: 35px;
+  }
+
+  .cx-cloud1 {
+    width: 55px;
+    top: 50px;
+    left: 75px;
+  }
+
+  .cx-cloud2 {
+    width: 45px;
+    top: 105px;
+    left: 25px;
+  }
+
+  .cx-cloud3 {
+    width: 50px;
+    top: 135px;
+    left: 100px;
+  }
+
+  .cx-section {
+    padding: 22px;
+  }
+
+  .cx-facts {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cx-page">
+
+  <!-- HEADER -->
+
+  <header class="cx-header">
+
+    <div class="cx-logo">COSMICX</div>
+
+    <h1 class="cx-title">Earth</h1>
+
+    <p class="cx-subtitle">
+      Our Blue Planet — The Known World of Life
+    </p>
+
+  </header>
+
+
+  <!-- EARTH -->
+
+  <div class="cx-earth">
+
+    <div class="cx-land cx-land1"></div>
+    <div class="cx-land cx-land2"></div>
+    <div class="cx-land cx-land3"></div>
+    <div class="cx-land cx-land4"></div>
+
+    <div class="cx-cloud cx-cloud1"></div>
+    <div class="cx-cloud cx-cloud2"></div>
+    <div class="cx-cloud cx-cloud3"></div>
+
+  </div>
+
+
+  <!-- CONTENT -->
+
+  <section class="cx-content">
+
+    <!-- INTRODUCTION -->
+
+    <div class="cx-section">
+
+      <h2>About Earth</h2>
+
+      <p>
+        Earth is the third planet from the Sun and the largest of the
+        four terrestrial planets in our Solar System. It is the only
+        world currently known to support life.
+      </p>
+
+      <p style="margin-top:15px;">
+        Earth has vast oceans, continents, mountains, deserts,
+        forests and polar regions. Its combination of liquid water,
+        a protective atmosphere and suitable temperatures makes it
+        a remarkable planet.
+      </p>
+
+    </div>
+
+
+    <!-- ATMOSPHERE -->
+
+    <div class="cx-section">
+
+      <h2>Atmosphere</h2>
+
+      <p>
+        Earth's atmosphere is mainly composed of nitrogen and oxygen,
+        along with smaller amounts of other gases. It protects life
+        from harmful solar radiation and helps regulate the planet's
+        temperature.
+      </p>
+
+      <p style="margin-top:15px;">
+        The atmosphere also creates weather and climate systems that
+        continuously move energy and water around the planet.
+      </p>
+
+    </div>
+
+
+    <!-- WATER -->
+
+    <div class="cx-section">
+
+      <h2>The Water World</h2>
+
+      <p>
+        About 71% of Earth's surface is covered by water. Most of this
+        water is found in oceans, while smaller amounts exist in
+        glaciers, rivers, lakes, groundwater and the atmosphere.
+      </p>
+
+      <p style="margin-top:15px;">
+        Liquid water is one of the most important ingredients for life
+        as we know it.
+      </p>
+
+    </div>
+
+
+    <!-- LIFE -->
+
+    <div class="cx-section">
+
+      <h2>Life on Earth</h2>
+
+      <p>
+        Earth contains an extraordinary diversity of life, ranging
+        from microscopic organisms to plants, animals and complex
+        ecosystems.
+      </p>
+
+      <p style="margin-top:15px;">
+        Life exists in many different environments, including oceans,
+        deserts, forests, mountains and even extreme environments
+        where conditions are difficult for most organisms.
+      </p>
+
+    </div>
+
+
+    <!-- MOON -->
+
+    <div class="cx-section">
+
+      <h2>Earth and the Moon</h2>
+
+      <p>
+        Earth has one natural satellite: the Moon. The Moon is the
+        fifth-largest natural satellite in the Solar System and plays
+        an important role in Earth's tides.
+      </p>
+
+      <p style="margin-top:15px;">
+        The gravitational interaction between Earth and the Moon also
+        influences the length of Earth's day over very long periods.
+      </p>
+
+    </div>
+
+
+    <!-- ROTATION -->
+
+    <div class="cx-section">
+
+      <h2>Rotation & Revolution</h2>
+
+      <p>
+        Earth rotates once approximately every 24 hours, producing
+        the cycle of day and night.
+      </p>
+
+      <p style="margin-top:15px;">
+        Earth completes one orbit around the Sun in approximately
+        365.25 days. This extra fraction of a day is why leap years
+        are used to keep our calendar aligned with Earth's orbit.
+      </p>
+
+    </div>
+
+
+    <!-- EXPLORATION -->
+
+    <div class="cx-section">
+
+      <h2>Exploring Our Planet</h2>
+
+      <p>
+        Earth has been studied from the ground, from aircraft and
+        from thousands of satellites in space. These observations
+        help scientists understand weather, climate, oceans,
+        ecosystems and changes occurring across the planet.
+      </p>
+
+    </div>
+
+
+    <!-- INTERESTING FACTS -->
+
+    <div class="cx-section">
+
+      <h2>Interesting Facts</h2>
+
+      <ul class="cx-list">
+
+        <li>Earth is the third planet from the Sun.</li>
+
+        <li>It is the only planet currently known to support life.</li>
+
+        <li>About 71% of its surface is covered by water.</li>
+
+        <li>Earth has one natural satellite, the Moon.</li>
+
+        <li>Its atmosphere is mainly nitrogen and oxygen.</li>
+
+        <li>Earth has active plate tectonics that reshape its surface.</li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+
+  <!-- QUICK FACTS -->
+
+  <section class="cx-facts">
+
+    <div class="cx-fact">
+      <h3>☀️ Position</h3>
+      <p>3rd planet from the Sun</p>
+    </div>
+
+    <div class="cx-fact">
+      <h3>🌊 Water</h3>
+      <p>About 71% surface coverage</p>
+    </div>
+
+    <div class="cx-fact">
+      <h3>🌙 Moon</h3>
+      <p>1 natural satellite</p>
+    </div>
+
+    <div class="cx-fact">
+      <h3>⏱️ Day</h3>
+      <p>About 24 hours</p>
+    </div>
+
+    <div class="cx-fact">
+      <h3>☀️ Year</h3>
+      <p>About 365.25 days</p>
+    </div>
+
+    <div class="cx-fact">
+      <h3>🌍 Type</h3>
+      <p>Rocky terrestrial planet</p>
+    </div>
+
+  </section>
+
+
+  <!-- BACK -->
+
+  <a href="planets.html" class="cx-button">
+    ← Back to Planets
+  </a>
+
+</div>
+
+</body>
+  </html>
