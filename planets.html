@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COSMICX | Planets</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #02030a;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.cx-planets {
+  min-height: 100vh;
+  padding: 35px 18px 60px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(85,50,200,.25), transparent 35%),
+    #02030a;
+}
+
+.cx-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.cx-logo {
+  font-size: 38px;
+  font-weight: 900;
+  letter-spacing: 7px;
+  text-shadow:
+    0 0 12px #765cff,
+    0 0 30px #5135ff;
+}
+
+.cx-title {
+  margin-top: 15px;
+  font-size: 34px;
+}
+
+.cx-subtitle {
+  margin-top: 10px;
+  color: #999;
+}
+
+/* GRID */
+.cx-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+/* CARD */
+.cx-card {
+  position: relative;
+  padding: 28px 18px;
+  text-align: center;
+  border: 1px solid rgba(130,100,255,.3);
+  border-radius: 20px;
+  background: rgba(15,15,35,.75);
+  overflow: hidden;
+  transition: .35s;
+}
+
+.cx-card:hover {
+  transform: translateY(-8px);
+  border-color: #8066ff;
+  box-shadow: 0 0 30px rgba(100,70,255,.35);
+}
+
+.cx-planet {
+  width: 105px;
+  height: 105px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  box-shadow: inset -18px -12px 25px rgba(0,0,0,.35),
+              0 0 25px rgba(255,255,255,.08);
+}
+
+/* PLANETS */
+.cx-mercury {
+  background: radial-gradient(circle at 35% 30%, #ddd, #777 55%, #333);
+}
+
+.cx-venus {
+  background: radial-gradient(circle at 35% 30%, #ffe3a1, #c77c32 60%, #633719);
+}
+
+.cx-earth {
+  background:
+    radial-gradient(circle at 35% 30%, #4fc3ff, #1261a0 55%, #061f3b);
+  box-shadow: 0 0 28px rgba(50,150,255,.4);
+}
+
+.cx-mars {
+  background: radial-gradient(circle at 35% 30%, #ff9a76, #b83d25 60%, #54160d);
+}
+
+.cx-jupiter {
+  background: linear-gradient(
+    180deg,
+    #d8b98a 0%,
+    #9a6f45 18%,
+    #e1c49b 35%,
+    #825b3c 52%,
+    #d6ad7c 70%,
+    #795039 100%
+  );
+}
+
+.cx-saturn {
+  position: relative;
+  background: radial-gradient(circle at 35% 30%, #ffe4a3, #b58d4e 65%, #5f4728);
+}
+
+.cx-saturn::after {
+  content: "";
+  position: absolute;
+  width: 155px;
+  height: 35px;
+  border: 5px solid rgba(220,190,130,.7);
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) rotate(-15deg);
+}
+
+.cx-uranus {
+  background: radial-gradient(circle at 35% 30%, #bdf8ff, #52b6c7 60%, #174e59);
+}
+
+.cx-neptune {
+  background: radial-gradient(circle at 35% 30%, #6ea2ff, #2452bd 60%, #0b1b62);
+  box-shadow: 0 0 25px rgba(50,100,255,.4);
+}
+
+.cx-card h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.cx-card p {
+  color: #999;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.cx-button {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: white;
+  background: #5d43e8;
+  transition: .3s;
+}
+
+.cx-button:hover {
+  background: #8066ff;
+  box-shadow: 0 0 20px #6d50ff;
+}
+
+.cx-back {
+  display: block;
+  width: fit-content;
+  margin: 45px auto 0;
+  padding: 12px 22px;
+  border: 1px solid #604cff;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+}
+
+/* MOBILE */
+@media(max-width:900px) {
+  .cx-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(max-width:550px) {
+  .cx-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cx-logo {
+    font-size: 28px;
+  }
+
+  .cx-title {
+    font-size: 28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="cx-planets">
+
+  <header class="cx-header">
+    <div class="cx-logo">COSMICX</div>
+    <h1 class="cx-title">Explore the Planets</h1>
+    <p class="cx-subtitle">
+      Journey through the eight worlds of our Solar System.
+    </p>
+  </header>
+
+  <main class="cx-grid">
+
+    <article class="cx-card">
+      <div class="cx-planet cx-mercury"></div>
+      <h2>Mercury</h2>
+      <p>The smallest and innermost planet of the Solar System.</p>
+      <a href="mercury.html" class="cx-button">Explore Mercury</a>
+    </article>
+
+    <article class="cx-card">
+      <div class="cx-planet cx-venus"></div>
+      <h2>Venus</h2>
+      <p>A hot world hidden beneath a thick atmosphere.</p>
+      <a href="venus.html" class="cx-button">Explore Venus</a>
+    </article>
+
+    <article class="cx-card">
+      <div class="cx-planet cx-earth"></div>
+      <h2>Earth</h2>
+      <p>Our blue home and the only known world with life.</p>
+      <a href="earth.html" class="cx-button">Explore Earth</a>
+    </article>
+
+    <article class="cx-card">
+      <div class="cx-planet cx-mars"></div>
+      <h2>Mars</h2>
+      <p>The red planet with a fascinating history of water.</p>
+      <a href="mars.html" class="cx-button">Explore Mars</a>
+    </article>
+
+    <article class="cx-card">
+      <div class="cx-planet cx-jupiter"></div>
+      <h2>Jupiter</h2>
+      <p>The largest planet, famous for its Great Red Spot.</p>
+      <a href="jupiter.html" class="cx-button">Explore Jupiter</a>
+    </article>
+
+    <article class="cx-card">
+      <div class="cx-planet cx-saturn"></div>
+      <h2>Saturn</h2>
+      <p>A gas giant surrounded by its spectacular rings.</p>
+      <a href="saturn.html" class="cx-button">Explore Saturn</a>
+    </article>
+
+    <article class="cx-card">
+      <div class="cx-planet cx-uranus"></div>
+      <h2>Uranus</h2>
+      <p>An ice giant rotating dramatically on its side.</p>
+      <a href="uranus.html" class="cx-button">Explore Uranus</a>
+    </article>
+
+    <article class="cx-card">
+      <div class="cx-planet cx-neptune"></div>
+      <h2>Neptune</h2>
+      <p>The distant blue ice giant of our Solar System.</p>
+      <a href="neptune.html" class="cx-button">Explore Neptune</a>
+    </article>
+
+  </main>
+
+  <a href="index.html" class="cx-back">← Back to COSMICX Home</a>
+
+</div>
+
+</body>
+</html>
