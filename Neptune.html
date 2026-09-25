@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>COSMICX | Neptune</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#02030a;color:white;font-family:Arial,sans-serif}
+
+.cx-page{
+min-height:100vh;padding:35px 20px 70px;
+background:radial-gradient(circle at 50% 15%,rgba(40,90,255,.2),transparent 32%),#02030a;
+}
+
+.cx-header{text-align:center;margin-bottom:35px}
+
+.cx-logo{
+font-size:38px;font-weight:900;letter-spacing:7px;
+text-shadow:0 0 12px #765cff,0 0 30px #5135ff;
+}
+
+.cx-title{margin-top:18px;font-size:44px}
+.cx-subtitle{margin-top:10px;color:#aaa}
+
+.cx-planet{
+width:235px;height:235px;margin:35px auto 45px;
+border-radius:50%;
+background:radial-gradient(circle at 35% 28%,#86b7ff,#386bd6 45%,#18358f 70%,#071342);
+box-shadow:inset -38px -28px 45px rgba(0,0,0,.55),0 0 45px rgba(50,90,255,.35);
+}
+
+.cx-content{max-width:900px;margin:auto}
+
+.cx-section{
+margin-top:35px;padding:28px;
+border:1px solid rgba(70,110,255,.28);
+border-radius:20px;background:rgba(15,18,40,.7);
+}
+
+.cx-section h2{font-size:27px;margin-bottom:14px}
+.cx-section p{color:#aaa;line-height:1.8;font-size:15px}
+.cx-list{margin-top:15px;padding-left:20px;color:#aaa;line-height:2}
+
+.cx-facts{
+max-width:900px;margin:30px auto;
+display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+
+.cx-fact{
+padding:22px;text-align:center;
+border:1px solid rgba(70,110,255,.3);
+border-radius:18px;background:rgba(15,18,40,.7);
+transition:.3s;
+}
+
+.cx-fact:hover{
+transform:translateY(-6px);
+border-color:#668cff;
+box-shadow:0 0 25px rgba(50,90,255,.3);
+}
+
+.cx-fact h3{margin-bottom:10px}
+.cx-fact p{color:#999;font-size:14px}
+
+.cx-button{
+display:block;width:fit-content;margin:45px auto 0;
+padding:12px 24px;border-radius:25px;border:1px solid #604cff;
+color:white;text-decoration:none;background:rgba(50,35,120,.5);
+transition:.3s;
+}
+
+.cx-button:hover{background:#654cff;box-shadow:0 0 25px #654cff;transform:translateY(-3px)}
+
+@media(max-width:600px){
+.cx-logo{font-size:28px}
+.cx-title{font-size:35px}
+.cx-planet{width:180px;height:180px}
+.cx-section{padding:22px}
+.cx-facts{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<div class="cx-page">
+
+<header class="cx-header">
+<div class="cx-logo">COSMICX</div>
+<h1 class="cx-title">Neptune</h1>
+<p class="cx-subtitle">The Windy Blue World</p>
+</header>
+
+<div class="cx-planet"></div>
+
+<section class="cx-content">
+
+<div class="cx-section">
+<h2>About Neptune</h2>
+<p>
+Neptune is the eighth and most distant major planet from the Sun.
+It is an ice giant with a deep blue appearance and a dynamic
+atmosphere.
+</p>
+<p style="margin-top:15px">
+Neptune is extremely far from the Sun and takes many decades to
+complete a single orbit.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Powerful Winds</h2>
+<p>
+Neptune is known for having some of the fastest winds measured
+in the Solar System. Its atmosphere contains large storms and
+rapidly changing cloud formations.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Atmosphere</h2>
+<p>
+Neptune's atmosphere is primarily hydrogen and helium, with
+methane contributing to its blue colour. Beneath the atmosphere
+lies a deep layer rich in water, ammonia and other compounds.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Moons & Rings</h2>
+<p>
+Neptune has a collection of known moons, including Triton,
+its largest moon. Neptune also possesses a faint and dusty
+ring system.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Exploring Neptune</h2>
+<p>
+Voyager 2 remains the only spacecraft to have made a close flyby
+of Neptune. The mission revealed detailed information about its
+atmosphere, rings and moons.
+</p>
+</div>
+
+<div class="cx-section">
+<h2>Interesting Facts</h2>
+<ul class="cx-list">
+<li>Neptune is the eighth planet from the Sun.</li>
+<li>It is an ice giant.</li>
+<li>It has extremely powerful atmospheric winds.</li>
+<li>Triton is Neptune's largest moon.</li>
+<li>Neptune has faint rings.</li>
+<li>One Neptune year lasts about 165 Earth years.</li>
+</ul>
+</div>
+
+</section>
+
+<section class="cx-facts">
+
+<div class="cx-fact"><h3>🔵 Position</h3><p>8th planet from the Sun</p></div>
+<div class="cx-fact"><h3>🧊 Type</h3><p>Ice giant</p></div>
+<div class="cx-fact"><h3>🌙 Moon</h3><p>Triton is the largest</p></div>
+<div class="cx-fact"><h3>💨 Winds</h3><p>Extremely powerful</p></div>
+<div class="cx-fact"><h3>⏱️ Day</h3><p>About 16 hours</p></div>
+<div class="cx-fact"><h3>☀️ Year</h3><p>About 165 Earth years</p></div>
+
+</section>
+
+<a href="planets.html" class="cx-button">← Back to Planets</a>
+
+</div>
+</body>
+</html>
