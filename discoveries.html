@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>COSMICX | Discoveries</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#010108;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+.cx-page{
+    min-height:100vh;
+    padding:35px 20px 70px;
+
+    background:
+    radial-gradient(circle at 50% 15%,rgba(100,50,220,.25),transparent 32%),
+    radial-gradient(circle at 15% 75%,rgba(30,120,220,.12),transparent 25%),
+    #010108;
+}
+
+
+/* HEADER */
+
+.cx-header{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.cx-logo{
+    font-size:38px;
+    font-weight:900;
+    letter-spacing:7px;
+
+    text-shadow:
+    0 0 12px #765cff,
+    0 0 30px #5135ff,
+    0 0 55px #351cff;
+}
+
+.cx-title{
+    margin-top:18px;
+    font-size:44px;
+}
+
+.cx-subtitle{
+    margin-top:10px;
+    color:#aaa;
+}
+
+
+/* TELESCOPE */
+
+.cx-telescope{
+    position:relative;
+
+    width:260px;
+    height:220px;
+
+    margin:50px auto 75px;
+}
+
+
+/* TELESCOPE BODY */
+
+.cx-scope-body{
+    position:absolute;
+
+    width:170px;
+    height:55px;
+
+    left:45px;
+    top:55px;
+
+    border-radius:30px;
+
+    transform:rotate(-25deg);
+
+    background:
+    linear-gradient(
+        90deg,
+        #555,
+        #ddd,
+        #777
+    );
+
+    box-shadow:
+    0 0 25px rgba(150,150,255,.3);
+}
+
+
+/* LENS */
+
+.cx-lens{
+    position:absolute;
+
+    width:65px;
+    height:65px;
+
+    left:190px;
+    top:35px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        #d8ffff,
+        #4daeff 45%,
+        #263caa 70%,
+        #101333
+    );
+
+    border:5px solid #555;
+
+    box-shadow:
+    0 0 25px #3295ff,
+    0 0 45px rgba(50,140,255,.4);
+}
+
+
+/* TRIPOD */
+
+.cx-leg1,
+.cx-leg2,
+.cx-leg3{
+
+    position:absolute;
+
+    width:10px;
+    height:100px;
+
+    top:110px;
+
+    background:#777;
+
+    border-radius:10px;
+}
+
+.cx-leg1{
+    left:90px;
+    transform:rotate(18deg);
+}
+
+.cx-leg2{
+    left:125px;
+}
+
+.cx-leg3{
+    left:155px;
+    transform:rotate(-18deg);
+}
+
+
+/* DISCOVERY CARDS */
+
+.cx-discoveries{
+    max-width:1050px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:22px;
+}
+
+.cx-card{
+
+    padding:28px;
+
+    border:1px solid
+    rgba(120,90,255,.3);
+
+    border-radius:20px;
+
+    background:
+    rgba(15,12,35,.75);
+
+    transition:.35s;
+}
+
+.cx-card:hover{
+
+    transform:
+    translateY(-7px);
+
+    border-color:#8066ff;
+
+    box-shadow:
+    0 0 30px
+    rgba(100,70,255,.25);
+}
+
+.cx-icon{
+
+    font-size:42px;
+
+    margin-bottom:15px;
+}
+
+.cx-card h2{
+
+    font-size:24px;
+
+    margin-bottom:12px;
+}
+
+.cx-card p{
+
+    color:#aaa;
+
+    font-size:15px;
+
+    line-height:1.8;
+}
+
+
+/* FEATURE SECTION */
+
+.cx-feature{
+
+    max-width:950px;
+
+    margin:45px auto;
+
+    padding:30px;
+
+    text-align:center;
+
+    border:1px solid
+    rgba(100,130,255,.3);
+
+    border-radius:22px;
+
+    background:
+    rgba(12,18,40,.75);
+}
+
+.cx-feature h2{
+
+    font-size:30px;
+
+    margin-bottom:15px;
+}
+
+.cx-feature p{
+
+    color:#aaa;
+
+    line-height:1.8;
+
+    max-width:750px;
+
+    margin:auto;
+}
+
+
+/* FACTS */
+
+.cx-facts{
+
+    max-width:1050px;
+
+    margin:45px auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:18px;
+}
+
+.cx-fact{
+
+    padding:22px;
+
+    text-align:center;
+
+    border:1px solid
+    rgba(120,100,255,.3);
+
+    border-radius:18px;
+
+    background:
+    rgba(15,12,35,.7);
+
+    transition:.3s;
+}
+
+.cx-fact:hover{
+
+    transform:
+    translateY(-6px);
+
+    border-color:#956cff;
+
+    box-shadow:
+    0 0 25px
+    rgba(100,70,255,.25);
+}
+
+.cx-fact h3{
+
+    margin-bottom:10px;
+}
+
+.cx-fact p{
+
+    color:#999;
+
+    font-size:14px;
+
+    line-height:1.5;
+}
+
+
+/* BUTTON */
+
+.cx-button{
+
+    display:block;
+
+    width:fit-content;
+
+    margin:45px auto 0;
+
+    padding:12px 24px;
+
+    border-radius:25px;
+
+    border:1px solid #604cff;
+
+    color:white;
+
+    text-decoration:none;
+
+    background:
+    rgba(50,35,120,.5);
+
+    transition:.3s;
+}
+
+.cx-button:hover{
+
+    background:#654cff;
+
+    box-shadow:
+    0 0 25px #654cff;
+
+    transform:
+    translateY(-3px);
+}
+
+
+/* MOBILE */
+
+@media(max-width:750px){
+
+    .cx-logo{
+        font-size:28px;
+    }
+
+    .cx-title{
+        font-size:35px;
+    }
+
+    .cx-discoveries{
+        grid-template-columns:1fr;
+    }
+
+    .cx-facts{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .cx-telescope{
+        transform:scale(.8);
+        margin-top:20px;
+        margin-bottom:40px;
+    }
+
+    .cx-card{
+        padding:22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="cx-page">
+
+
+<!-- HEADER -->
+
+<header class="cx-header">
+
+    <div class="cx-logo">
+        COSMICX
+    </div>
+
+    <h1 class="cx-title">
+        Space Discoveries
+    </h1>
+
+    <p class="cx-subtitle">
+        Discoveries That Changed Our Understanding of the Universe
+    </p>
+
+</header>
+
+
+<!-- TELESCOPE -->
+
+<div class="cx-telescope">
+
+    <div class="cx-scope-body"></div>
+
+    <div class="cx-lens"></div>
+
+    <div class="cx-leg1"></div>
+
+    <div class="cx-leg2"></div>
+
+    <div class="cx-leg3"></div>
+
+</div>
+
+
+<!-- DISCOVERIES -->
+
+<section class="cx-discoveries">
+
+
+<div class="cx-card">
+
+<div class="cx-icon">🌌</div>
+
+<h2>Expanding Universe</h2>
+
+<p>
+Observations of distant galaxies showed that the universe is
+expanding. This discovery transformed our understanding of
+the large-scale history and evolution of the cosmos.
+</p>
+
+</div>
+
+
+<div class="cx-card">
+
+<div class="cx-icon">🕳️</div>
+
+<h2>Black Holes</h2>
+
+<p>
+Theoretical physics predicted black holes, and astronomical
+observations have since provided strong evidence for their
+existence and effects on surrounding matter and light.
+</p>
+
+</div>
+
+
+<div class="cx-card">
+
+<div class="cx-icon">📡</div>
+
+<h2>Cosmic Microwave Background</h2>
+
+<p>
+The cosmic microwave background is faint radiation left from
+the early universe. Its discovery provided important evidence
+for the hot, dense early state of the cosmos.
+</p>
+
+</div>
+
+
+<div class="cx-card">
+
+<div class="cx-icon">🪐</div>
+
+<h2>Exoplanets</h2>
+
+<p>
+Scientists have discovered thousands of planets orbiting stars
+outside our Solar System. These worlds have greatly expanded
+our knowledge of planetary systems.
+</p>
+
+</div>
+
+
+<div class="cx-card">
+
+<div class="cx-icon">💥</div>
+
+<h2>Gravitational Waves</h2>
+
+<p>
+The detection of gravitational waves opened a new way of
+observing the universe and provided direct evidence of
+powerful cosmic events such as merging black holes.
+</p>
+
+</div>
+
+
+<div class="cx-card">
+
+<div class="cx-icon">🔭</div>
+
+<h2>Deep Space Observations</h2>
+
+<p>
+Modern telescopes have allowed scientists to observe extremely
+distant galaxies and study stars and cosmic structures across
+vast periods of cosmic history.
+</p>
+
+</div>
+
+
+</section>
+
+
+<!-- FEATURE -->
+
+<section class="cx-feature">
+
+<h2>🔬 How Do We Discover Space?</h2>
+
+<p>
+Astronomers use telescopes, spacecraft, detectors and
+mathematical models to investigate the universe. Different
+forms of light, particles and gravitational waves provide
+different windows into cosmic phenomena.
+</p>
+
+</section>
+
+
+<!-- FACTS -->
+
+<section class="cx-facts">
+
+
+<div class="cx-fact">
+
+<h3>🌌 Galaxies</h3>
+
+<p>
+Astronomers observe galaxies across enormous cosmic distances.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>🪐 Exoplanets</h3>
+
+<p>
+Thousands of planets have been confirmed beyond our Solar System.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>📡 CMB</h3>
+
+<p>
+Ancient radiation provides information about the early universe.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>〰️ Waves</h3>
+
+<p>
+Gravitational waves provide another way to study cosmic events.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>🔭 Telescopes</h3>
+
+<p>
+Observatories collect information from across the electromagnetic spectrum.
+</p>
+
+</div>
+
+
+<div class="cx-fact">
+
+<h3>🚀 Spacecraft</h3>
+
+<p>
+Robotic missions explore planets, moons and distant regions of space.
+</p>
+
+</div>
+
+
+</section>
+
+
+<a href="index.html" class="cx-button">
+← Back to COSMICX Home
+</a>
+
+
+</div>
+
+</body>
+
+  </html>
