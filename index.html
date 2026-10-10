@@ -1,344 +1,241 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COSMICX | Explore the Universe</title>
+<meta name="description" content="Explore planets, stars and nuclear fusion with CosmicX.">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#02030a;color:white;font-family:Arial,sans-serif;overflow-x:hidden}
+.cx-home{min-height:100vh;background:radial-gradient(circle at 50% 45%,rgba(70,40,160,.25),transparent 30%),radial-gradient(circle at 20% 20%,rgba(0,100,255,.12),transparent 25%),#02030a}
+.cx-header{position:relative;z-index:10;text-align:center;padding:35px 15px 10px}
+.cx-logo{font-size:42px;font-weight:900;letter-spacing:8px;color:#fff;text-shadow:0 0 10px #7c5cff,0 0 25px #5c35ff,0 0 50px #351cff}
+.cx-tagline{margin-top:10px;color:#aaa;letter-spacing:3px;font-size:13px}
+.cx-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:25px auto;padding:0 15px}
+.cx-button{display:inline-block;padding:12px 20px;border:1px solid rgba(130,100,255,.7);border-radius:30px;color:white;text-decoration:none;background:rgba(30,20,70,.5);transition:.3s}
+.cx-button:hover{background:#6c4cff;box-shadow:0 0 25px #6c4cff;transform:translateY(-3px)}
+.cx-universe{position:relative;width:650px;height:650px;max-width:95vw;max-height:95vw;margin:20px auto}
+.cx-orbit{position:absolute;border:1px solid rgba(130,130,180,.18);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%)}
+.cx-o1{width:18%;height:18%}.cx-o2{width:27%;height:27%}.cx-o3{width:36%;height:36%}.cx-o4{width:45%;height:45%}.cx-o5{width:57%;height:57%}.cx-o6{width:69%;height:69%}.cx-o7{width:81%;height:81%}.cx-o8{width:94%;height:94%}
+.cx-sun{position:absolute;left:50%;top:50%;width:95px;height:95px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#fff 5%,#ffd83d 35%,#ff8c00 70%,#ff4500);box-shadow:0 0 25px #ffb300,0 0 60px #ff8c00,0 0 110px rgba(255,120,0,.6);animation:sun-pulse 2s ease-in-out infinite alternate}
+@keyframes sun-pulse{to{box-shadow:0 0 35px #ffb300,0 0 85px #ff8c00,0 0 125px rgba(255,120,0,.7)}}
+.cx-planet{position:absolute;left:50%;top:50%;border-radius:50%;transform-origin:0 0}
+.cx-p1{width:9px;height:9px;background:#aaa;animation:cx-orbit1 5s linear infinite}
+.cx-p2{width:13px;height:13px;background:#d49b62;animation:cx-orbit2 8s linear infinite}
+.cx-p3{width:15px;height:15px;background:#3295ff;box-shadow:0 0 8px #3295ff;animation:cx-orbit3 11s linear infinite}
+.cx-p4{width:12px;height:12px;background:#d85c3f;animation:cx-orbit4 14s linear infinite}
+.cx-p5{width:28px;height:28px;background:#d7ad78;animation:cx-orbit5 20s linear infinite}
+.cx-p6{width:30px;height:30px;background:#e4c982;box-shadow:0 0 8px #e4c982;animation:cx-orbit6 25s linear infinite}
+.cx-p7{width:20px;height:20px;background:#78d8e8;animation:cx-orbit7 30s linear infinite}
+.cx-p8{width:19px;height:19px;background:#4677ff;animation:cx-orbit8 35s linear infinite}
+@keyframes cx-orbit1{from{transform:rotate(0deg) translateX(58px)}to{transform:rotate(360deg) translateX(58px)}}
+@keyframes cx-orbit2{from{transform:rotate(0deg) translateX(88px)}to{transform:rotate(360deg) translateX(88px)}}
+@keyframes cx-orbit3{from{transform:rotate(0deg) translateX(117px)}to{transform:rotate(360deg) translateX(117px)}}
+@keyframes cx-orbit4{from{transform:rotate(0deg) translateX(146px)}to{transform:rotate(360deg) translateX(146px)}}
+@keyframes cx-orbit5{from{transform:rotate(0deg) translateX(185px)}to{transform:rotate(360deg) translateX(185px)}}
+@keyframes cx-orbit6{from{transform:rotate(0deg) translateX(224px)}to{transform:rotate(360deg) translateX(224px)}}
+@keyframes cx-orbit7{from{transform:rotate(0deg) translateX(263px)}to{transform:rotate(360deg) translateX(263px)}}
+@keyframes cx-orbit8{from{transform:rotate(0deg) translateX(305px)}to{transform:rotate(360deg) translateX(305px)}}
+.cx-info{text-align:center;padding:20px 20px 60px}
+.cx-info h2{font-size:30px;margin-bottom:12px}
+.cx-info p{max-width:650px;margin:auto;color:#aaa;line-height:1.7}
+
+/* NUCLEAR FUSION */
+.fusion-section{position:relative;isolation:isolate;overflow:hidden;padding:80px 18px 65px;text-align:center;border-top:1px solid #28204d;background:radial-gradient(ellipse at 50% 35%,rgba(75,30,140,.28),transparent 50%),linear-gradient(180deg,#03040d,#08051b 60%,#02030a)}
+.fusion-heading,.fusion-caption,.fusion-facts,.fusion-reaction{position:relative;z-index:2}
+.fusion-tag{color:#69dfff;font-size:11px;letter-spacing:4px}
+.fusion-heading h2{margin:20px 0 12px;font-size:clamp(34px,7vw,64px);font-weight:900;letter-spacing:4px;text-shadow:0 0 25px #38418a}
+.fusion-heading h2 span{color:#ff9b4a;text-shadow:0 0 15px #ff5b22,0 0 40px rgba(255,70,20,.5)}
+.fusion-heading>p{color:#b4b5d3}
+.fusion-reactor{position:relative;width:min(430px,90vw);aspect-ratio:1;margin:35px auto 5px;isolation:isolate;border-radius:50%;background:radial-gradient(circle,rgba(255,95,25,.09),transparent 65%)}
+.fusion-glow{position:absolute;inset:20%;border-radius:50%;background:#ff5015;filter:blur(45px);opacity:.25;animation:fusion-glow 2.5s ease-in-out infinite alternate}
+.fusion-ring{position:absolute;left:50%;top:50%;width:76%;height:34%;border:2px solid rgba(80,205,255,.85);border-radius:50%;box-shadow:0 0 12px #168cff,inset 0 0 12px rgba(30,130,255,.25)}
+.fusion-ring-1{animation:ring-one 5s linear infinite}
+.fusion-ring-2{width:85%;height:43%;border-color:#ad5fff;box-shadow:0 0 14px #9b4dff;animation:ring-two 7s linear infinite}
+.fusion-ring-3{width:65%;height:65%;border-color:rgba(255,133,53,.85);box-shadow:0 0 16px rgba(255,93,20,.8);animation:ring-three 9s linear infinite}
+.fusion-ring-4{width:94%;height:25%;border-color:rgba(65,235,255,.7);animation:ring-four 6s linear infinite}
+@keyframes ring-one{from{transform:translate(-50%,-50%) rotate(-35deg)}to{transform:translate(-50%,-50%) rotate(325deg)}}
+@keyframes ring-two{from{transform:translate(-50%,-50%) rotate(50deg)}to{transform:translate(-50%,-50%) rotate(-310deg)}}
+@keyframes ring-three{from{transform:translate(-50%,-50%) rotate(0deg) scaleY(.6)}to{transform:translate(-50%,-50%) rotate(360deg) scaleY(.6)}}
+@keyframes ring-four{from{transform:translate(-50%,-50%) rotate(70deg)}to{transform:translate(-50%,-50%) rotate(430deg)}}
+.fusion-core{position:absolute;left:50%;top:50%;width:24%;aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,#fff 0%,#fff6ad 12%,#ffbb43 35%,#ff501c 65%,transparent 76%);box-shadow:0 0 25px #ff9c30,0 0 65px #ff481b,0 0 115px rgba(255,57,15,.6);animation:core-pulse 1.5s ease-in-out infinite alternate}
+@keyframes core-pulse{to{transform:translate(-50%,-50%) scale(1.15);filter:brightness(1.4)}}
+@keyframes fusion-glow{to{opacity:.45;transform:scale(1.2)}}
+.fusion-core-light{position:absolute;inset:20%;border-radius:50%;background:#fff;filter:blur(7px);opacity:.85}
+.fusion-plasma{position:absolute;left:50%;top:50%;width:37%;height:9%;border-radius:50%;background:linear-gradient(90deg,transparent,#ff421b,#fff2c1,#ff5d19,transparent);filter:blur(5px);transform-origin:center}
+.plasma-a{animation:plasma-a 2s ease-in-out infinite alternate}
+.plasma-b{animation:plasma-b 2.4s ease-in-out infinite alternate}
+.plasma-c{animation:plasma-c 1.7s ease-in-out infinite alternate}
+.plasma-d{animation:plasma-d 2.2s ease-in-out infinite alternate}
+@keyframes plasma-a{from{transform:translate(-50%,-50%) rotate(10deg) scaleX(.7)}to{transform:translate(-50%,-50%) rotate(100deg) scaleX(1.2)}}
+@keyframes plasma-b{from{transform:translate(-50%,-50%) rotate(70deg) scaleX(1.1)}to{transform:translate(-50%,-50%) rotate(160deg) scaleX(.6)}}
+@keyframes plasma-c{from{transform:translate(-50%,-50%) rotate(130deg) scaleX(.7)}to{transform:translate(-50%,-50%) rotate(220deg) scaleX(1.2)}}
+@keyframes plasma-d{from{transform:translate(-50%,-50%) rotate(220deg) scaleX(1)}to{transform:translate(-50%,-50%) rotate(310deg) scaleX(.65)}}
+.fusion-particle{position:absolute;width:5px;height:5px;border-radius:50%;background:#a9f7ff;box-shadow:0 0 12px 3px #39cfff}
+.particle-a{left:15%;top:40%;animation:particle-a 3s linear infinite}
+.particle-b{left:75%;top:30%;animation:particle-b 4s linear infinite}
+.particle-c{left:30%;top:75%;animation:particle-c 3.5s linear infinite}
+.particle-d{left:70%;top:72%;background:#ffb34d;box-shadow:0 0 12px #ff5b1b;animation:particle-d 2.8s linear infinite}
+.particle-e{left:48%;top:12%;animation:particle-e 3.7s linear infinite}
+.particle-f{left:20%;top:60%;background:#ffb34d;box-shadow:0 0 12px #ff5b1b;animation:particle-f 4.2s linear infinite}
+@keyframes particle-a{50%{transform:translate(65px,-45px) scale(1.8);opacity:.4}}
+@keyframes particle-b{50%{transform:translate(-70px,80px) scale(.5)}}
+@keyframes particle-c{50%{transform:translate(60px,-70px) scale(1.6);opacity:.3}}
+@keyframes particle-d{50%{transform:translate(-55px,-65px) scale(1.8);opacity:.5}}
+@keyframes particle-e{50%{transform:translate(40px,100px) scale(.6);opacity:.3}}
+@keyframes particle-f{50%{transform:translate(80px,-35px) scale(1.5);opacity:.5}}
+.fusion-caption{max-width:650px;margin:0 auto 35px}
+.fusion-status{display:inline-block;padding:9px 13px;border:1px solid rgba(90,235,180,.3);border-radius:30px;color:#77f5bd;font-size:10px;letter-spacing:2px}
+.fusion-status i{display:inline-block;width:7px;height:7px;margin-right:6px;border-radius:50%;background:#4cffaa;box-shadow:0 0 10px #4cffaa;animation:status-blink 1s infinite alternate}
+@keyframes status-blink{to{opacity:.3}}
+.fusion-caption h3{margin:22px 0 12px;font-size:clamp(23px,4vw,34px)}
+.fusion-caption p,.fusion-card p{color:#a9abc5;line-height:1.8;font-size:14px}
+.fusion-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;max-width:1000px;margin:40px auto;text-align:left}
+.fusion-card{padding:25px;border:1px solid rgba(132,111,255,.22);border-radius:18px;background:linear-gradient(145deg,rgba(25,22,58,.85),rgba(8,8,25,.85));transition:transform .3s,border-color .3s,box-shadow .3s}
+.fusion-card:hover{transform:translateY(-7px);border-color:#8a68ff;box-shadow:0 0 28px rgba(111,75,255,.2)}
+.fusion-card>span{font-size:28px}
+.fusion-card h3{margin:17px 0 10px;font-size:19px}
+.fusion-reaction{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:14px;max-width:900px;margin:35px auto 20px;padding:22px 15px;border:1px solid rgba(255,151,68,.25);border-radius:15px;background:rgba(255,100,25,.045);color:#ffd7a0;font-size:12px;letter-spacing:1px}
+.fusion-reaction b{color:#ff9745;font-size:22px}
+.reaction-result{color:#76eaff}
+.fusion-note{color:#747994;font-size:11px;letter-spacing:1px}
+footer{text-align:center;padding:30px 15px;color:#777b9b;border-top:1px solid #211a3a;font-size:12px}
+@media(max-width:600px){
+.cx-logo{font-size:30px;letter-spacing:5px}
+.cx-sun{width:65px;height:65px}
+.cx-universe{height:500px}
+.cx-o1{width:20%;height:20%}.cx-o2{width:31%;height:31%}.cx-o3{width:42%;height:42%}.cx-o4{width:53%;height:53%}.cx-o5{width:65%;height:65%}.cx-o6{width:76%;height:76%}.cx-o7{width:87%;height:87%}.cx-o8{width:98%;height:98%}
+.cx-nav{gap:8px}
+.cx-button{padding:10px 14px;font-size:13px}
+.fusion-section{padding:55px 14px 45px}
+.fusion-heading h2{letter-spacing:2px}
+.fusion-reactor{width:min(350px,94vw)}
+.fusion-facts{grid-template-columns:1fr;gap:12px}
+.fusion-card{padding:22px}
+.fusion-reaction{gap:10px;font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+.fusion-section *, .fusion-section *::before,.fusion-section *::after{animation-duration:.01ms!important;animation-iteration-count:1!important}
 }
 
-body {
-  background: #02030a;
-  color: white;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden;
-}
-
-.cx-home {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at 50% 45%, rgba(70,40,160,.25), transparent 30%),
-    radial-gradient(circle at 20% 20%, rgba(0,100,255,.12), transparent 25%),
-    #02030a;
-}
-
-/* HEADER */
-.cx-header {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  padding: 35px 15px 10px;
-}
-
-.cx-logo {
-  font-size: 42px;
-  font-weight: 900;
-  letter-spacing: 8px;
-  color: #fff;
-  text-shadow:
-    0 0 10px #7c5cff,
-    0 0 25px #5c35ff,
-    0 0 50px #351cff;
-}
-
-.cx-tagline {
-  margin-top: 10px;
-  color: #aaa;
-  letter-spacing: 3px;
-  font-size: 13px;
-}
-
-/* NAV */
-.cx-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 25px auto;
-  padding: 0 15px;
-}
-
-.cx-button {
-  display: inline-block;
-  padding: 12px 20px;
-  border: 1px solid rgba(130,100,255,.7);
-  border-radius: 30px;
-  color: white;
-  text-decoration: none;
-  background: rgba(30,20,70,.5);
-  transition: .3s;
-}
-
-.cx-button:hover {
-  background: #6c4cff;
-  box-shadow: 0 0 25px #6c4cff;
-  transform: translateY(-3px);
-}
-
-/* UNIVERSE */
-.cx-universe {
-  position: relative;
-  width: 650px;
-  height: 650px;
-  max-width: 95vw;
-  max-height: 95vw;
-  margin: 20px auto;
-}
-
-/* ORBITS */
-.cx-orbit {
-  position: absolute;
-  border: 1px solid rgba(130,130,180,.18);
-  border-radius: 50%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.cx-o1 { width: 18%; height: 18%; }
-.cx-o2 { width: 27%; height: 27%; }
-.cx-o3 { width: 36%; height: 36%; }
-.cx-o4 { width: 45%; height: 45%; }
-.cx-o5 { width: 57%; height: 57%; }
-.cx-o6 { width: 69%; height: 69%; }
-.cx-o7 { width: 81%; height: 81%; }
-.cx-o8 { width: 94%; height: 94%; }
-
-/* SUN */
-.cx-sun {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 95px;
-  height: 95px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff 5%, #ffd83d 35%, #ff8c00 70%, #ff4500);
-  box-shadow:
-    0 0 25px #ffb300,
-    0 0 60px #ff8c00,
-    0 0 110px rgba(255,120,0,.6);
-}
-
-/* PLANETS */
-.cx-planet {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  border-radius: 50%;
-  transform-origin: 0 0;
-}
-
-.cx-p1 {
-  width: 9px;
-  height: 9px;
-  background: #aaa;
-  animation: cx-orbit1 5s linear infinite;
-}
-
-.cx-p2 {
-  width: 13px;
-  height: 13px;
-  background: #d49b62;
-  animation: cx-orbit2 8s linear infinite;
-}
-
-.cx-p3 {
-  width: 15px;
-  height: 15px;
-  background: #3295ff;
-  box-shadow: 0 0 8px #3295ff;
-  animation: cx-orbit3 11s linear infinite;
-}
-
-.cx-p4 {
-  width: 12px;
-  height: 12px;
-  background: #d85c3f;
-  animation: cx-orbit4 14s linear infinite;
-}
-
-.cx-p5 {
-  width: 28px;
-  height: 28px;
-  background: #d7ad78;
-  animation: cx-orbit5 20s linear infinite;
-}
-
-.cx-p6 {
-  width: 30px;
-  height: 30px;
-  background: #e4c982;
-  box-shadow: 0 0 8px #e4c982;
-  animation: cx-orbit6 25s linear infinite;
-}
-
-.cx-p7 {
-  width: 20px;
-  height: 20px;
-  background: #78d8e8;
-  animation: cx-orbit7 30s linear infinite;
-}
-
-.cx-p8 {
-  width: 19px;
-  height: 19px;
-  background: #4677ff;
-  animation: cx-orbit8 35s linear infinite;
-}
-
-/* ORBIT ANIMATIONS */
-@keyframes cx-orbit1 {
-  from { transform: rotate(0deg) translateX(58px); }
-  to { transform: rotate(360deg) translateX(58px); }
-}
-
-@keyframes cx-orbit2 {
-  from { transform: rotate(0deg) translateX(88px); }
-  to { transform: rotate(360deg) translateX(88px); }
-}
-
-@keyframes cx-orbit3 {
-  from { transform: rotate(0deg) translateX(117px); }
-  to { transform: rotate(360deg) translateX(117px); }
-}
-
-@keyframes cx-orbit4 {
-  from { transform: rotate(0deg) translateX(146px); }
-  to { transform: rotate(360deg) translateX(146px); }
-}
-
-@keyframes cx-orbit5 {
-  from { transform: rotate(0deg) translateX(185px); }
-  to { transform: rotate(360deg) translateX(185px); }
-}
-
-@keyframes cx-orbit6 {
-  from { transform: rotate(0deg) translateX(224px); }
-  to { transform: rotate(360deg) translateX(224px); }
-}
-
-@keyframes cx-orbit7 {
-  from { transform: rotate(0deg) translateX(263px); }
-  to { transform: rotate(360deg) translateX(263px); }
-}
-
-@keyframes cx-orbit8 {
-  from { transform: rotate(0deg) translateX(305px); }
-  to { transform: rotate(360deg) translateX(305px); }
-}
-
-/* INFO */
-.cx-info {
-  text-align: center;
-  padding: 20px 20px 60px;
-}
-
-.cx-info h2 {
-  font-size: 30px;
-  margin-bottom: 12px;
-}
-
-.cx-info p {
-  max-width: 650px;
-  margin: auto;
-  color: #aaa;
-  line-height: 1.7;
-}
-
-/* MOBILE */
-@media(max-width:600px) {
-  .cx-logo {
-    font-size: 30px;
-    letter-spacing: 5px;
-  }
-
-  .cx-sun {
-    width: 65px;
-    height: 65px;
-  }
-
-  .cx-universe {
-    height: 500px;
-  }
-
-  .cx-o1 { width: 20%; height: 20%; }
-  .cx-o2 { width: 31%; height: 31%; }
-  .cx-o3 { width: 42%; height: 42%; }
-  .cx-o4 { width: 53%; height: 53%; }
-  .cx-o5 { width: 65%; height: 65%; }
-  .cx-o6 { width: 76%; height: 76%; }
-  .cx-o7 { width: 87%; height: 87%; }
-  .cx-o8 { width: 98%; height: 98%; }
-
-  .cx-nav {
-    gap: 8px;
-  }
-
-  .cx-button {
-    padding: 10px 14px;
-    font-size: 13px;
-  }
-}
+/* ANCHOR OFFSET */
+#fusion{scroll-margin-top:20px}
 </style>
 </head>
-
 <body>
 
 <div class="cx-home">
 
-  <header class="cx-header">
-    <div class="cx-logo">COSMICX</div>
-    <div class="cx-tagline">EXPLORE • DISCOVER • BEYOND</div>
-  </header>
+<header class="cx-header">
+  <div class="cx-logo">COSMICX</div>
+  <div class="cx-tagline">EXPLORE • DISCOVER • BEYOND</div>
+</header>
 
-  <nav class="cx-nav">
-    <a href="planets.html" class="cx-button">🪐 Planets</a>
-    <a href="black-holes.html" class="cx-button">🕳️ Black Holes</a>
-    <a href="galaxies.html" class="cx-button">🌌 Galaxies</a>
-    <a href="missions.html" class="cx-button">🚀 Missions</a>
-    <a href="discoveries.html" class="cx-button">🔭 Discoveries</a>
-  </nav>
+<nav class="cx-nav">
+  <a href="#home" class="cx-button">🏠 Home</a>
+  <a href="planets.html" class="cx-button">🪐 Planets</a>
+  <a href="black-holes.html" class="cx-button">🕳️ Black Holes</a>
+  <a href="galaxies.html" class="cx-button">🌌 Galaxies</a>
+  <a href="missions.html" class="cx-button">🚀 Missions</a>
+  <a href="discoveries.html" class="cx-button">🔭 Discoveries</a>
+  <a href="#fusion" class="cx-button">⚛️ Nuclear Fusion</a>
+</nav>
 
-  <section class="cx-universe">
+<section class="cx-universe" id="home">
+  <div class="cx-orbit cx-o1"></div>
+  <div class="cx-orbit cx-o2"></div>
+  <div class="cx-orbit cx-o3"></div>
+  <div class="cx-orbit cx-o4"></div>
+  <div class="cx-orbit cx-o5"></div>
+  <div class="cx-orbit cx-o6"></div>
+  <div class="cx-orbit cx-o7"></div>
+  <div class="cx-orbit cx-o8"></div>
+  <div class="cx-sun"></div>
+  <div class="cx-planet cx-p1"></div>
+  <div class="cx-planet cx-p2"></div>
+  <div class="cx-planet cx-p3"></div>
+  <div class="cx-planet cx-p4"></div>
+  <div class="cx-planet cx-p5"></div>
+  <div class="cx-planet cx-p6"></div>
+  <div class="cx-planet cx-p7"></div>
+  <div class="cx-planet cx-p8"></div>
+</section>
 
-    <div class="cx-orbit cx-o1"></div>
-    <div class="cx-orbit cx-o2"></div>
-    <div class="cx-orbit cx-o3"></div>
-    <div class="cx-orbit cx-o4"></div>
-    <div class="cx-orbit cx-o5"></div>
-    <div class="cx-orbit cx-o6"></div>
-    <div class="cx-orbit cx-o7"></div>
-    <div class="cx-orbit cx-o8"></div>
-
-    <div class="cx-sun"></div>
-
-    <div class="cx-planet cx-p1"></div>
-    <div class="cx-planet cx-p2"></div>
-    <div class="cx-planet cx-p3"></div>
-    <div class="cx-planet cx-p4"></div>
-    <div class="cx-planet cx-p5"></div>
-    <div class="cx-planet cx-p6"></div>
-    <div class="cx-planet cx-p7"></div>
-    <div class="cx-planet cx-p8"></div>
-
-  </section>
-
-  <section class="cx-info">
-    <h2>Welcome to COSMICX</h2>
-    <p>
-      Explore the wonders of our universe — from planets and galaxies
-      to black holes, space missions and the discoveries that changed
-      our understanding of space.
-    </p>
-  </section>
+<section class="cx-info">
+  <h2>Welcome to COSMICX</h2>
+  <p>Explore the wonders of our universe — from planets and galaxies to black holes, space missions and discoveries that changed our understanding of space.</p>
+</section>
 
 </div>
 
+<!-- NUCLEAR FUSION ANIMATION -->
+<section class="fusion-section" id="fusion">
+  <div class="fusion-heading">
+    <span class="fusion-tag">✦ COSMICX SCIENCE LAB</span>
+    <h2>NUCLEAR <span>FUSION</span></h2>
+    <p>The power that makes stars shine.</p>
+  </div>
+
+  <div class="fusion-reactor" aria-label="CSS animated nuclear fusion visual">
+    <div class="fusion-glow"></div>
+    <div class="fusion-ring fusion-ring-1"></div>
+    <div class="fusion-ring fusion-ring-2"></div>
+    <div class="fusion-ring fusion-ring-3"></div>
+    <div class="fusion-ring fusion-ring-4"></div>
+    <div class="fusion-plasma plasma-a"></div>
+    <div class="fusion-plasma plasma-b"></div>
+    <div class="fusion-plasma plasma-c"></div>
+    <div class="fusion-plasma plasma-d"></div>
+    <div class="fusion-core"><div class="fusion-core-light"></div></div>
+    <span class="fusion-particle particle-a"></span>
+    <span class="fusion-particle particle-b"></span>
+    <span class="fusion-particle particle-c"></span>
+    <span class="fusion-particle particle-d"></span>
+    <span class="fusion-particle particle-e"></span>
+    <span class="fusion-particle particle-f"></span>
+  </div>
+
+  <div class="fusion-caption">
+    <span class="fusion-status"><i></i> PLASMA VISUAL SIMULATION</span>
+    <h3>Where Matter Becomes Energy</h3>
+    <p>Nuclear fusion combines light atomic nuclei under extreme conditions. This is the process that powers the Sun and other stars.</p>
+  </div>
+
+  <div class="fusion-facts">
+    <article class="fusion-card">
+      <span>🔥</span>
+      <h3>Extreme Heat</h3>
+      <p>Fusion plasma in experimental reactors can reach temperatures above 100 million degrees Celsius.</p>
+    </article>
+    <article class="fusion-card">
+      <span>🧲</span>
+      <h3>Magnetic Fields</h3>
+      <p>Powerful magnetic fields can confine extremely hot plasma away from reactor walls.</p>
+    </article>
+    <article class="fusion-card">
+      <span>⚡</span>
+      <h3>Energy Release</h3>
+      <p>When light nuclei fuse, a small amount of mass is converted into energy.</p>
+    </article>
+  </div>
+
+  <div class="fusion-reaction">
+    <span>DEUTERIUM</span><b>+</b><span>TRITIUM</span><b>→</b>
+    <span class="reaction-result">HELIUM + NEUTRON + ENERGY</span>
+  </div>
+
+  <p class="fusion-note">CSS animated visual • Educational science project</p>
+</section>
+
+<footer>
+  <p>COSMICX — Explore Beyond the Stars</p>
+  <p>© 2026 CosmicX | Educational Space Project</p>
+</footer>
+
 </body>
-  </html>
+</html>
+
