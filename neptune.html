@@ -1,178 +1,340 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>COSMICX | Neptune</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neptune - CosmicX</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#02030a;color:white;font-family:Arial,sans-serif}
-
-.cx-page{
-min-height:100vh;padding:35px 20px 70px;
-background:radial-gradient(circle at 50% 15%,rgba(40,90,255,.2),transparent 32%),#02030a;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.cx-header{text-align:center;margin-bottom:35px}
-
-.cx-logo{
-font-size:38px;font-weight:900;letter-spacing:7px;
-text-shadow:0 0 12px #765cff,0 0 30px #5135ff;
+body {
+    font-family: Arial, sans-serif;
+    background: #080a18;
+    color: white;
+    line-height: 1.7;
 }
 
-.cx-title{margin-top:18px;font-size:44px}
-.cx-subtitle{margin-top:10px;color:#aaa}
-
-.cx-planet{
-width:235px;height:235px;margin:35px auto 45px;
-border-radius:50%;
-background:radial-gradient(circle at 35% 28%,#86b7ff,#386bd6 45%,#18358f 70%,#071342);
-box-shadow:inset -38px -28px 45px rgba(0,0,0,.55),0 0 45px rgba(50,90,255,.35);
+.cx-page {
+    min-height: 100vh;
+    padding: 25px 7%;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 80% 30%, #1768ff40, transparent 36%),
+        linear-gradient(135deg, #060817, #0b1028, #030610);
 }
 
-.cx-content{max-width:900px;margin:auto}
-
-.cx-section{
-margin-top:35px;padding:28px;
-border:1px solid rgba(70,110,255,.28);
-border-radius:20px;background:rgba(15,18,40,.7);
+.cx-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 45px;
 }
 
-.cx-section h2{font-size:27px;margin-bottom:14px}
-.cx-section p{color:#aaa;line-height:1.8;font-size:15px}
-.cx-list{margin-top:15px;padding-left:20px;color:#aaa;line-height:2}
-
-.cx-facts{
-max-width:900px;margin:30px auto;
-display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+.cx-logo {
+    color: #62a5ff;
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 3px;
 }
 
-.cx-fact{
-padding:22px;text-align:center;
-border:1px solid rgba(70,110,255,.3);
-border-radius:18px;background:rgba(15,18,40,.7);
-transition:.3s;
+.cx-back {
+    color: white;
+    text-decoration: none;
+    border: 1px solid #62a5ff;
+    padding: 9px 18px;
+    border-radius: 25px;
+    transition: .3s;
 }
 
-.cx-fact:hover{
-transform:translateY(-6px);
-border-color:#668cff;
-box-shadow:0 0 25px rgba(50,90,255,.3);
+.cx-back:hover {
+    background: #62a5ff;
+    color: #071020;
+    box-shadow: 0 0 18px #62a5ff80;
 }
 
-.cx-fact h3{margin-bottom:10px}
-.cx-fact p{color:#999;font-size:14px}
-
-.cx-button{
-display:block;width:fit-content;margin:45px auto 0;
-padding:12px 24px;border-radius:25px;border:1px solid #604cff;
-color:white;text-decoration:none;background:rgba(50,35,120,.5);
-transition:.3s;
+.cx-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
 }
 
-.cx-button:hover{background:#654cff;box-shadow:0 0 25px #654cff;transform:translateY(-3px)}
+.cx-tag {
+    color: #62a5ff;
+    font-size: 13px;
+    letter-spacing: 4px;
+}
 
-@media(max-width:600px){
-.cx-logo{font-size:28px}
-.cx-title{font-size:35px}
-.cx-planet{width:180px;height:180px}
-.cx-section{padding:22px}
-.cx-facts{grid-template-columns:1fr}
+.cx-title {
+    font-size: clamp(48px, 7vw, 76px);
+    line-height: 1.2;
+    margin: 12px 0 20px;
+    color: #e6f0ff;
+}
+
+.cx-description {
+    color: #c5cde0;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.cx-planet-area {
+    min-height: 390px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.cx-orbit {
+    position: absolute;
+    width: 115%;
+    height: 36%;
+    border: 1px solid #62a5ff45;
+    border-radius: 50%;
+    transform: rotate(-25deg);
+    animation: orbitGlow 4s ease-in-out infinite alternate;
+}
+
+.cx-planet {
+    width: min(285px, 72vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 30% 20%, #c4eaff 0%, transparent 13%),
+        radial-gradient(ellipse at 65% 65%, #061b74 0%, transparent 35%),
+        repeating-linear-gradient(
+            160deg,
+            #1757ce 0px,
+            #1757ce 18px,
+            #237be5 25px,
+            #1041a8 34px,
+            #3897f5 42px,
+            #12358d 50px
+        );
+    box-shadow:
+        inset -38px -15px 58px #020515,
+        inset 12px 5px 25px #b9e7ff99,
+        0 0 35px #2579ff50,
+        0 0 70px #2579ff25;
+    animation: neptuneRotate 20s linear infinite;
+}
+
+.cx-planet::before {
+    content: "";
+    position: absolute;
+    inset: -10%;
+    background:
+        radial-gradient(
+            ellipse at 64% 58%,
+            #071744 0 7%,
+            #174ca9 9%,
+            transparent 16%
+        ),
+        radial-gradient(
+            ellipse at 35% 40%,
+            #b7e9ff45,
+            transparent 25%
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 18px,
+            #ffffff18 20px 22px,
+            transparent 25px 39px
+        );
+    animation: stormMove 10s ease-in-out infinite alternate;
+}
+
+.cx-planet::after {
+    content: "";
+    position: absolute;
+    top: 6%;
+    left: 28%;
+    width: 36%;
+    height: 10%;
+    border-radius: 50%;
+    background: #d6f2ff;
+    filter: blur(7px);
+}
+
+.cx-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.cx-card {
+    background: #ffffff09;
+    border: 1px solid #ffffff1c;
+    padding: 18px;
+    border-radius: 14px;
+    transition: .3s;
+}
+
+.cx-card:hover {
+    transform: translateY(-5px);
+    border-color: #62a5ff;
+    box-shadow: 0 8px 25px #2579ff20;
+}
+
+.cx-card small {
+    display: block;
+    color: #aab8d6;
+    margin-bottom: 5px;
+}
+
+.cx-card strong {
+    color: #78b4ff;
+    font-size: 16px;
+}
+
+.cx-section-title {
+    font-size: 25px;
+    margin: 35px 0 15px;
+    color: #78b4ff;
+}
+
+.cx-details {
+    color: #c5cde0;
+    padding-left: 20px;
+}
+
+.cx-details li {
+    margin: 10px 0;
+}
+
+.cx-footer {
+    text-align: center;
+    border-top: 1px solid #ffffff1c;
+    margin-top: 45px;
+    padding: 20px 0 5px;
+    color: #8999b8;
+    font-size: 13px;
+}
+
+@keyframes neptuneRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes stormMove {
+    from { transform: translateX(-3%); }
+    to { transform: translateX(3%); }
+}
+
+@keyframes orbitGlow {
+    from { opacity: .45; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 760px) {
+    .cx-content {
+        grid-template-columns: 1fr;
+    }
+
+    .cx-planet-area {
+        grid-row: 1;
+        min-height: 320px;
+    }
+
+    .cx-page {
+        padding: 22px 5%;
+    }
 }
 </style>
 </head>
 
 <body>
-
 <div class="cx-page">
 
-<header class="cx-header">
-<div class="cx-logo">COSMICX</div>
-<h1 class="cx-title">Neptune</h1>
-<p class="cx-subtitle">The Windy Blue World</p>
-</header>
+    <header class="cx-header">
+        <div class="cx-logo">COSMICX</div>
+        <a class="cx-back" href="planets.html">← Back to Planets</a>
+    </header>
 
-<div class="cx-planet"></div>
+    <main class="cx-content">
 
-<section class="cx-content">
+        <section>
+            <div class="cx-tag">The Blue Giant</div>
+            <h1 class="cx-title">NEPTUNE</h1>
 
-<div class="cx-section">
-<h2>About Neptune</h2>
-<p>
-Neptune is the eighth and most distant major planet from the Sun.
-It is an ice giant with a deep blue appearance and a dynamic
-atmosphere.
-</p>
-<p style="margin-top:15px">
-Neptune is extremely far from the Sun and takes many decades to
-complete a single orbit.
-</p>
-</div>
+            <p class="cx-description">
+                Neptune is the eighth and farthest planet from the Sun.
+                This distant ice giant is known for its deep-blue appearance,
+                extremely powerful winds and dynamic atmosphere. It takes
+                nearly 165 Earth years to complete one orbit around the Sun.
+            </p>
 
-<div class="cx-section">
-<h2>Powerful Winds</h2>
-<p>
-Neptune is known for having some of the fastest winds measured
-in the Solar System. Its atmosphere contains large storms and
-rapidly changing cloud formations.
-</p>
-</div>
+            <h2 class="cx-section-title">Planet Facts</h2>
 
-<div class="cx-section">
-<h2>Atmosphere</h2>
-<p>
-Neptune's atmosphere is primarily hydrogen and helium, with
-methane contributing to its blue colour. Beneath the atmosphere
-lies a deep layer rich in water, ammonia and other compounds.
-</p>
-</div>
+            <div class="cx-facts">
+                <div class="cx-card">
+                    <small>Distance from Sun</small>
+                    <strong>4.5 Billion km</strong>
+                </div>
 
-<div class="cx-section">
-<h2>Moons & Rings</h2>
-<p>
-Neptune has a collection of known moons, including Triton,
-its largest moon. Neptune also possesses a faint and dusty
-ring system.
-</p>
-</div>
+                <div class="cx-card">
+                    <small>Diameter</small>
+                    <strong>49,244 km</strong>
+                </div>
 
-<div class="cx-section">
-<h2>Exploring Neptune</h2>
-<p>
-Voyager 2 remains the only spacecraft to have made a close flyby
-of Neptune. The mission revealed detailed information about its
-atmosphere, rings and moons.
-</p>
-</div>
+                <div class="cx-card">
+                    <small>Day Length</small>
+                    <strong>About 16.1 Hours</strong>
+                </div>
 
-<div class="cx-section">
-<h2>Interesting Facts</h2>
-<ul class="cx-list">
-<li>Neptune is the eighth planet from the Sun.</li>
-<li>It is an ice giant.</li>
-<li>It has extremely powerful atmospheric winds.</li>
-<li>Triton is Neptune's largest moon.</li>
-<li>Neptune has faint rings.</li>
-<li>One Neptune year lasts about 165 Earth years.</li>
-</ul>
-</div>
+                <div class="cx-card">
+                    <small>Known Moons</small>
+                    <strong>16</strong>
+                </div>
 
-</section>
+                <div class="cx-card">
+                    <small>Year Length</small>
+                    <strong>165 Earth Years</strong>
+                </div>
 
-<section class="cx-facts">
+                <div class="cx-card">
+                    <small>Planet Type</small>
+                    <strong>Ice Giant</strong>
+                </div>
+            </div>
+        </section>
 
-<div class="cx-fact"><h3>🔵 Position</h3><p>8th planet from the Sun</p></div>
-<div class="cx-fact"><h3>🧊 Type</h3><p>Ice giant</p></div>
-<div class="cx-fact"><h3>🌙 Moon</h3><p>Triton is the largest</p></div>
-<div class="cx-fact"><h3>💨 Winds</h3><p>Extremely powerful</p></div>
-<div class="cx-fact"><h3>⏱️ Day</h3><p>About 16 hours</p></div>
-<div class="cx-fact"><h3>☀️ Year</h3><p>About 165 Earth years</p></div>
+        <section class="cx-planet-area">
+            <div class="cx-orbit"></div>
+            <div class="cx-planet"></div>
+        </section>
 
-</section>
+    </main>
 
-<a href="planets.html" class="cx-button">← Back to Planets</a>
+    <section>
+        <h2 class="cx-section-title">Explore Neptune</h2>
+
+        <ul class="cx-details">
+            <li><strong>Extreme Winds:</strong> Neptune has some of the fastest winds measured on any planet.</li>
+            <li><strong>Deep Blue World:</strong> Methane absorbs red light, contributing to its blue appearance.</li>
+            <li><strong>Ice Giant:</strong> Its interior contains hot, dense materials including water, ammonia and methane.</li>
+            <li><strong>Triton:</strong> Neptune's largest moon travels in a retrograde orbit.</li>
+            <li><strong>Long Year:</strong> One Neptune year lasts about 165 Earth years.</li>
+        </ul>
+    </section>
+
+    <footer class="cx-footer">
+        CosmicX — Explore the Universe
+    </footer>
 
 </div>
 </body>
 </html>
+
