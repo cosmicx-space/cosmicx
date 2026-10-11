@@ -1,225 +1,329 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>COSMICX | Mars</title>
+<title>CosmicX | Mars 3D</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-background:#02030a;
-color:white;
-font-family:Arial,sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.cx-page{
-min-height:100vh;
-padding:35px 20px 70px;
-background:
-radial-gradient(circle at 50% 15%,rgba(255,60,20,.18),transparent 32%),
-#02030a;
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  color: white;
+  background:
+    radial-gradient(ellipse at 50% 45%, #251019 0%, #090711 48%, #02030a 100%);
 }
 
-.cx-header{text-align:center;margin-bottom:35px}
-
-.cx-logo{
-font-size:38px;
-font-weight:900;
-letter-spacing:7px;
-text-shadow:0 0 12px #765cff,0 0 30px #5135ff;
+.space {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 25px 7%;
 }
 
-.cx-title{margin-top:18px;font-size:44px}
-
-.cx-subtitle{margin-top:10px;color:#aaa}
-
-.cx-planet{
-width:235px;
-height:235px;
-margin:35px auto 45px;
-border-radius:50%;
-background:
-radial-gradient(circle at 35% 28%,#ffad83,#d85b35 38%,#8f2817 70%,#3b0d08);
-box-shadow:
-inset -38px -28px 45px rgba(0,0,0,.55),
-0 0 40px rgba(255,70,30,.3);
+/* Stars */
+.space::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 10% 20%, white 98%, transparent),
+    radial-gradient(1px 1px at 30% 70%, white 98%, transparent),
+    radial-gradient(2px 2px at 80% 25%, #ffd8d0 98%, transparent),
+    radial-gradient(1px 1px at 65% 85%, white 98%, transparent),
+    radial-gradient(2px 2px at 90% 60%, white 98%, transparent),
+    radial-gradient(1px 1px at 45% 35%, white 98%, transparent);
+  background-size: 250px 220px;
+  opacity: .8;
+  animation: stars 18s linear infinite;
 }
 
-.cx-content{max-width:900px;margin:auto}
-
-.cx-section{
-margin-top:35px;
-padding:28px;
-border:1px solid rgba(255,90,50,.25);
-border-radius:20px;
-background:rgba(20,15,30,.7);
+@keyframes stars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-220px); }
 }
 
-.cx-section h2{font-size:27px;margin-bottom:14px}
-
-.cx-section p{
-color:#aaa;
-line-height:1.8;
-font-size:15px;
+nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
-.cx-list{
-margin-top:15px;
-padding-left:20px;
-color:#aaa;
-line-height:2;
+.logo {
+  color: #ff684d;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
-.cx-facts{
-max-width:900px;
-margin:30px auto;
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
+nav a {
+  color: white;
+  text-decoration: none;
+  border: 1px solid #ff684d;
+  border-radius: 25px;
+  padding: 10px 18px;
+  transition: .3s;
 }
 
-.cx-fact{
-padding:22px;
-text-align:center;
-border:1px solid rgba(255,90,50,.3);
-border-radius:18px;
-background:rgba(25,18,35,.7);
-transition:.3s;
+nav a:hover {
+  background: #ff684d;
+  box-shadow: 0 0 20px #ff684d;
 }
 
-.cx-fact:hover{
-transform:translateY(-6px);
-border-color:#ff7355;
-box-shadow:0 0 25px rgba(255,70,30,.25);
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 45px;
+  min-height: 78vh;
 }
 
-.cx-fact h3{margin-bottom:10px}
-
-.cx-fact p{color:#999;font-size:14px;line-height:1.5}
-
-.cx-button{
-display:block;
-width:fit-content;
-margin:45px auto 0;
-padding:12px 24px;
-border-radius:25px;
-border:1px solid #604cff;
-color:white;
-text-decoration:none;
-background:rgba(50,35,120,.5);
-transition:.3s;
+.info {
+  max-width: 470px;
 }
 
-.cx-button:hover{
-background:#654cff;
-box-shadow:0 0 25px #654cff;
-transform:translateY(-3px);
+.tag {
+  color: #ff806b;
+  letter-spacing: 5px;
+  font-size: 12px;
 }
 
-@media(max-width:600px){
-.cx-logo{font-size:28px}
-.cx-title{font-size:35px}
-.cx-planet{width:180px;height:180px}
-.cx-section{padding:22px}
-.cx-facts{grid-template-columns:1fr}
+h1 {
+  font-size: clamp(55px, 8vw, 95px);
+  margin: 15px 0;
+  text-shadow: 0 0 30px #ff3c2860;
+}
+
+.info p {
+  color: #c4bbc5;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.fact {
+  border: 1px solid #ffffff24;
+  background: #ffffff09;
+  padding: 14px;
+  min-width: 120px;
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+}
+
+.fact small {
+  color: #b9aab7;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.fact strong {
+  color: #ff8b73;
+}
+
+/* 3D Mars */
+.planet-scene {
+  position: relative;
+  width: min(43vw, 430px);
+  min-width: 270px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  perspective: 900px;
+}
+
+.orbit {
+  position: absolute;
+  width: 115%;
+  height: 36%;
+  border: 1px solid #ff886b45;
+  border-radius: 50%;
+  transform: rotate(-25deg);
+  box-shadow: 0 0 20px #ff573315;
+}
+
+.mars {
+  position: relative;
+  width: 76%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  background:
+    radial-gradient(ellipse at 28% 22%, #ffd1a0 0%, transparent 13%),
+    radial-gradient(ellipse at 70% 70%, #641d16 0%, transparent 32%),
+    radial-gradient(ellipse at 35% 60%, #b6472b 0%, transparent 28%),
+    repeating-linear-gradient(
+      12deg,
+      #b84b31 0px,
+      #b84b31 13px,
+      #8f3025 17px,
+      #d66a42 24px,
+      #76251e 31px
+    );
+  box-shadow:
+    inset -45px -20px 65px #09050d,
+    inset 12px 8px 24px #ffb28b80,
+    0 0 25px #ff573344,
+    0 0 70px #f34c292c;
+  animation: rotateMars 18s linear infinite;
+}
+
+.mars::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 30% 25%, transparent 0 5%, #67251e 6% 7%, transparent 8%),
+    radial-gradient(ellipse at 60% 42%, transparent 0 7%, #6d261f 8% 9%, transparent 10%),
+    radial-gradient(ellipse at 45% 65%, transparent 0 4%, #6d261f 5% 7%, transparent 8%),
+    radial-gradient(ellipse at 72% 70%, transparent 0 5%, #e38a58 6% 8%, transparent 9%),
+    repeating-linear-gradient(90deg, #ffffff08 0 2px, transparent 3px 35px);
+  animation: surface 18s linear infinite;
+}
+
+.mars::after {
+  content: "";
+  position: absolute;
+  top: 3%;
+  left: 27%;
+  width: 42%;
+  height: 13%;
+  border-radius: 50%;
+  background: #f3d7bb;
+  filter: blur(5px);
+  opacity: .85;
+  transform: rotate(-15deg);
+}
+
+@keyframes rotateMars {
+  from { transform: rotateY(0deg) rotate(-8deg); }
+  to { transform: rotateY(360deg) rotate(-8deg); }
+}
+
+@keyframes surface {
+  from { transform: translateX(-8%); }
+  to { transform: translateX(8%); }
+}
+
+.glow {
+  position: absolute;
+  width: 80%;
+  height: 18%;
+  bottom: 7%;
+  border-radius: 50%;
+  background: #f04d3020;
+  filter: blur(30px);
+}
+
+.caption {
+  position: absolute;
+  bottom: -8%;
+  color: #d4a39a;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .content {
+    flex-direction: column;
+    text-align: center;
+    padding: 65px 0 55px;
+  }
+
+  .info {
+    order: 2;
+  }
+
+  .planet-scene {
+    order: 1;
+    width: 85%;
+    min-width: 230px;
+  }
+
+  .facts {
+    justify-content: center;
+  }
+
+  .tag {
+    letter-spacing: 3px;
+  }
 }
 </style>
 </head>
 
 <body>
+<div class="space">
 
-<div class="cx-page">
+  <nav>
+    <div class="logo">COSMICX</div>
+    <a href="planets.html">← Back to Planets</a>
+  </nav>
 
-<header class="cx-header">
-<div class="cx-logo">COSMICX</div>
-<h1 class="cx-title">Mars</h1>
-<p class="cx-subtitle">The Red Planet</p>
-</header>
+  <main class="content">
 
-<div class="cx-planet"></div>
+    <section class="info">
+      <div class="tag">THE RED PLANET</div>
+      <h1>MARS</h1>
 
-<section class="cx-content">
+      <p>
+        Explore Mars, a cold desert world with rusty-red landscapes,
+        giant volcanoes and ancient valleys. Discover the planet
+        that may hold clues about life beyond Earth.
+      </p>
 
-<div class="cx-section">
-<h2>About Mars</h2>
-<p>
-Mars is the fourth planet from the Sun and is often called the
-Red Planet because iron minerals in its soil have oxidized,
-giving the surface its reddish appearance.
-</p>
-<p style="margin-top:15px">
-Mars is a cold, rocky world with mountains, valleys, volcanoes,
-impact craters and polar ice caps. It has been one of the most
-extensively explored planets beyond Earth.
-</p>
+      <div class="facts">
+        <div class="fact">
+          <small>Distance from Sun</small>
+          <strong>228M km</strong>
+        </div>
+
+        <div class="fact">
+          <small>Day Length</small>
+          <strong>24.6 hours</strong>
+        </div>
+
+        <div class="fact">
+          <small>Moons</small>
+          <strong>Phobos, Deimos</strong>
+        </div>
+
+        <div class="fact">
+          <small>Planet Type</small>
+          <strong>Terrestrial</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="planet-scene">
+      <div class="orbit"></div>
+      <div class="glow"></div>
+      <div class="mars"></div>
+      <div class="caption">3D PLANET VIEW · MARS</div>
+    </section>
+
+  </main>
 </div>
-
-<div class="cx-section">
-<h2>Surface & Landscape</h2>
-<p>
-Mars has one of the largest volcanoes known in the Solar System,
-Olympus Mons. It also contains Valles Marineris, a gigantic
-canyon system stretching thousands of kilometres across the surface.
-</p>
-</div>
-
-<div class="cx-section">
-<h2>Atmosphere</h2>
-<p>
-Mars has a very thin atmosphere composed mostly of carbon dioxide.
-Because the atmosphere is so thin, the planet cannot retain heat
-as efficiently as Earth.
-</p>
-</div>
-
-<div class="cx-section">
-<h2>Water on Mars</h2>
-<p>
-Evidence shows that liquid water existed on ancient Mars.
-Today, water is mainly found as ice beneath the surface and
-around the polar regions.
-</p>
-</div>
-
-<div class="cx-section">
-<h2>Exploring Mars</h2>
-<p>
-Mars has been explored by orbiters, landers and rovers.
-Robotic missions have studied its rocks, atmosphere, climate
-and geological history while searching for clues about its past.
-</p>
-</div>
-
-<div class="cx-section">
-<h2>Interesting Facts</h2>
-<ul class="cx-list">
-<li>Mars is the fourth planet from the Sun.</li>
-<li>It has two small moons: Phobos and Deimos.</li>
-<li>Olympus Mons is the largest known volcano in the Solar System.</li>
-<li>Mars has polar ice caps.</li>
-<li>A Martian day is called a sol.</li>
-<li>Its reddish colour comes from iron-rich minerals.</li>
-</ul>
-</div>
-
-</section>
-
-<section class="cx-facts">
-
-<div class="cx-fact"><h3>🔴 Position</h3><p>4th planet from the Sun</p></div>
-<div class="cx-fact"><h3>🌙 Moons</h3><p>2 known moons</p></div>
-<div class="cx-fact"><h3>🌋 Volcano</h3><p>Olympus Mons</p></div>
-<div class="cx-fact"><h3>⏱️ Day</h3><p>About 24.6 hours</p></div>
-<div class="cx-fact"><h3>☀️ Year</h3><p>About 687 Earth days</p></div>
-<div class="cx-fact"><h3>🪨 Type</h3><p>Rocky terrestrial planet</p></div>
-
-</section>
-
-<a href="planets.html" class="cx-button">← Back to Planets</a>
-
-</div>
-
 </body>
-  </html>
+</html>
+
