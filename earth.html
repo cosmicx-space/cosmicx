@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,569 +7,516 @@
 <title>COSMICX | Earth</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  background: #02030a;
-  color: white;
-  font-family: Arial, sans-serif;
+body{
+  background:#02030a;
+  color:white;
+  font-family:Arial,sans-serif;
 }
 
-.cx-page {
-  min-height: 100vh;
-  padding: 35px 20px 70px;
+.cx-page{
+  min-height:100vh;
+  padding:35px 20px 60px;
+  position:relative;
+  overflow:hidden;
   background:
-    radial-gradient(circle at 50% 15%, rgba(20,110,255,.20), transparent 32%),
+    radial-gradient(circle at 50% 22%,rgba(30,100,255,.2),transparent 36%),
     #02030a;
 }
 
+/* STAR FIELD */
+.cx-stars,
+.cx-stars::before,
+.cx-stars::after{
+  position:absolute;
+  inset:0;
+  content:"";
+  pointer-events:none;
+  background-image:
+    radial-gradient(2px 2px at 10% 20%,#fff,transparent),
+    radial-gradient(1px 1px at 30% 60%,#fff,transparent),
+    radial-gradient(2px 2px at 80% 25%,#b9dcff,transparent),
+    radial-gradient(1px 1px at 70% 75%,#fff,transparent),
+    radial-gradient(2px 2px at 45% 40%,#8ebcff,transparent),
+    radial-gradient(1px 1px at 90% 60%,#fff,transparent);
+  background-size:300px 260px;
+  animation:starsMove 40s linear infinite;
+}
+
+.cx-stars::before{
+  opacity:.4;
+  animation:twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes starsMove{
+  from{background-position:0 0}
+  to{background-position:300px 260px}
+}
+
+@keyframes twinkle{
+  from{opacity:.15}
+  to{opacity:.8}
+}
+
 /* HEADER */
-
-.cx-header {
-  text-align: center;
-  margin-bottom: 35px;
+.cx-header{
+  position:relative;
+  z-index:1;
+  text-align:center;
+  margin-bottom:20px;
 }
 
-.cx-logo {
-  font-size: 38px;
-  font-weight: 900;
-  letter-spacing: 7px;
-  text-shadow:
-    0 0 12px #765cff,
-    0 0 30px #5135ff;
+.cx-logo{
+  font-size:38px;
+  font-weight:900;
+  letter-spacing:7px;
+  color:#bde7ff;
+  text-shadow:0 0 12px #168bff,0 0 30px #0755ff;
 }
 
-.cx-title {
-  margin-top: 18px;
-  font-size: 44px;
+.cx-title{
+  margin-top:18px;
+  font-size:42px;
+  letter-spacing:2px;
 }
 
-.cx-subtitle {
-  margin-top: 10px;
-  color: #aaa;
-  letter-spacing: 1px;
+.cx-subtitle{
+  margin-top:10px;
+  color:#9abce8;
+  letter-spacing:1px;
+  line-height:1.6;
 }
 
-/* EARTH */
+/* EARTH STAGE */
+.cx-space{
+  height:340px;
+  max-width:700px;
+  margin:5px auto 25px;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  perspective:800px;
+}
 
-.cx-earth {
-  position: relative;
-  width: 235px;
-  height: 235px;
-  margin: 35px auto 45px;
-  border-radius: 50%;
-  overflow: hidden;
+/* ORBIT */
+.cx-orbit{
+  position:absolute;
+  width:310px;
+  height:100px;
+  border:1px solid rgba(74,160,255,.45);
+  border-radius:50%;
+  transform:rotate(-20deg);
+  animation:orbitPulse 5s ease-in-out infinite alternate;
+}
 
+@keyframes orbitPulse{
+  from{opacity:.3;transform:rotate(-20deg) scale(.95)}
+  to{opacity:.8;transform:rotate(-20deg) scale(1.06)}
+}
+
+/* EARTH PLANET */
+.cx-planet{
+  width:220px;
+  height:220px;
+  position:relative;
+  z-index:1;
+  overflow:hidden;
+  border-radius:50%;
   background:
-    radial-gradient(
-      circle at 35% 28%,
-      #55d7ff 0%,
-      #258ed6 30%,
-      #1261a0 58%,
-      #06264c 100%
-    );
-
+    radial-gradient(ellipse at 28% 28%,rgba(255,255,255,.8),transparent 9%),
+    radial-gradient(ellipse at 35% 35%,#64c85e 0 8%,transparent 9%),
+    radial-gradient(ellipse at 62% 28%,#77cb64 0 10%,transparent 11%),
+    radial-gradient(ellipse at 64% 65%,#50b952 0 12%,transparent 13%),
+    radial-gradient(ellipse at 35% 70%,#b2d86a 0 7%,transparent 8%),
+    radial-gradient(circle at 35% 30%,#60c7ff,#1265d8 43%,#05347c 75%,#010a2b);
   box-shadow:
-    inset -35px -25px 45px rgba(0,0,0,.55),
-    0 0 35px rgba(40,150,255,.35);
+    inset -35px -22px 50px rgba(0,0,0,.85),
+    inset 10px 5px 25px rgba(255,255,255,.35),
+    0 0 25px rgba(65,163,255,.7),
+    0 0 65px rgba(20,100,255,.28);
+  animation:planetRotate 18s linear infinite,planetGlow 4s ease-in-out infinite alternate;
 }
 
-/* LAND */
-
-.cx-land {
-  position: absolute;
-  border-radius: 50%;
-  background: #3c9b55;
-  opacity: .9;
+/* CONTINENT TEXTURE */
+.cx-planet::before{
+  content:"";
+  position:absolute;
+  inset:-10%;
+  width:120%;
+  height:120%;
+  border-radius:50%;
+  background:
+    radial-gradient(ellipse at 28% 28%,#75c85b 0 5%,transparent 6%),
+    radial-gradient(ellipse at 38% 38%,#a1d66d 0 7%,transparent 8%),
+    radial-gradient(ellipse at 55% 65%,#48b95c 0 10%,transparent 11%),
+    radial-gradient(ellipse at 75% 38%,#8bcf61 0 7%,transparent 8%),
+    radial-gradient(ellipse at 28% 72%,#69c85b 0 8%,transparent 9%),
+    repeating-linear-gradient(
+      100deg,
+      transparent 0 25px,
+      rgba(70,170,255,.15) 26px 34px,
+      transparent 35px 48px
+    );
+  filter:saturate(1.2);
+  animation:surfaceMove 12s linear infinite;
 }
 
-.cx-land1 {
-  width: 90px;
-  height: 65px;
-  top: 45px;
-  left: 35px;
-  transform: rotate(-20deg);
+/* CLOUD LAYER */
+.cx-clouds{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  overflow:hidden;
+  z-index:2;
+  background:
+    repeating-linear-gradient(
+      165deg,
+      transparent 0 14px,
+      rgba(255,255,255,.12) 15px 19px,
+      transparent 20px 34px
+    ),
+    radial-gradient(ellipse at 25% 35%,rgba(255,255,255,.5),transparent 22%),
+    radial-gradient(ellipse at 65% 55%,rgba(255,255,255,.35),transparent 18%),
+    radial-gradient(ellipse at 45% 80%,rgba(255,255,255,.3),transparent 14%);
+  filter:blur(2px);
+  animation:cloudMove 10s linear infinite;
 }
 
-.cx-land2 {
-  width: 75px;
-  height: 110px;
-  top: 95px;
-  left: 120px;
-  transform: rotate(25deg);
+/* DAY-NIGHT SHADING */
+.cx-shade{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  border-radius:50%;
+  background:linear-gradient(
+    100deg,
+    rgba(255,255,255,.25),
+    transparent 28%,
+    transparent 50%,
+    rgba(0,0,0,.82)
+  );
+  pointer-events:none;
 }
 
-.cx-land3 {
-  width: 45px;
-  height: 35px;
-  top: 30px;
-  left: 150px;
+@keyframes planetRotate{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
 }
 
-.cx-land4 {
-  width: 65px;
-  height: 40px;
-  top: 155px;
-  left: 45px;
-  transform: rotate(-25deg);
+@keyframes surfaceMove{
+  from{transform:translateX(-5%)}
+  to{transform:translateX(5%)}
 }
 
-/* CLOUDS */
-
-.cx-cloud {
-  position: absolute;
-  height: 12px;
-  border-radius: 20px;
-  background: rgba(255,255,255,.65);
-  filter: blur(2px);
+@keyframes cloudMove{
+  from{transform:rotate(0deg) translateX(-3%)}
+  to{transform:rotate(360deg) translateX(3%)}
 }
 
-.cx-cloud1 {
-  width: 70px;
-  top: 65px;
-  left: 95px;
-  transform: rotate(-15deg);
+@keyframes planetGlow{
+  from{filter:brightness(.9)}
+  to{filter:brightness(1.12)}
 }
 
-.cx-cloud2 {
-  width: 55px;
-  top: 135px;
-  left: 30px;
-  transform: rotate(12deg);
+/* ORBIT PARTICLES */
+.cx-particle{
+  position:absolute;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#a9ddff;
+  box-shadow:0 0 12px #54aaff;
+  animation:particleOrbit 8s linear infinite;
 }
 
-.cx-cloud3 {
-  width: 65px;
-  top: 175px;
-  left: 125px;
-  transform: rotate(-10deg);
+.cx-particle.p2{
+  width:4px;
+  height:4px;
+  animation-duration:11s;
+  animation-delay:-4s;
+}
+
+@keyframes particleOrbit{
+  from{transform:rotate(0deg) translateX(155px) rotate(0deg)}
+  to{transform:rotate(360deg) translateX(155px) rotate(-360deg)}
+}
+
+.cx-label{
+  position:absolute;
+  bottom:0;
+  font-size:11px;
+  letter-spacing:4px;
+  color:#82caff;
 }
 
 /* CONTENT */
-
-.cx-content {
-  max-width: 900px;
-  margin: auto;
+.cx-content{
+  position:relative;
+  z-index:1;
+  max-width:850px;
+  margin:auto;
+  text-align:center;
 }
 
-.cx-section {
-  margin-top: 35px;
-  padding: 28px;
-  border: 1px solid rgba(60,150,255,.25);
-  border-radius: 20px;
-  background: rgba(15,15,35,.65);
-  transition: .3s;
+.cx-content h2{
+  font-size:28px;
+  margin-bottom:15px;
 }
 
-.cx-section:hover {
-  border-color: rgba(80,160,255,.55);
-  box-shadow: 0 0 25px rgba(40,100,255,.12);
+.cx-content p{
+  color:#aabbd4;
+  line-height:1.9;
+  font-size:16px;
 }
 
-.cx-section h2 {
-  font-size: 27px;
-  margin-bottom: 14px;
+/* FACT CARDS */
+.cx-facts{
+  position:relative;
+  z-index:1;
+  max-width:950px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
 }
 
-.cx-section p {
-  color: #aaa;
-  line-height: 1.8;
-  font-size: 15px;
+.cx-fact{
+  padding:24px 18px;
+  text-align:center;
+  border:1px solid rgba(65,145,255,.32);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(15,31,62,.94),rgba(5,9,24,.96));
+  transition:transform .3s,border-color .3s,box-shadow .3s;
 }
 
-/* FACTS */
-
-.cx-facts {
-  max-width: 900px;
-  margin: 30px auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+.cx-fact:hover{
+  transform:translateY(-6px);
+  border-color:#69bdff;
+  box-shadow:0 0 25px rgba(48,128,255,.25);
 }
 
-.cx-fact {
-  padding: 22px;
-  text-align: center;
-  border: 1px solid rgba(80,120,255,.3);
-  border-radius: 18px;
-  background: rgba(20,20,40,.7);
-  transition: .3s;
+.cx-fact h3{
+  margin-bottom:12px;
+  color:#c4e7ff;
 }
 
-.cx-fact:hover {
-  transform: translateY(-6px);
-  border-color: #6688ff;
-  box-shadow: 0 0 25px rgba(60,100,255,.3);
+.cx-fact p{
+  color:#aabbd4;
+  font-size:14px;
+  line-height:1.7;
 }
 
-.cx-fact h3 {
-  margin-bottom: 10px;
+/* EXTRA DETAILS */
+.cx-details{
+  position:relative;
+  z-index:1;
+  max-width:950px;
+  margin:50px auto 0;
 }
 
-.cx-fact p {
-  color: #999;
-  font-size: 14px;
-  line-height: 1.5;
+.cx-details-title{
+  text-align:center;
+  margin-bottom:25px;
+  font-size:27px;
 }
 
-/* LIST */
+.cx-detail-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
 
-.cx-list {
-  margin-top: 18px;
-  padding-left: 20px;
-  color: #aaa;
-  line-height: 2;
+.cx-detail{
+  padding:20px;
+  border-left:3px solid #369cff;
+  background:rgba(10,20,42,.88);
+  border-radius:0 12px 12px 0;
+  transition:.3s;
+}
+
+.cx-detail:hover{
+  background:rgba(17,38,76,.9);
+  transform:translateX(4px);
+}
+
+.cx-detail h3{
+  font-size:16px;
+  margin-bottom:9px;
+  color:#bde4ff;
+}
+
+.cx-detail p{
+  color:#aabbd4;
+  font-size:14px;
+  line-height:1.7;
 }
 
 /* BUTTON */
-
-.cx-button {
-  display: block;
-  width: fit-content;
-  margin: 45px auto 0;
-  padding: 12px 24px;
-  border-radius: 25px;
-  border: 1px solid #604cff;
-  color: white;
-  text-decoration: none;
-  background: rgba(50,35,120,.5);
-  transition: .3s;
+.cx-button{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:fit-content;
+  margin:40px auto 0;
+  padding:13px 25px;
+  border-radius:25px;
+  border:1px solid #398eff;
+  color:white;
+  text-decoration:none;
+  background:rgba(15,58,125,.35);
+  transition:.3s;
 }
 
-.cx-button:hover {
-  background: #654cff;
-  box-shadow: 0 0 25px #654cff;
-  transform: translateY(-3px);
+.cx-button:hover{
+  background:#175fc5;
+  box-shadow:0 0 25px #217cff;
+  transform:translateY(-3px);
 }
 
 /* MOBILE */
+@media(max-width:600px){
+  .cx-page{padding:28px 16px 45px}
+  .cx-logo{font-size:28px;letter-spacing:5px}
+  .cx-title{font-size:34px}
+  .cx-subtitle{font-size:13px}
+  .cx-space{height:290px}
+  .cx-planet{width:170px;height:170px}
+  .cx-orbit{width:250px;height:80px}
+  .cx-facts{grid-template-columns:1fr}
+  .cx-detail-grid{grid-template-columns:1fr}
+  .cx-content h2,.cx-details-title{font-size:24px}
+  .cx-content p{font-size:14px}
+}
 
-@media(max-width:600px) {
-
-  .cx-logo {
-    font-size: 28px;
-  }
-
-  .cx-title {
-    font-size: 35px;
-  }
-
-  .cx-earth {
-    width: 180px;
-    height: 180px;
-  }
-
-  .cx-land1 {
-    width: 70px;
-    height: 50px;
-    top: 35px;
-    left: 25px;
-  }
-
-  .cx-land2 {
-    width: 60px;
-    height: 85px;
-    top: 75px;
-    left: 92px;
-  }
-
-  .cx-land3 {
-    width: 35px;
-    height: 28px;
-    top: 25px;
-    left: 115px;
-  }
-
-  .cx-land4 {
-    width: 50px;
-    height: 32px;
-    top: 120px;
-    left: 35px;
-  }
-
-  .cx-cloud1 {
-    width: 55px;
-    top: 50px;
-    left: 75px;
-  }
-
-  .cx-cloud2 {
-    width: 45px;
-    top: 105px;
-    left: 25px;
-  }
-
-  .cx-cloud3 {
-    width: 50px;
-    top: 135px;
-    left: 100px;
-  }
-
-  .cx-section {
-    padding: 22px;
-  }
-
-  .cx-facts {
-    grid-template-columns: 1fr;
+@media(prefers-reduced-motion:reduce){
+  .cx-stars,.cx-stars::before,.cx-stars::after,
+  .cx-orbit,.cx-planet,.cx-planet::before,.cx-clouds,.cx-particle{
+    animation-duration:30s;
   }
 }
 </style>
 </head>
 
 <body>
-
 <div class="cx-page">
 
-  <!-- HEADER -->
+  <div class="cx-stars"></div>
 
   <header class="cx-header">
-
     <div class="cx-logo">COSMICX</div>
-
     <h1 class="cx-title">Earth</h1>
-
-    <p class="cx-subtitle">
-      Our Blue Planet — The Known World of Life
-    </p>
-
+    <p class="cx-subtitle">Our Home in the Infinite Universe</p>
   </header>
 
+  <div class="cx-space">
+    <div class="cx-orbit"></div>
+    <div class="cx-particle"></div>
+    <div class="cx-particle p2"></div>
 
-  <!-- EARTH -->
+    <div class="cx-planet">
+      <div class="cx-clouds"></div>
+      <div class="cx-shade"></div>
+    </div>
 
-  <div class="cx-earth">
-
-    <div class="cx-land cx-land1"></div>
-    <div class="cx-land cx-land2"></div>
-    <div class="cx-land cx-land3"></div>
-    <div class="cx-land cx-land4"></div>
-
-    <div class="cx-cloud cx-cloud1"></div>
-    <div class="cx-cloud cx-cloud2"></div>
-    <div class="cx-cloud cx-cloud3"></div>
-
+    <div class="cx-label">PLANET NO. 03</div>
   </div>
 
-
-  <!-- CONTENT -->
-
   <section class="cx-content">
-
-    <!-- INTRODUCTION -->
-
-    <div class="cx-section">
-
-      <h2>About Earth</h2>
-
-      <p>
-        Earth is the third planet from the Sun and the largest of the
-        four terrestrial planets in our Solar System. It is the only
-        world currently known to support life.
-      </p>
-
-      <p style="margin-top:15px;">
-        Earth has vast oceans, continents, mountains, deserts,
-        forests and polar regions. Its combination of liquid water,
-        a protective atmosphere and suitable temperatures makes it
-        a remarkable planet.
-      </p>
-
-    </div>
-
-
-    <!-- ATMOSPHERE -->
-
-    <div class="cx-section">
-
-      <h2>Atmosphere</h2>
-
-      <p>
-        Earth's atmosphere is mainly composed of nitrogen and oxygen,
-        along with smaller amounts of other gases. It protects life
-        from harmful solar radiation and helps regulate the planet's
-        temperature.
-      </p>
-
-      <p style="margin-top:15px;">
-        The atmosphere also creates weather and climate systems that
-        continuously move energy and water around the planet.
-      </p>
-
-    </div>
-
-
-    <!-- WATER -->
-
-    <div class="cx-section">
-
-      <h2>The Water World</h2>
-
-      <p>
-        About 71% of Earth's surface is covered by water. Most of this
-        water is found in oceans, while smaller amounts exist in
-        glaciers, rivers, lakes, groundwater and the atmosphere.
-      </p>
-
-      <p style="margin-top:15px;">
-        Liquid water is one of the most important ingredients for life
-        as we know it.
-      </p>
-
-    </div>
-
-
-    <!-- LIFE -->
-
-    <div class="cx-section">
-
-      <h2>Life on Earth</h2>
-
-      <p>
-        Earth contains an extraordinary diversity of life, ranging
-        from microscopic organisms to plants, animals and complex
-        ecosystems.
-      </p>
-
-      <p style="margin-top:15px;">
-        Life exists in many different environments, including oceans,
-        deserts, forests, mountains and even extreme environments
-        where conditions are difficult for most organisms.
-      </p>
-
-    </div>
-
-
-    <!-- MOON -->
-
-    <div class="cx-section">
-
-      <h2>Earth and the Moon</h2>
-
-      <p>
-        Earth has one natural satellite: the Moon. The Moon is the
-        fifth-largest natural satellite in the Solar System and plays
-        an important role in Earth's tides.
-      </p>
-
-      <p style="margin-top:15px;">
-        The gravitational interaction between Earth and the Moon also
-        influences the length of Earth's day over very long periods.
-      </p>
-
-    </div>
-
-
-    <!-- ROTATION -->
-
-    <div class="cx-section">
-
-      <h2>Rotation & Revolution</h2>
-
-      <p>
-        Earth rotates once approximately every 24 hours, producing
-        the cycle of day and night.
-      </p>
-
-      <p style="margin-top:15px;">
-        Earth completes one orbit around the Sun in approximately
-        365.25 days. This extra fraction of a day is why leap years
-        are used to keep our calendar aligned with Earth's orbit.
-      </p>
-
-    </div>
-
-
-    <!-- EXPLORATION -->
-
-    <div class="cx-section">
-
-      <h2>Exploring Our Planet</h2>
-
-      <p>
-        Earth has been studied from the ground, from aircraft and
-        from thousands of satellites in space. These observations
-        help scientists understand weather, climate, oceans,
-        ecosystems and changes occurring across the planet.
-      </p>
-
-    </div>
-
-
-    <!-- INTERESTING FACTS -->
-
-    <div class="cx-section">
-
-      <h2>Interesting Facts</h2>
-
-      <ul class="cx-list">
-
-        <li>Earth is the third planet from the Sun.</li>
-
-        <li>It is the only planet currently known to support life.</li>
-
-        <li>About 71% of its surface is covered by water.</li>
-
-        <li>Earth has one natural satellite, the Moon.</li>
-
-        <li>Its atmosphere is mainly nitrogen and oxygen.</li>
-
-        <li>Earth has active plate tectonics that reshape its surface.</li>
-
-      </ul>
-
-    </div>
-
+    <h2>About Earth</h2>
+    <p>
+      Earth is the third planet from the Sun and the only world currently
+      known to support life. Its liquid-water oceans, protective atmosphere
+      and suitable temperatures make it an extraordinary home for millions
+      of known species. Earth's surface is constantly changing through
+      weather, oceans, volcanoes and moving tectonic plates.
+    </p>
   </section>
-
-
-  <!-- QUICK FACTS -->
 
   <section class="cx-facts">
 
     <div class="cx-fact">
-      <h3>☀️ Position</h3>
-      <p>3rd planet from the Sun</p>
+      <h3>☀️ Distance</h3>
+      <p>About 149.6 million km from the Sun on average.</p>
     </div>
 
     <div class="cx-fact">
-      <h3>🌊 Water</h3>
-      <p>About 71% surface coverage</p>
+      <h3>🌊 Surface</h3>
+      <p>About 71% of Earth's surface is covered by water.</p>
     </div>
 
     <div class="cx-fact">
-      <h3>🌙 Moon</h3>
-      <p>1 natural satellite</p>
+      <h3>⏱️ Year</h3>
+      <p>About 365.25 days to orbit the Sun.</p>
     </div>
 
     <div class="cx-fact">
-      <h3>⏱️ Day</h3>
-      <p>About 24 hours</p>
+      <h3>🌡️ Atmosphere</h3>
+      <p>Mostly nitrogen and oxygen, supporting life at the surface.</p>
     </div>
 
     <div class="cx-fact">
-      <h3>☀️ Year</h3>
-      <p>About 365.25 days</p>
+      <h3>🌙 Natural Moon</h3>
+      <p>Earth has one natural satellite: the Moon.</p>
     </div>
 
     <div class="cx-fact">
-      <h3>🌍 Type</h3>
-      <p>Rocky terrestrial planet</p>
+      <h3>🔄 Rotation</h3>
+      <p>One rotation takes about 24 hours.</p>
     </div>
 
   </section>
 
+  <section class="cx-details">
+    <h2 class="cx-details-title">Discover Earth</h2>
 
-  <!-- BACK -->
+    <div class="cx-detail-grid">
+
+      <article class="cx-detail">
+        <h3>01 · Blue Oceans</h3>
+        <p>
+          Earth's oceans regulate climate, store heat and provide habitats
+          for an enormous diversity of marine life.
+        </p>
+      </article>
+
+      <article class="cx-detail">
+        <h3>02 · Protective Atmosphere</h3>
+        <p>
+          The atmosphere helps regulate temperatures and shields the surface
+          from many small meteoroids and harmful solar radiation.
+        </p>
+      </article>
+
+      <article class="cx-detail">
+        <h3>03 · Moving Continents</h3>
+        <p>
+          Earth's outer shell is divided into tectonic plates that move
+          slowly, creating mountains, earthquakes and volcanoes.
+        </p>
+      </article>
+
+      <article class="cx-detail">
+        <h3>04 · The Moon</h3>
+        <p>
+          The Moon influences ocean tides and helps stabilize Earth's
+          axial tilt over long timescales.
+        </p>
+      </article>
+
+    </div>
+  </section>
 
   <a href="planets.html" class="cx-button">
     ← Back to Planets
   </a>
 
 </div>
-
 </body>
-  </html>
+</html>
+
