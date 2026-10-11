@@ -1,188 +1,342 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>COSMICX | Saturn</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saturn - CosmicX</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#02030a;color:white;font-family:Arial,sans-serif}
-
-.cx-page{
-min-height:100vh;padding:35px 20px 70px;
-background:radial-gradient(circle at 50% 15%,rgba(220,180,100,.18),transparent 32%),#02030a;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.cx-header{text-align:center;margin-bottom:35px}
-
-.cx-logo{
-font-size:38px;font-weight:900;letter-spacing:7px;
-text-shadow:0 0 12px #765cff,0 0 30px #5135ff;
+body {
+    font-family: Arial, sans-serif;
+    background: #080a18;
+    color: white;
+    line-height: 1.7;
 }
 
-.cx-title{margin-top:18px;font-size:44px}
-.cx-subtitle{margin-top:10px;color:#aaa}
-
-.cx-saturn{
-position:relative;
-width:220px;height:220px;
-margin:70px auto 80px;
-border-radius:50%;
-background:radial-gradient(circle at 35% 28%,#ffe5a8,#c69d5c 60%,#6b4e28);
-box-shadow:inset -35px -25px 45px rgba(0,0,0,.55),0 0 40px rgba(220,180,100,.25);
+.cx-page {
+    min-height: 100vh;
+    padding: 25px 7%;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 80% 30%, #a77b3840, transparent 36%),
+        linear-gradient(135deg, #080a18, #19150f, #080a18);
 }
 
-.cx-saturn::before{
-content:"";
-position:absolute;
-width:350px;height:75px;
-border:12px solid rgba(215,185,130,.65);
-border-radius:50%;
-left:50%;top:50%;
-transform:translate(-50%,-50%) rotate(-12deg);
-box-shadow:0 0 0 7px rgba(120,90,50,.25);
+.cx-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 45px;
 }
 
-.cx-content{max-width:900px;margin:auto}
-
-.cx-section{
-margin-top:35px;padding:28px;
-border:1px solid rgba(220,180,100,.25);
-border-radius:20px;background:rgba(25,20,30,.7);
+.cx-logo {
+    color: #eac78c;
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 3px;
 }
 
-.cx-section h2{font-size:27px;margin-bottom:14px}
-.cx-section p{color:#aaa;line-height:1.8;font-size:15px}
-.cx-list{margin-top:15px;padding-left:20px;color:#aaa;line-height:2}
-
-.cx-facts{
-max-width:900px;margin:30px auto;
-display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+.cx-back {
+    color: white;
+    text-decoration: none;
+    border: 1px solid #eac78c;
+    padding: 9px 18px;
+    border-radius: 25px;
+    transition: .3s;
 }
 
-.cx-fact{
-padding:22px;text-align:center;
-border:1px solid rgba(220,180,100,.3);
-border-radius:18px;background:rgba(25,20,30,.7);
-transition:.3s;
+.cx-back:hover {
+    background: #eac78c;
+    color: #17120d;
+    box-shadow: 0 0 18px #eac78c80;
 }
 
-.cx-fact:hover{
-transform:translateY(-6px);
-border-color:#e2c17f;
-box-shadow:0 0 25px rgba(220,180,100,.25);
+.cx-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
 }
 
-.cx-fact h3{margin-bottom:10px}
-.cx-fact p{color:#999;font-size:14px}
-
-.cx-button{
-display:block;width:fit-content;margin:45px auto 0;
-padding:12px 24px;border-radius:25px;border:1px solid #604cff;
-color:white;text-decoration:none;background:rgba(50,35,120,.5);
-transition:.3s;
+.cx-tag {
+    color: #eac78c;
+    font-size: 13px;
+    letter-spacing: 4px;
 }
 
-.cx-button:hover{background:#654cff;box-shadow:0 0 25px #654cff;transform:translateY(-3px)}
+.cx-title {
+    font-size: clamp(48px, 7vw, 76px);
+    line-height: 1.2;
+    margin: 12px 0 20px;
+    color: #fff4dc;
+}
 
-@media(max-width:600px){
-.cx-logo{font-size:28px}
-.cx-title{font-size:35px}
-.cx-saturn{width:170px;height:170px;margin-bottom:75px}
-.cx-saturn::before{width:280px;height:60px}
-.cx-section{padding:22px}
-.cx-facts{grid-template-columns:1fr}
+.cx-description {
+    color: #c5c5d4;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.cx-planet-area {
+    min-height: 390px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    perspective: 900px;
+}
+
+/* Saturn's rings */
+.cx-rings {
+    position: absolute;
+    width: 125%;
+    height: 42%;
+    border: 18px solid #c4a879;
+    border-left-color: #ead6a8;
+    border-right-color: #806a49;
+    border-top-color: #e6d0a2;
+    border-bottom-color: #9d8055;
+    border-radius: 50%;
+    transform: rotate(-22deg);
+    box-shadow: 0 0 20px #eac78c30;
+    animation: ringGlow 4s ease-in-out infinite alternate;
+}
+
+.cx-planet {
+    width: min(245px, 60vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background:
+        radial-gradient(ellipse at 30% 20%, #fff1c7 0%, transparent 14%),
+        repeating-linear-gradient(
+            0deg,
+            #d7bd88 0px,
+            #d7bd88 12px,
+            #b69a69 17px,
+            #eee0b9 23px,
+            #a88959 31px,
+            #e1c99a 39px
+        );
+    box-shadow:
+        inset -35px -15px 55px #17110b,
+        inset 12px 5px 22px #fff1cf99,
+        0 0 40px #eac78c30;
+    animation: saturnRotate 20s linear infinite;
+}
+
+.cx-planet::before {
+    content: "";
+    position: absolute;
+    inset: -10%;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 18px,
+            #ffffff19 20px 23px,
+            #624b3020 25px 30px,
+            transparent 33px 42px
+        );
+    animation: bandsMove 10s ease-in-out infinite alternate;
+}
+
+.cx-planet::after {
+    content: "";
+    position: absolute;
+    top: 6%;
+    left: 29%;
+    width: 35%;
+    height: 10%;
+    background: #fff0c8;
+    border-radius: 50%;
+    filter: blur(6px);
+}
+
+.cx-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.cx-card {
+    background: #ffffff09;
+    border: 1px solid #ffffff1c;
+    padding: 18px;
+    border-radius: 14px;
+    transition: .3s;
+}
+
+.cx-card:hover {
+    transform: translateY(-5px);
+    border-color: #eac78c;
+    box-shadow: 0 8px 25px #eac78c20;
+}
+
+.cx-card small {
+    display: block;
+    color: #aaaabd;
+    margin-bottom: 5px;
+}
+
+.cx-card strong {
+    color: #eac78c;
+    font-size: 16px;
+}
+
+.cx-section-title {
+    font-size: 25px;
+    margin: 35px 0 15px;
+    color: #eac78c;
+}
+
+.cx-details {
+    color: #c5c5d4;
+    padding-left: 20px;
+}
+
+.cx-details li {
+    margin: 10px 0;
+}
+
+.cx-footer {
+    text-align: center;
+    border-top: 1px solid #ffffff1c;
+    margin-top: 45px;
+    padding: 20px 0 5px;
+    color: #89899f;
+    font-size: 13px;
+}
+
+@keyframes saturnRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes bandsMove {
+    from { transform: translateX(-2%); }
+    to { transform: translateX(2%); }
+}
+
+@keyframes ringGlow {
+    from { opacity: .65; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 760px) {
+    .cx-content {
+        grid-template-columns: 1fr;
+    }
+
+    .cx-planet-area {
+        grid-row: 1;
+        min-height: 320px;
+    }
+
+    .cx-page {
+        padding: 22px 5%;
+    }
+
+    .cx-rings {
+        width: 115%;
+        height: 35%;
+        border-width: 12px;
+    }
 }
 </style>
 </head>
 
 <body>
-
 <div class="cx-page">
 
-<header class="cx-header">
-<div class="cx-logo">COSMICX</div>
-<h1 class="cx-title">Saturn</h1>
-<p class="cx-subtitle">The Ringed Giant</p>
-</header>
+    <header class="cx-header">
+        <div class="cx-logo">COSMICX</div>
+        <a class="cx-back" href="planets.html">← Back to Planets</a>
+    </header>
 
-<div class="cx-saturn"></div>
+    <main class="cx-content">
 
-<section class="cx-content">
+        <section>
+            <div class="cx-tag">The Ringed Planet</div>
+            <h1 class="cx-title">SATURN</h1>
 
-<div class="cx-section">
-<h2>About Saturn</h2>
-<p>
-Saturn is the sixth planet from the Sun and the second-largest
-planet in the Solar System. Like Jupiter, Saturn is a gas giant
-made primarily of hydrogen and helium.
-</p>
-</div>
+            <p class="cx-description">
+                Saturn is a magnificent gas giant famous for its spectacular
+                rings made mainly of ice, rock and dust. Its pale golden
+                atmosphere and mysterious moons make it one of the most
+                fascinating worlds in our Solar System.
+            </p>
 
-<div class="cx-section">
-<h2>The Famous Rings</h2>
-<p>
-Saturn is best known for its spectacular ring system. The rings
-are made mostly of countless pieces of ice and rocky material.
-They range in size from tiny particles to much larger fragments.
-</p>
-</div>
+            <h2 class="cx-section-title">Planet Facts</h2>
 
-<div class="cx-section">
-<h2>Atmosphere</h2>
-<p>
-Saturn has strong winds and bands of clouds in its atmosphere.
-Its upper atmosphere contains hydrogen, helium and small amounts
-of other gases.
-</p>
-</div>
+            <div class="cx-facts">
+                <div class="cx-card">
+                    <small>Distance from Sun</small>
+                    <strong>1.43 Billion km</strong>
+                </div>
 
-<div class="cx-section">
-<h2>Moons</h2>
-<p>
-Saturn has a large collection of moons. Titan is its largest moon
-and has a thick atmosphere, while Enceladus is known for icy
-material and water-rich plumes.
-</p>
-</div>
+                <div class="cx-card">
+                    <small>Diameter</small>
+                    <strong>116,460 km</strong>
+                </div>
 
-<div class="cx-section">
-<h2>Exploring Saturn</h2>
-<p>
-The Cassini-Huygens mission provided detailed observations of
-Saturn, its rings and its moons, greatly expanding scientific
-knowledge of the Saturn system.
-</p>
-</div>
+                <div class="cx-card">
+                    <small>Day Length</small>
+                    <strong>About 10.7 Hours</strong>
+                </div>
 
-<div class="cx-section">
-<h2>Interesting Facts</h2>
-<ul class="cx-list">
-<li>Saturn is the sixth planet from the Sun.</li>
-<li>It is famous for its extensive ring system.</li>
-<li>Saturn is less dense than water.</li>
-<li>Titan is Saturn's largest moon.</li>
-<li>Saturn is a gas giant.</li>
-<li>Its atmosphere contains powerful winds and storms.</li>
-</ul>
-</div>
+                <div class="cx-card">
+                    <small>Known Moons</small>
+                    <strong>Many Moons</strong>
+                </div>
 
-</section>
+                <div class="cx-card">
+                    <small>Year Length</small>
+                    <strong>29.4 Earth Years</strong>
+                </div>
 
-<section class="cx-facts">
+                <div class="cx-card">
+                    <small>Planet Type</small>
+                    <strong>Gas Giant</strong>
+                </div>
+            </div>
+        </section>
 
-<div class="cx-fact"><h3>🪐 Position</h3><p>6th planet from the Sun</p></div>
-<div class="cx-fact"><h3>💍 Rings</h3><p>Extensive ring system</p></div>
-<div class="cx-fact"><h3>🌙 Moons</h3><p>Many known moons</p></div>
-<div class="cx-fact"><h3>🌌 Type</h3><p>Gas giant</p></div>
-<div class="cx-fact"><h3>⏱️ Day</h3><p>About 10.7 hours</p></div>
-<div class="cx-fact"><h3>☀️ Year</h3><p>About 29.5 Earth years</p></div>
+        <section class="cx-planet-area">
+            <div class="cx-rings"></div>
+            <div class="cx-planet"></div>
+        </section>
 
-</section>
+    </main>
 
-<a href="planets.html" class="cx-button">← Back to Planets</a>
+    <section>
+        <h2 class="cx-section-title">Explore Saturn</h2>
+
+        <ul class="cx-details">
+            <li><strong>Beautiful Rings:</strong> Saturn's rings contain countless pieces of ice and rocky material.</li>
+            <li><strong>Low Density:</strong> Saturn is less dense than water on average.</li>
+            <li><strong>Titan:</strong> Its largest moon has lakes and seas of liquid methane and ethane.</li>
+            <li><strong>Enceladus:</strong> This icy moon shoots water-rich plumes into space.</li>
+            <li><strong>Fast Rotation:</strong> Saturn completes a rotation in roughly 10.7 hours.</li>
+        </ul>
+    </section>
+
+    <footer class="cx-footer">
+        CosmicX — Explore the Universe
+    </footer>
 
 </div>
 </body>
 </html>
+
