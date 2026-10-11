@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,409 +7,487 @@
 <title>COSMICX | Venus</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  background: #02030a;
-  color: white;
-  font-family: Arial, sans-serif;
+body{
+  background:#02030a;
+  color:white;
+  font-family:Arial,sans-serif;
 }
 
-.cx-page {
-  min-height: 100vh;
-  padding: 35px 20px 70px;
+.cx-page{
+  min-height:100vh;
+  padding:35px 20px 60px;
+  position:relative;
+  overflow:hidden;
   background:
-    radial-gradient(circle at 50% 15%, rgba(255,150,50,.18), transparent 30%),
+    radial-gradient(circle at 50% 20%,rgba(255,174,65,.18),transparent 35%),
     #02030a;
 }
 
+/* STARS */
+.cx-stars,
+.cx-stars::before,
+.cx-stars::after{
+  position:absolute;
+  inset:0;
+  content:"";
+  pointer-events:none;
+  background-image:
+    radial-gradient(2px 2px at 10% 20%,#fff,transparent),
+    radial-gradient(1px 1px at 30% 60%,#fff,transparent),
+    radial-gradient(2px 2px at 80% 25%,#ffe6a8,transparent),
+    radial-gradient(1px 1px at 70% 75%,#fff,transparent),
+    radial-gradient(2px 2px at 45% 40%,#ffd28a,transparent),
+    radial-gradient(1px 1px at 90% 60%,#fff,transparent);
+  background-size:300px 260px;
+  animation:starsMove 40s linear infinite;
+}
+
+.cx-stars::before{
+  content:"";
+  opacity:.4;
+  animation:twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes starsMove{
+  from{background-position:0 0}
+  to{background-position:300px 260px}
+}
+
+@keyframes twinkle{
+  from{opacity:.15}
+  to{opacity:.8}
+}
+
 /* HEADER */
-
-.cx-header {
-  text-align: center;
-  margin-bottom: 35px;
+.cx-header{
+  position:relative;
+  z-index:1;
+  text-align:center;
+  margin-bottom:20px;
 }
 
-.cx-logo {
-  font-size: 38px;
-  font-weight: 900;
-  letter-spacing: 7px;
-  text-shadow:
-    0 0 12px #765cff,
-    0 0 30px #5135ff;
+.cx-logo{
+  font-size:38px;
+  font-weight:900;
+  letter-spacing:7px;
+  color:#ffe0a0;
+  text-shadow:0 0 12px #ffac42,0 0 30px #ff722e;
 }
 
-.cx-title {
-  margin-top: 18px;
-  font-size: 44px;
+.cx-title{
+  margin-top:18px;
+  font-size:42px;
+  letter-spacing:2px;
 }
 
-.cx-subtitle {
-  margin-top: 10px;
-  color: #aaa;
-  letter-spacing: 1px;
+.cx-subtitle{
+  margin-top:10px;
+  color:#d1b99b;
+  letter-spacing:1px;
+  line-height:1.6;
 }
 
-/* PLANET */
+/* PLANET STAGE */
+.cx-space{
+  height:340px;
+  max-width:700px;
+  margin:5px auto 25px;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  perspective:800px;
+}
 
-.cx-planet {
-  width: 230px;
-  height: 230px;
-  margin: 35px auto 45px;
-  border-radius: 50%;
+/* ORBIT */
+.cx-orbit{
+  position:absolute;
+  width:310px;
+  height:100px;
+  border:1px solid rgba(255,195,112,.5);
+  border-radius:50%;
+  transform:rotate(-20deg);
+  animation:orbitPulse 5s ease-in-out infinite alternate;
+}
 
+@keyframes orbitPulse{
+  from{opacity:.3;transform:rotate(-20deg) scale(.95)}
+  to{opacity:.8;transform:rotate(-20deg) scale(1.06)}
+}
+
+/* VENUS */
+.cx-planet{
+  width:220px;
+  height:220px;
+  position:relative;
+  z-index:1;
+  overflow:hidden;
+  border-radius:50%;
   background:
-    radial-gradient(
-      circle at 35% 28%,
-      #fff1bd 0%,
-      #e9b85f 35%,
-      #b86b27 65%,
-      #51260d 100%
+    radial-gradient(circle at 30% 25%,#fff1bd 0%,transparent 18%),
+    repeating-linear-gradient(
+      165deg,
+      #f9dca2 0px,
+      #e7b86d 8px,
+      #bd7c40 15px,
+      #f3ce89 24px,
+      #d99b53 33px,
+      #f8dda5 43px
     );
-
   box-shadow:
-    inset -35px -25px 45px rgba(0,0,0,.55),
-    0 0 35px rgba(255,180,70,.25);
-
-  animation: venusGlow 3s ease-in-out infinite alternate;
+    inset -35px -22px 50px rgba(40,15,0,.75),
+    inset 10px 5px 25px rgba(255,244,207,.55),
+    0 0 30px rgba(255,177,80,.5),
+    0 0 70px rgba(255,130,35,.2);
+  animation:planetRotate 18s linear infinite,planetGlow 4s ease-in-out infinite alternate;
 }
 
-@keyframes venusGlow {
-  from {
-    box-shadow:
-      inset -35px -25px 45px rgba(0,0,0,.55),
-      0 0 25px rgba(255,180,70,.18);
-  }
-
-  to {
-    box-shadow:
-      inset -35px -25px 45px rgba(0,0,0,.55),
-      0 0 60px rgba(255,180,70,.35);
-  }
+/* CLOUD BANDS */
+.cx-planet::before{
+  content:"";
+  position:absolute;
+  inset:-30%;
+  width:160%;
+  height:160%;
+  border-radius:50%;
+  background:
+    repeating-linear-gradient(
+      12deg,
+      transparent 0px,
+      rgba(255,244,203,.15) 8px,
+      rgba(255,197,112,.55) 15px,
+      rgba(137,74,35,.3) 21px,
+      transparent 30px,
+      rgba(255,235,185,.4) 39px
+    );
+  filter:blur(3px);
+  animation:cloudMove 12s linear infinite;
 }
 
-/* INTRO */
-
-.cx-content {
-  max-width: 900px;
-  margin: auto;
+/* LIGHT AND SHADOW */
+.cx-planet::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:linear-gradient(
+    100deg,
+    rgba(255,255,255,.28),
+    transparent 25%,
+    transparent 55%,
+    rgba(0,0,0,.75)
+  );
 }
 
-.cx-section {
-  margin-top: 35px;
-  padding: 28px;
-  border: 1px solid rgba(130,100,255,.25);
-  border-radius: 20px;
-  background: rgba(15,15,35,.65);
+@keyframes planetRotate{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
 }
 
-.cx-section h2 {
-  font-size: 27px;
-  margin-bottom: 14px;
+@keyframes cloudMove{
+  from{transform:rotate(0deg) translateX(-4%)}
+  to{transform:rotate(360deg) translateX(4%)}
 }
 
-.cx-section p {
-  color: #aaa;
-  line-height: 1.8;
-  font-size: 15px;
+@keyframes planetGlow{
+  from{filter:brightness(.92)}
+  to{filter:brightness(1.15)}
 }
 
-/* FACTS */
-
-.cx-facts {
-  max-width: 900px;
-  margin: 30px auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+/* FLOATING PARTICLES */
+.cx-particle{
+  position:absolute;
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#ffe1a0;
+  box-shadow:0 0 12px #ffb54b;
+  animation:particleOrbit 8s linear infinite;
 }
 
-.cx-fact {
-  padding: 22px;
-  text-align: center;
-  border: 1px solid rgba(130,100,255,.3);
-  border-radius: 18px;
-  background: rgba(20,20,40,.7);
-  transition: .3s;
+.cx-particle.p2{
+  width:4px;
+  height:4px;
+  animation-duration:11s;
+  animation-delay:-4s;
 }
 
-.cx-fact:hover {
-  transform: translateY(-6px);
-  border-color: #8066ff;
-  box-shadow: 0 0 25px rgba(100,70,255,.3);
+@keyframes particleOrbit{
+  from{transform:rotate(0deg) translateX(155px) rotate(0deg)}
+  to{transform:rotate(360deg) translateX(155px) rotate(-360deg)}
 }
 
-.cx-fact h3 {
-  margin-bottom: 10px;
+.cx-label{
+  position:absolute;
+  bottom:0;
+  font-size:11px;
+  letter-spacing:4px;
+  color:#ffc978;
 }
 
-.cx-fact p {
-  color: #999;
-  font-size: 14px;
-  line-height: 1.5;
+/* CONTENT */
+.cx-content{
+  position:relative;
+  z-index:1;
+  max-width:850px;
+  margin:auto;
+  text-align:center;
 }
 
-/* FACT LIST */
+.cx-content h2{
+  font-size:28px;
+  margin-bottom:15px;
+}
 
-.cx-list {
-  margin-top: 18px;
-  padding-left: 20px;
-  color: #aaa;
-  line-height: 2;
+.cx-content p{
+  color:#c4b5a5;
+  line-height:1.9;
+  font-size:16px;
+}
+
+/* FACT CARDS */
+.cx-facts{
+  position:relative;
+  z-index:1;
+  max-width:950px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.cx-fact{
+  padding:24px 18px;
+  text-align:center;
+  border:1px solid rgba(255,174,76,.3);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(45,29,26,.92),rgba(13,9,20,.95));
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+
+.cx-fact:hover{
+  transform:translateY(-6px);
+  border-color:#ffc66b;
+  box-shadow:0 0 25px rgba(255,159,56,.22);
+}
+
+.cx-fact h3{
+  margin-bottom:12px;
+  color:#ffe0a6;
+}
+
+.cx-fact p{
+  color:#c4b5a5;
+  font-size:14px;
+  line-height:1.7;
+}
+
+/* EXTRA DETAILS */
+.cx-details{
+  position:relative;
+  z-index:1;
+  max-width:950px;
+  margin:50px auto 0;
+}
+
+.cx-details-title{
+  text-align:center;
+  margin-bottom:25px;
+  font-size:27px;
+}
+
+.cx-detail-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+
+.cx-detail{
+  padding:20px;
+  border-left:3px solid #ffb752;
+  background:rgba(33,20,20,.8);
+  border-radius:0 12px 12px 0;
+  transition:.3s;
+}
+
+.cx-detail:hover{
+  background:rgba(65,37,27,.85);
+  transform:translateX(4px);
+}
+
+.cx-detail h3{
+  font-size:16px;
+  margin-bottom:9px;
+  color:#ffe0a6;
+}
+
+.cx-detail p{
+  color:#c4b5a5;
+  font-size:14px;
+  line-height:1.7;
 }
 
 /* BUTTON */
-
-.cx-button {
-  display: block;
-  width: fit-content;
-  margin: 45px auto 0;
-  padding: 12px 24px;
-  border-radius: 25px;
-  border: 1px solid #604cff;
-  color: white;
-  text-decoration: none;
-  background: rgba(50,35,120,.5);
-  transition: .3s;
+.cx-button{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:fit-content;
+  margin:40px auto 0;
+  padding:13px 25px;
+  border-radius:25px;
+  border:1px solid #ffb752;
+  color:white;
+  text-decoration:none;
+  background:rgba(116,64,22,.3);
+  transition:.3s;
 }
 
-.cx-button:hover {
-  background: #654cff;
-  box-shadow: 0 0 25px #654cff;
-  transform: translateY(-3px);
+.cx-button:hover{
+  background:#a96527;
+  box-shadow:0 0 25px #ff9b39;
+  transform:translateY(-3px);
 }
 
 /* MOBILE */
+@media(max-width:600px){
+  .cx-page{padding:28px 16px 45px}
+  .cx-logo{font-size:28px;letter-spacing:5px}
+  .cx-title{font-size:34px}
+  .cx-subtitle{font-size:13px}
+  .cx-space{height:290px}
+  .cx-planet{width:170px;height:170px}
+  .cx-orbit{width:250px;height:80px}
+  .cx-facts{grid-template-columns:1fr}
+  .cx-detail-grid{grid-template-columns:1fr}
+  .cx-content h2,.cx-details-title{font-size:24px}
+  .cx-content p{font-size:14px}
+}
 
-@media(max-width:600px) {
-
-  .cx-logo {
-    font-size: 28px;
-  }
-
-  .cx-title {
-    font-size: 35px;
-  }
-
-  .cx-planet {
-    width: 175px;
-    height: 175px;
-  }
-
-  .cx-section {
-    padding: 22px;
-  }
-
-  .cx-facts {
-    grid-template-columns: 1fr;
+@media(prefers-reduced-motion:reduce){
+  .cx-stars,.cx-stars::before,.cx-stars::after,
+  .cx-orbit,.cx-planet,.cx-planet::before,.cx-particle{
+    animation-duration:30s;
   }
 }
 </style>
 </head>
 
 <body>
-
 <div class="cx-page">
 
-  <!-- HEADER -->
+  <div class="cx-stars"></div>
 
   <header class="cx-header">
-
     <div class="cx-logo">COSMICX</div>
-
     <h1 class="cx-title">Venus</h1>
-
-    <p class="cx-subtitle">
-      The Hottest Planet in the Solar System
-    </p>
-
+    <p class="cx-subtitle">The Mysterious Golden World</p>
   </header>
 
-
-  <!-- PLANET -->
-
-  <div class="cx-planet"></div>
-
-
-  <!-- INTRODUCTION -->
+  <div class="cx-space">
+    <div class="cx-orbit"></div>
+    <div class="cx-particle"></div>
+    <div class="cx-particle p2"></div>
+    <div class="cx-planet"></div>
+    <div class="cx-label">PLANET NO. 02</div>
+  </div>
 
   <section class="cx-content">
-
-    <div class="cx-section">
-
-      <h2>About Venus</h2>
-
-      <p>
-        Venus is the second planet from the Sun and is similar in size
-        and structure to Earth. Because of these similarities, Venus is
-        sometimes called Earth's planetary twin.
-      </p>
-
-      <p style="margin-top:15px;">
-        However, the two planets are very different. Venus has a thick
-        atmosphere dominated by carbon dioxide and clouds made of
-        sulfuric acid. This atmosphere traps enormous amounts of heat,
-        making Venus the hottest planet in our Solar System.
-      </p>
-
-    </div>
-
-
-    <!-- ATMOSPHERE -->
-
-    <div class="cx-section">
-
-      <h2>Atmosphere & Surface</h2>
-
-      <p>
-        Venus is surrounded by a dense atmosphere that creates an
-        extreme greenhouse effect. The pressure at its surface is
-        roughly 90 times that of Earth's sea-level pressure.
-      </p>
-
-      <p style="margin-top:15px;">
-        Beneath the clouds lies a rocky surface containing mountains,
-        large plains and thousands of volcanic features. Scientists
-        believe that volcanic activity may have played an important
-        role in shaping the planet.
-      </p>
-
-    </div>
-
-
-    <!-- TEMPERATURE -->
-
-    <div class="cx-section">
-
-      <h2>Extreme Temperature</h2>
-
-      <p>
-        Venus has an average surface temperature of around
-        <strong>465°C</strong>. The thick atmosphere prevents heat from
-        escaping efficiently, so temperatures remain extremely high
-        even on the planet's night side.
-      </p>
-
-    </div>
-
-
-    <!-- ROTATION -->
-
-    <div class="cx-section">
-
-      <h2>Rotation & Revolution</h2>
-
-      <p>
-        Venus rotates very slowly and in the opposite direction to
-        most planets in the Solar System. One rotation takes about
-        243 Earth days.
-      </p>
-
-      <p style="margin-top:15px;">
-        Interestingly, Venus completes one orbit around the Sun in
-        about 225 Earth days. This means a Venusian day, measured by
-        one rotation, is longer than its year.
-      </p>
-
-    </div>
-
-
-    <!-- EXPLORATION -->
-
-    <div class="cx-section">
-
-      <h2>Exploring Venus</h2>
-
-      <p>
-        Venus has been visited by numerous robotic spacecraft.
-        Missions from different space agencies have studied its
-        atmosphere, surface and geological history.
-      </p>
-
-      <p style="margin-top:15px;">
-        Because of the planet's extreme heat and atmospheric pressure,
-        landing and operating spacecraft on the surface is extremely
-        challenging.
-      </p>
-
-    </div>
-
-
-    <!-- INTERESTING FACTS -->
-
-    <div class="cx-section">
-
-      <h2>Interesting Facts</h2>
-
-      <ul class="cx-list">
-
-        <li>Venus is the second planet from the Sun.</li>
-
-        <li>It is the hottest planet in our Solar System.</li>
-
-        <li>Venus rotates in the opposite direction to most planets.</li>
-
-        <li>Its atmosphere is mainly carbon dioxide.</li>
-
-        <li>Venus has no natural moon.</li>
-
-        <li>Its thick clouds contain sulfuric acid.</li>
-
-      </ul>
-
-    </div>
-
+    <h2>About Venus</h2>
+    <p>
+      Venus is the second planet from the Sun. Its thick atmosphere is
+      dominated by carbon dioxide and its clouds contain sulfuric acid.
+      An intense greenhouse effect makes Venus the hottest planet in our
+      Solar System. Its bright appearance comes from sunlight reflected
+      by its dense cloud cover.
+    </p>
   </section>
-
-
-  <!-- QUICK FACTS -->
 
   <section class="cx-facts">
 
     <div class="cx-fact">
-      <h3>☀️ Position</h3>
-      <p>2nd planet from the Sun</p>
+      <h3>☀️ Distance</h3>
+      <p>About 108.2 million km from the Sun on average.</p>
+    </div>
+
+    <div class="cx-fact">
+      <h3>🌫️ Atmosphere</h3>
+      <p>Extremely thick atmosphere, mostly carbon dioxide.</p>
+    </div>
+
+    <div class="cx-fact">
+      <h3>⏱️ Year</h3>
+      <p>225 Earth days to orbit the Sun.</p>
     </div>
 
     <div class="cx-fact">
       <h3>🌡️ Temperature</h3>
-      <p>About 465°C</p>
+      <p>Average surface temperature is about 465°C.</p>
     </div>
 
     <div class="cx-fact">
-      <h3>🌍 Type</h3>
-      <p>Rocky terrestrial planet</p>
-    </div>
-
-    <div class="cx-fact">
-      <h3>⏱️ Day</h3>
-      <p>About 243 Earth days</p>
-    </div>
-
-    <div class="cx-fact">
-      <h3>☀️ Year</h3>
-      <p>About 225 Earth days</p>
+      <h3>🔄 Rotation</h3>
+      <p>Rotates slowly in the opposite direction to most planets.</p>
     </div>
 
     <div class="cx-fact">
       <h3>🌙 Moons</h3>
-      <p>0 known moons</p>
+      <p>Venus has no known natural moons or rings.</p>
     </div>
 
   </section>
 
+  <section class="cx-details">
+    <h2 class="cx-details-title">Discover Venus</h2>
 
-  <!-- BACK BUTTON -->
+    <div class="cx-detail-grid">
+
+      <article class="cx-detail">
+        <h3>01 · Extreme Heat</h3>
+        <p>
+          Venus is hotter than Mercury despite being farther from the Sun.
+          Its dense atmosphere traps heat through a powerful greenhouse effect.
+        </p>
+      </article>
+
+      <article class="cx-detail">
+        <h3>02 · Sulfuric Acid Clouds</h3>
+        <p>
+          Thick clouds of sulfuric acid surround Venus and reflect much of
+          the sunlight that reaches its atmosphere.
+        </p>
+      </article>
+
+      <article class="cx-detail">
+        <h3>03 · Backward Rotation</h3>
+        <p>
+          Venus rotates retrograde, so the Sun would appear to rise in the
+          west and set in the east.
+        </p>
+      </article>
+
+      <article class="cx-detail">
+        <h3>04 · Volcanic Landscape</h3>
+        <p>
+          Venus has extensive volcanic features, including large volcanoes
+          and broad lava plains.
+        </p>
+      </article>
+
+    </div>
+  </section>
 
   <a href="planets.html" class="cx-button">
     ← Back to Planets
   </a>
 
 </div>
-
 </body>
 </html>
+
