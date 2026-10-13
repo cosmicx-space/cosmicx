@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CosmicX | Eclipse Experience</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:#030611;color:#eef5ff;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow-x:hidden
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-1;
+  background:
+  radial-gradient(ellipse at 20% 20%,#111d48 0,transparent 40%),
+  radial-gradient(ellipse at 85% 65%,#191044 0,transparent 40%),
+  #030611
+}
+a{color:inherit;text-decoration:none}
+header{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 7%;border-bottom:1px solid #25345b;
+  background:#050916d9;position:sticky;top:0;z-index:20;
+  backdrop-filter:blur(14px)
+}
+.logo{font-size:25px;font-weight:900;color:#fff}
+.logo span{color:#a78bfa}
+nav{display:flex;gap:22px;flex-wrap:wrap}
+nav a{font-size:13px;color:#c3cce5}
+nav a:hover{color:#a78bfa}
+.hero{text-align:center;padding:65px 20px 30px}
+.eyebrow{color:#a78bfa;letter-spacing:4px;font-size:12px}
+h1{font-size:clamp(38px,7vw,76px);margin:18px 0;
+   letter-spacing:-3px}
+h1 span{color:#a78bfa}
+.subtitle{color:#aab6d4;line-height:1.8;max-width:620px;
+          margin:auto}
+.switch{
+  display:flex;justify-content:center;gap:12px;
+  margin:30px 0
+}
+.switch a,.btn{
+  border:1px solid #5f50a8;padding:13px 24px;
+  border-radius:30px;color:#e4ddff;
+  background:#11132a;transition:.3s;cursor:pointer;
+  display:inline-block
+}
+.switch a:hover,.btn:hover{
+  background:#7956f5;color:white;
+  box-shadow:0 0 25px #7956f577
+}
+section{scroll-margin-top:85px}
+.eclipse{
+  padding:55px 6%;border-top:1px solid #1d2a49;
+  overflow:hidden
+}
+.section-title{text-align:center;margin-bottom:15px}
+.section-title h2{font-size:clamp(27px,4vw,42px);margin-bottom:12px}
+.section-title p{color:#aab6d4;line-height:1.7}
+.solar-title{color:#ffbd63}
+.lunar-title{color:#a7a4ff}
+.space-stage{
+  position:relative;max-width:1050px;height:350px;
+  margin:25px auto 15px;border:1px solid #26345c;
+  border-radius:22px;overflow:hidden;
+  background:
+    radial-gradient(1px 1px at 10% 20%,white,transparent 2px),
+    radial-gradient(2px 2px at 85% 25%,#9bbcff,transparent 3px),
+    radial-gradient(1px 1px at 40% 75%,white,transparent 2px),
+    radial-gradient(1px 1px at 70% 85%,white,transparent 2px),
+    radial-gradient(ellipse at center,#101936,#040815 70%);
+  box-shadow:inset 0 0 65px #000
+}
+.orbit{
+  position:absolute;left:50%;top:50%;
+  width:74%;height:65%;transform:translate(-50%,-50%);
+  border:1px dashed #ffffff4d;border-radius:50%
+}
+.planet{
+  position:absolute;top:50%;transform:translateY(-50%);
+  border-radius:50%;z-index:2
+}
+.sun{
+  left:8%;width:105px;height:105px;
+  background:radial-gradient(circle at 40% 35%,#fffbd0,#ffcb45 25%,#ff741b 55%,#b92b05 75%);
+  box-shadow:0 0 20px #ffb52c,0 0 50px #ff8a1c,
+             0 0 90px #ff6a184f;
+  animation:sunPulse 3s ease-in-out infinite
+}
+.earth{
+  left:70%;width:76px;height:76px;
+  background:
+  radial-gradient(ellipse at 35% 35%,#77e4ff 0 5%,transparent 8%),
+  radial-gradient(ellipse at 60% 35%,#56c76b 0 16%,transparent 18%),
+  radial-gradient(ellipse at 32% 65%,#45b85b 0 15%,transparent 18%),
+  radial-gradient(circle at 35% 30%,#73caff,#1452b8 60%,#07163e);
+  box-shadow:inset -12px -8px 20px #0009,0 0 25px #348cff88
+}
+.moon{
+  left:44%;width:43px;height:43px;
+  background:radial-gradient(circle at 35% 30%,#fff,#c3c8d5 48%,#555d72);
+  box-shadow:inset -8px -5px 12px #0008,0 0 15px #b9c7ff44;
+  animation:moonTravel 6s ease-in-out infinite alternate
+}
+.label{
+  position:absolute;top:calc(50% + 75px);
+  transform:translateX(-50%);font-size:12px;
+  letter-spacing:2px;color:#c5cce3
+}
+.sun-label{left:calc(8% + 52px)}
+.moon-label{left:calc(44% + 21px)}
+.earth-label{left:calc(70% + 38px)}
+.beam{
+  position:absolute;left:17%;top:35%;width:55%;height:30%;
+  background:linear-gradient(90deg,#ffad252b,#ffcf3c08);
+  clip-path:polygon(0 0,100% 35%,100% 65%,0 100%)
+}
+.shadow{
+  position:absolute;left:44%;top:42%;width:28%;height:16%;
+  background:linear-gradient(90deg,#000d,#0000);
+  clip-path:polygon(0 0,100% 35%,100% 65%,0 100%)
+}
+.stage-note{
+  text-align:center;color:#98a6c9;font-size:13px;
+  line-height:1.8;margin:20px auto;max-width:670px
+}
+.cards{
+  max-width:1050px;margin:25px auto 0;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px
+}
+.card{
+  padding:22px;border:1px solid #273354;border-radius:17px;
+  background:linear-gradient(145deg,#111a30aa,#080d1b);
+  transition:transform .3s,border-color .3s
+}
+.card:hover{transform:translateY(-6px);border-color:#9282ff}
+.card .symbol{font-size:28px;margin-bottom:15px}
+.card h3{font-size:17px;margin-bottom:10px}
+.card p{font-size:13px;color:#aab6d4;line-height:1.8}
+.solar .card h3{color:#ffc66f}
+.lunar .card h3{color:#b9b0ff}
+.fact{
+  max-width:1050px;margin:35px auto;padding:25px;
+  border:1px solid #373064;border-radius:18px;
+  background:#12102a99;text-align:center
+}
+.fact h2{margin-bottom:12px}
+.fact p{color:#b8c3df;line-height:1.9;font-size:14px}
+footer{
+  text-align:center;padding:35px 20px;
+  color:#929dbb;border-top:1px solid #202b47;
+  font-size:13px;line-height:2
+}
+footer strong{color:#b7a5ff}
+@keyframes sunPulse{
+  0%,100%{box-shadow:0 0 20px #ffb52c,0 0 50px #ff8a1c}
+  50%{box-shadow:0 0 35px #ffb52c,0 0 85px #ff6b1c}
+}
+@keyframes moonTravel{
+  0%{left:39%}
+  100%{left:51%}
+}
+@media(max-width:650px){
+  header{padding:16px 5%;gap:12px}
+  .logo{font-size:20px}
+  nav{gap:12px}
+  nav a{font-size:11px}
+  .hero{padding-top:45px}
+  .space-stage{height:270px}
+  .sun{width:62px;height:62px;left:5%}
+  .earth{width:48px;height:48px;left:76%}
+  .moon{width:29px;height:29px}
+  .sun-label{left:calc(5% + 31px)}
+  .earth-label{left:calc(76% + 24px)}
+  .label{top:calc(50% + 50px);font-size:9px}
+  .orbit{width:88%;height:60%}
+  .beam{left:12%;width:67%}
+  .shadow{left:39%;width:37%}
+  .cards{grid-template-columns:1fr}
+  .eclipse{padding:40px 5%}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <a class="logo" href="index.html">✦ Cosmic<span>X</span></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#solar">Solar Eclipse</a>
+    <a href="#lunar">Lunar Eclipse</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <p class="eyebrow">COSMICX PRESENTS · SPACE EXPLORATION</p>
+  <h1>CHASE THE <span>SHADOW</span></h1>
+  <p class="subtitle">
+    Two celestial events. One incredible universe.
+    Discover how the Sun, Earth and Moon create the magic of eclipses.
+  </p>
+  <div class="switch">
+    <a href="#solar">☀ Solar Eclipse</a>
+    <a href="#lunar">🌑 Lunar Eclipse</a>
+  </div>
+</div>
+
+<section class="eclipse solar" id="solar">
+  <div class="section-title">
+    <h2 class="solar-title">☀ Solar Eclipse</h2>
+    <p>When the Moon stands between the Sun and Earth.</p>
+  </div>
+
+  <div class="space-stage">
+    <div class="orbit"></div>
+    <div class="beam"></div>
+    <div class="shadow"></div>
+    <div class="planet sun"></div>
+    <div class="planet moon"></div>
+    <div class="planet earth"></div>
+    <div class="label sun-label">SUN</div>
+    <div class="label moon-label">MOON</div>
+    <div class="label earth-label">EARTH</div>
+  </div>
+
+  <p class="stage-note">
+    ALIGNMENT: SUN → MOON → EARTH<br>
+    The Moon blocks some or all of the Sun's light.
+    Its shadow falls on a small area of Earth.
+  </p>
+
+  <div class="cards">
+    <article class="card">
+      <div class="symbol">🌑</div>
+      <h3>Total Eclipse</h3>
+      <p>The Moon completely covers the Sun from the right viewing location, revealing the Sun's glowing corona.</p>
+    </article>
+    <article class="card">
+      <div class="symbol">🌘</div>
+      <h3>Partial Eclipse</h3>
+      <p>The Moon covers only part of the Sun, making it appear as if a bite has been taken out of it.</p>
+    </article>
+    <article class="card">
+      <div class="symbol">💍</div>
+      <h3>Annular Eclipse</h3>
+      <p>The Moon appears too small to cover the Sun completely, leaving a bright ring called the ring of fire.</p>
+    </article>
+  </div>
+
+  <div class="fact">
+    <h2>🌞 Why does it happen?</h2>
+    <p>A solar eclipse occurs around a new moon, when the Sun, Moon and Earth line up closely enough for the Moon's shadow to reach Earth. The Moon's orbit is tilted, so eclipses do not happen every month.</p>
+  </div>
+</section>
+
+<section class="eclipse lunar" id="lunar">
+  <div class="section-title">
+    <h2 class="lunar-title">🌑 Lunar Eclipse</h2>
+    <p>When Earth casts its shadow across the Moon.</p>
+  </div>
+
+  <div class="space-stage">
+    <div class="orbit"></div>
+    <div class="beam"></div>
+    <div class="shadow"></div>
+    <div class="planet sun"></div>
+    <div class="planet earth"></div>
+    <div class="planet moon" style="
+      left:85%;background:
+      radial-gradient(circle at 35% 30%,#ffbd91,#b93c32 48%,#441024);
+      box-shadow:0 0 22px #ff4b3d88,inset -8px -5px 12px #0008;
+      animation:moonTravel 6s ease-in-out infinite alternate-reverse">
+    </div>
+    <div class="label sun-label">SUN</div>
+    <div class="label" style="left:calc(70% + 38px)">EARTH</div>
+    <div class="label" style="left:calc(85% + 21px)">MOON</div>
+  </div>
+
+  <p class="stage-note">
+    ALIGNMENT: SUN → EARTH → MOON<br>
+    Earth moves between the Sun and Moon.
+    Earth's shadow falls on the Moon, which can appear copper-red.
+  </p>
+
+  <div class="cards">
+    <article class="card">
+      <div class="symbol">🔴</div>
+      <h3>Total Lunar Eclipse</h3>
+      <p>The entire Moon enters Earth's darkest shadow, called the umbra. It can turn a striking reddish colour.</p>
+    </article>
+    <article class="card">
+      <div class="symbol">🌗</div>
+      <h3>Partial Lunar Eclipse</h3>
+      <p>Only part of the Moon enters Earth's umbra, so a dark shadow visibly covers a portion of its surface.</p>
+    </article>
+    <article class="card">
+      <div class="symbol">🌕</div>
+      <h3>Penumbral Eclipse</h3>
+      <p>The Moon passes through Earth's faint outer shadow, producing a subtle dimming that can be difficult to notice.</p>
+    </article>
+  </div>
+
+  <div class="fact">
+    <h2>🌍 Why does the Moon turn red?</h2>
+    <p>During a total lunar eclipse, Earth's atmosphere scatters much of the blue light and bends some red and orange sunlight into Earth's shadow. This reddish light reaches the Moon, creating the beautiful Blood Moon effect.</p>
+  </div>
+</section>
+
+<footer>
+  <strong>✦ CosmicX</strong><br>
+  Explore · Learn · Be Amazed<br>
+  The Universe Is Closer Than You Think.<br>
+  <a href="index.html">← Back to Home</a>
+</footer>
+</body>
+</html>
